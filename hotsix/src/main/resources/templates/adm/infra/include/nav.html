@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko"xmlns:th="http://www.thymeleaf.org">
+
+			<!-- Sidebar wrapper start -->
+				<nav class="sidebar-wrapper" th:fragment="nav">
+
+
+					<!-- Sidebar brand starts -->
+					<div class="brand">
+						<a href="index.html" class="logo">
+							<img src="/adm/template/gear/assets/images/logo.svg" class="d-none d-md-block me-4" alt="Admin Dashboards" />
+							<img src="/adm/template/gear/assets/images/logo-sm.svg" class="d-block d-md-none me-4" alt="Admin Dashboards" />
+						</a>
+					</div>
+					<!-- Sidebar brand ends -->
+
+					<!-- Sidebar menu starts -->
+					<div class="sidebar-menu">
+						<div class="sidebarMenuScroll">
+							<ul>
+								<li>
+									<a th:href="@{admIndex}">
+										<i class="bi bi-house"></i>
+										<span class="menu-text">Analytics</span>
+									</a>
+								</li>
+								<li class="sidebar-dropdown">
+									<a href="#">
+										<i class="bi bi-grid-3x3"></i>
+										<span class="menu-text">코드그룹 테이블</span>
+									</a>
+									<div class="sidebar-submenu">
+										<ul>
+											<li>
+												<a th:href="@{codeGroupXdmList}">코드그룹 관리</a>
+											</li>
+											<li>
+												<a th:href="@{codeGroupAdd}">코드 등록</a>
+											</li>
+										</ul>
+									</div>
+								</li>
+								
+								<li class="sidebar-dropdown">
+									<a href="#">
+										<i class="bi bi-grid-3x3"></i>
+										<span class="menu-text">코드 테이블</span>
+									</a>
+									<div class="sidebar-submenu">
+										<ul>
+											<li>
+												<a th:href="@{codeXdmList}">코드 관리</a>
+											</li>
+											<li>
+												<a th:href="@{codeAdd}">코드 등록</a>
+											</li>
+										</ul>
+									</div>
+								</li>
+								
+								<li class="sidebar-dropdown">
+									<a href="#">
+										<i class="bi bi-grid-3x3"></i>
+										<span class="menu-text">멤버 테이블</span>
+									</a>
+									<div class="sidebar-submenu">
+										<ul>
+											<li>
+												<a th:href="@{memberAdmList}">멤버 관리</a>
+											</li>
+											<li>
+												<a th:href="@{memberAdmAdd}">멤버 등록</a>
+											</li>
+										</ul>
+									</div>
+								</li>
+<!-- 								<li> -->
+<!-- 									<a href="login.html"> -->
+<!-- 										<i class="bi bi-shield-lock"></i> -->
+<!-- 										<span class="menu-text">Login</span> -->
+<!-- 									</a> -->
+<!-- 								</li> -->
+<!-- 								<li> -->
+<!-- 									<a href="signup.html"> -->
+<!-- 										<i class="bi bi-unlock"></i> -->
+<!-- 										<span class="menu-text">Signup</span> -->
+<!-- 									</a> -->
+<!-- 								</li> -->
+							</ul>
+						</div>
+					</div>
+					<!-- Sidebar menu ends -->
+
+				</nav>
+				
+	</html>
