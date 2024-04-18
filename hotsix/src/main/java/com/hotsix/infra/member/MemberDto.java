@@ -6,7 +6,7 @@ public class MemberDto {
 	
 	private String memberSeq;
 	private String memberName;
-	private String memberid;
+	private String memberId;
 	private String memberPwd;
 	private Integer genderCd;
 	private String phoneNumber;
@@ -29,11 +29,11 @@ public class MemberDto {
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
-	public String getMemberid() {
-		return memberid;
+	public String getMemberId() {
+		return memberId;
 	}
-	public void setMemberid(String memberid) {
-		this.memberid = memberid;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
 	public String getMemberPwd() {
 		return memberPwd;
@@ -89,5 +89,6 @@ public class MemberDto {
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
+	
 	
 }

@@ -16,11 +16,84 @@
 		,a.memberRegDate
 		,a.memberModDate
 		,a.memberDelNy
+		,b.companyName
 	from 
 		member a
 	left join company b
 	on a.memberSeq = b.memberSeqF
+	
 	</select>
 	
+	<select id="selectOne" resultMap="resultMapObj">
+	select
+		a.memberSeq
+		,a.memberName
+		,a.memberId
+		,a.memberPwd
+		,a.phoneNumber
+		,a.memberTypeCd
+		,b.companyName
+	from 
+		member a
+	left join company b
+	on a.memberSeq = b.memberSeqF
+	where
+		memberSeq = #{memberSeq}
+	</select>
+	
+	<insert id="companyInsert">
+	insert into company (
+	companyName
+	)values (
+	${companyName}
+	)
+	</insert>
+	<insert id="insert">
+		insert into member (
+		 	memberName
+            ,memberId
+            ,memberPwd
+         	,phoneNumber
+         	,memberTypeCd
+         	,companyName
+		) values (
+		#{memberName}
+		,#{memberId}
+		,#{memberPwd}
+		,#{phoneNumber}
+		,#{memberTypeCd}
+		,#{companyName}
+		)
+	</insert>
+	
+	
+	<update id="update">
+		update member a
+		left join company b
+		on b.memberSeqF = a.memberSeq
+		set
+			memberName = #{memberName}
+            ,memberId = #{memberId}
+            ,memberPwd = #{memberPwd}
+         	,phoneNumber = #{phoneNumber}
+         	,memberTypeCd = #{memberTypeCd}
+         	,companyName = #{companyName}
+    		where 1=1
+    		and memberSeq = #{memberSeq}
+	</update>
+	
+	<update id="uelete">
+		update member
+		set
+		memberDelNy = 1
+    		where 1=1
+    		and memberSeq = #{memberSeq}
+	</update>
+	
+	<delete id="delete">
+		delete from member
+		where 1 = 1
+			and memberSeq = #{memberSeq}
+	</delete>	
 
 </mapper>

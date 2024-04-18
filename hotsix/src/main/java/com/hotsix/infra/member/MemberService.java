@@ -16,4 +16,30 @@ public class MemberService {
 		return dao.selectList(vo);
 	}
 	
+	public MemberDto selectOne(MemberDto dto) {
+		
+		return dao.selectOne(dto);
+	}
+	
+	public int insert(MemberDto dto) {
+		
+		dao.insert(dto); 
+		dao.companyInsert(dto);
+		return 1;
+	}
+	
+	public int update(MemberDto dto) {
+			 dao.update(dto); 
+	return 1;	
+	}
+	
+	public int uelete(MemberDto dto) {
+		
+		return dao.uelete(dto);
+	}
+	
+	public int delete(MemberDto dto) {
+		
+		return dao.delete(dto);
+	}
 }
