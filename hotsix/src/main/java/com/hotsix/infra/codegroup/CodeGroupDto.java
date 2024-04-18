@@ -9,6 +9,8 @@ public class CodeGroupDto {
 	private Date codeGroupModDate; 
 	private Integer codeGroupDelNy; 
 	private Integer codeGroupUseNy;
+	
+	
 	public String getCodeGroupSeq() {
 		return codeGroupSeq;
 	}

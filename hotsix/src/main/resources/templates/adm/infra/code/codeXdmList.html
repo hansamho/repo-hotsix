@@ -157,17 +157,17 @@
 												<tbody>
 													<tr  th:if="${#lists.isEmpty(List)}" th:each="list : ${list}">
 														<td><input type="checkbox" id="checkboxType2"></td>
-														<td th:text="${list.codeGroup_seq}"></td>
-														<td th:text="${list.codeGroup_name}"></td>
-														<td th:text="${list.cdSeq}"></td>
+														<td th:text="${list.codeGroupSeq}"></td>
+														<td th:text="${list.codeGroupName}"></td>
+														<td th:text="${list.codeSeq}"></td>
 														<td>
-															<a th:href="@{/codeView(cdSeq=${list.cdSeq},name=${list.name})}" th:text="${list.name}"></a>
+															<a th:href="@{/codeForm(codeSeq=${list.codeSeq},name=${list.codeName})}" th:text="${list.codeName}"></a>
 														</td>
 														
-														<td  th:text="${#dates.format(list.cdRegDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
-														<td  th:text="${#dates.format(list.cdUpdate, 'yyyy-MM-dd HH:mm:ss')}"></td>
-														<td th:if="${list.cdDelny eq 1}">Y</td>
-    													<td th:unless="${list.cdDelny eq 1}">N</td>
+														<td  th:text="${#dates.format(list.codeRegDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+														<td  th:text="${#dates.format(list.codeModDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+														<td th:if="${list.codeDelNy eq 0}">N</td>
+    													<td th:unless="${list.codeDelNy ne 1}">Y</td>
 													</tr>
 												</tbody>
 												<tfoot>

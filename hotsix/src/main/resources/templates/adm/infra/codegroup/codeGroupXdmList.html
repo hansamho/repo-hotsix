@@ -155,15 +155,15 @@
 												<tbody>
 													<tr  th:if="${#lists.isEmpty(List)}" th:each="list : ${list}">
 														<td><input type="checkbox" id="checkboxType2"></td>
-														<td th:text="${list.cgSeq}"></td>
+														<td th:text="${list.codeGroupSeq}"></td>
 														<td>
-															<a th:href="@{/codeGroupAdmView(cgSeq=${list.cgSeq},name=${list.name})}" th:text="${list.name}"></a>
+															<a th:href="@{/codeGroupForm(codeGroupSeq=${list.codeGroupSeq},name=${list.codeGroupName})}" th:text="${list.codeGroupName}"></a>
 														</td>
 														
-														<td  th:text="${#dates.format(list.cgRegDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
-														<td  th:text="${#dates.format(list.cgUpdate, 'yyyy-MM-dd HH:mm:ss')}"></td>
-														<td th:if="${list.cgDelny eq 1}">Y</td>
-    													<td th:unless="${list.cgDelny eq 1}">N</td>
+														<td  th:text="${#dates.format(list.codeGroupRegDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+														<td  th:text="${#dates.format(list.codeGroupModDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+														<td th:if="${list.codeGroupDelNy eq 0}">N</td>
+														<td th:unless="${list.codeGroupDelNy ne 1}">Y</td>
 													</tr>
 													
 												</tbody>
@@ -293,7 +293,7 @@
 		let goUrlXdmView = "/codeGroupAdmView";								/* ### */
 		
 		let form = document.querySelector("form[name=formList]");
-		let seq = document.querySelector("input[name=cgSeq]");									/* ### */
+		let seq = document.querySelector("input[name=codeGroupSeq]");									/* ### */
 		
 		goList = function (thisPage) {
 		    document.querySelector("input[name=thisPage]").value = thisPage;

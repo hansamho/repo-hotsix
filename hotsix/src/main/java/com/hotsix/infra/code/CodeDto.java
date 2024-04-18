@@ -1,6 +1,9 @@
 package com.hotsix.infra.code;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 
 public class CodeDto {
 	private String codeSeq; 
@@ -10,6 +13,32 @@ public class CodeDto {
 	private Date codeModDate; 
 	private Integer codeDelNy; 
 	private Integer codeUseNy;
+	private String codeGroupName;
+	private String codeGroupSeq;
+	
+//	for cache
+	public static List<CodeDto> cachedCodeArrayList = new ArrayList<CodeDto>();
+	
+	
+	
+	public static List<CodeDto> getCachedCodeArrayList() {
+		return cachedCodeArrayList;
+	}
+	public static void setCachedCodeArrayList(List<CodeDto> cachedCodeArrayList) {
+		CodeDto.cachedCodeArrayList = cachedCodeArrayList;
+	}
+	public String getCodeGroupSeq() {
+		return codeGroupSeq;
+	}
+	public void setCodeGroupSeq(String codeGroupSeq) {
+		this.codeGroupSeq = codeGroupSeq;
+	}
+	public String getCodeGroupName() {
+		return codeGroupName;
+	}
+	public void setCodeGroupName(String codeGroupName) {
+		this.codeGroupName = codeGroupName;
+	}
 	public String getCodeSeq() {
 		return codeSeq;
 	}
