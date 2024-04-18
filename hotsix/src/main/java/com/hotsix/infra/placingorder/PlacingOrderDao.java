@@ -1,0 +1,16 @@
+package com.hotsix.infra.placingorder;
+
+import java.util.List;
+
+public interface PlacingOrderDao {
+	
+	public List<PlacingOrderDto> selectList(PlacingOrderVo vo);
+	
+	public PlacingOrderDto selectOne(PlacingOrderDto dto);
+	
+	public int insert(PlacingOrderDto dto);
+	
+	public int uelete(PlacingOrderDto dto);
+	
+	public int delete(PlacingOrderDto dto);
+}

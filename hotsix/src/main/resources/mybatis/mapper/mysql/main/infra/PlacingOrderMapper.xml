@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hotsix.infra.placingorder.PlacingOrderDao">
+<resultMap id="resultMapObj" type="com.hotsix.infra.placingorder.PlacingOrderDto"></resultMap>
+	
+	<select id="selectList">
+		SELECT
+			a.poSeq
+			,a.poRegDate
+			,a.poModDate
+			,a.poDelNy
+			,b.poAccount
+			,c.productName
+			,c.productPrice
+			,c.productTypeCd
+			,d.memberName
+			,d.memberTypeCd
+		FROM
+				placingOrder a
+		LEFT JOIN poProduct b on a.poSeq = b.poSeqF
+		LEFT JOIN product c on b.productSeqF = c.productSeq
+		LEFT JOIN member d on a.memberSeqF = d.memberSeq
+		
+	</select>
+	
+	<select id="selectOne">
+	SELECT
+			a.poSeq
+			,a.poRegDate
+			,a.poModDate
+			,a.poDelNy
+			,b.poAccount
+			,c.productName
+			,c.productPrice
+			,c.productTypeCd
+			,d.memberName
+			,d.memberTypeCd
+		FROM
+				placingOrder a
+		LEFT JOIN poProduct b on a.poSeq = b.poSeqF
+		LEFT JOIN product c on b.productSeqF = c.productSeq
+		LEFT JOIN member d on a.memberSeqF = d.memberSeq
+		WHERE 
+		 	poSeq = #{poSeq}
+	</select>
+	
+	<insert id="insert">
+	INSERT INTO poProduct(
+		poAccount
+	)VALUES(
+		#{poAccount}
+	)
+	</insert>
+	
+	
+	<delete id="delete">
+    	DELETE FROM  placingOrder
+    	WHERE poSeq = #{poSeq}
+    </delete>
+	
+	<update id="uelete">
+		UPDATE code
+    	set
+    	poDelNy = 1
+    	WHERE poSeq = #{poSeq}
+	</update>
+	
+	
+	
+</mapper>

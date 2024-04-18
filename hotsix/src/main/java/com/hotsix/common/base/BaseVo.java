@@ -13,7 +13,8 @@ public class BaseVo {
 		private Integer shOption;									/* null 값을 받아야 되는 경우가 있어서 int 대신 Integer 사용 */
 		private String ShValue;
 		
-		
+		//공통코드
+		private String shProductTypCd;
 		
 		//paging
 		private int thisPage = 1;				// 현재 페이지
@@ -33,6 +34,15 @@ public class BaseVo {
 
 		
 		
+		
+		public String getShProductTypCd() {
+			return shProductTypCd;
+		}
+
+		public void setShProductTypCd(String shProductTypCd) {
+			this.shProductTypCd = shProductTypCd;
+		}
+
 		public Integer getShUseNy() {
 			return shUseNy;
 		}
