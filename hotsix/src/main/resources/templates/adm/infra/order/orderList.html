@@ -144,32 +144,31 @@
 													<tr>
 														<th><input type="checkbox" id="checkboxType"></th>
 														<th>Seq</th>
-														<th>이름</th>
-														<th>성별</th>
-														<td>권한</td>
-														<td>회사명</td>
-														<th>아이디</th>
-														<th>비밀번호</th>
-														<th>멤버 등록일</th>
-														<th>멤버 수정일</th>
-														<th>멤버 삭제여부</th>
-														<td></td>
+														<th>상품이름</th>
+														<th>주문수량</th>
+														<th>상품가격</th>
+														<td>상품종류</td>
+														<td>멤버이름</td>
+														<th>멤버타입</th>
+														<th>주문 등록일</th>
+														<th>주문 수정일</th>
+														<th>주문 삭제여부</th>
 													</tr>
 												</thead>
 												<tbody>
 													<tr  th:if="${#lists.isEmpty(List)}" th:each="list : ${list}">
 														<td><input type="checkbox" id="checkboxType2"></td>
-														<td th:text="${list.memberSeq}"></td>
-														<td><a th:href="@{/memberForm(memberSeq=${list.memberSeq})}" th:text="${list.memberName}"></a></td>
-														<td th:text="${list.genderCd}"></td>
+														<td th:text="${list.orderSeq}"></td>
+														<td><a th:href="@{/memberForm(orderSeq=${list.orderSeq})}" th:text="${list.productName}"></a></td>
+														<td th:text="${list.orderAccount}"></td>
+														<td th:text="${list.productPrice}"></td>
+														<td th:text="${list.productTypeCd}"></td>
+														<td th:text="${list.memberName}"></td>
 														<td th:text="${list.memberTypeCd}"></td>
-														<td th:text="${list.companyName}"></td>
-														<td th:text="${list.memberId}"></td>
-														<td th:text="${list.memberPwd}"></td>
-														<td  th:text="${#dates.format(list.memberRegDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
-														<td  th:text="${#dates.format(list.memberModDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
-														<td th:if="${list.memberDelNy eq 1}">Y</td>
-    													<td th:unless="${list.memberDelNy eq 1}">N</td>
+														<td  th:text="${#dates.format(list.orderRegDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+														<td  th:text="${#dates.format(list.orderModDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+														<td th:if="${list.orderDelNy eq 1}">Y</td>
+    													<td th:unless="${list.orderDelNy eq 1}">N</td>
 													</tr>
 												</tbody>
 												<tfoot>
@@ -234,7 +233,7 @@
 										</div>
 									</div>
 										<div class="col" align="Right">
-  											<button type="submit" class="btn btn-primary"><a th:href="@{memberAdd}" th:text="등록"></a></button>
+  											<button type="submit" class="btn btn-primary"><a th:href="@{/orderAdd}" th:text="등록"></a></button>
 										</div>
 								</div>
 								

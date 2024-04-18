@@ -5,7 +5,9 @@
 	<head th:replace="~{adm/infra/include/head :: head}"></head>
 
 	<body>
-
+<script>
+	alert("1.현대자동차 \n 2.기아 \n 3.포르쉐 \n 4.벤츠 \n 5.공백");
+</script>
 		<!-- Page wrapper start -->
 		<div class="page-wrapper">
 			
@@ -95,8 +97,8 @@
 													<input type="text" name="memberTypeCd" th:value="${item.memberTypeCd}" class="form-control">
 												</div>
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
-													<label class="form-label">회사이름</label>
-													<input type="text" name="companyName" th:value="${item.companyName}" class="form-control">
+													<label class="form-label">회사이름(코드 값으로 입력하세요)</label>
+													<input type="text" id="companySeqF" name="companySeqF" th:value="${item.companyName}" class="form-control">
 												</div>
 												<div  class="col gy-2">
 													<button type="submit" class="btn btn-primary"><a th:href="@{/memberXdmList}" th:text="뒤로가기"></a></button>

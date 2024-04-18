@@ -17,6 +17,7 @@ public class MemberDto {
 	
 	private String companySeq;
 	private String companyName;
+	private String companySeqF;
 	public String getMemberSeq() {
 		return memberSeq;
 	}
@@ -88,6 +89,12 @@ public class MemberDto {
 	}
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
+	}
+	public String getCompanySeqF() {
+		return companySeqF;
+	}
+	public void setCompanySeqF(String companySeqF) {
+		this.companySeqF = companySeqF;
 	}
 	
 	

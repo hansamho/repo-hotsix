@@ -1,4 +1,4 @@
-package com.hotsix.infra.member;
+package com.hotsix.infra.order;
 
 import java.util.List;
 
@@ -6,37 +6,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MemberService {
+public class OrderService {
 
 	@Autowired
-	MemberDao dao;
+	OrderDao dao;
 	
-	public List<MemberDto> selectList(MemberVo vo) {
-			
+	public List<OrderDto> selectList(OrderVo vo) {
+		
 		return dao.selectList(vo);
 	}
 	
-	public MemberDto selectOne(MemberDto dto) {
+	public OrderDto selectOne(OrderDto dto) {
 		
 		return dao.selectOne(dto);
 	}
 	
-	public int insert(MemberDto dto) {
+	public int insert(OrderDto dto) {
 		
 		return dao.insert(dto); 
 	}
 	
-	public int update(MemberDto dto) {
+	public int update(OrderDto dto) {
 			 dao.update(dto); 
 	return 1;	
 	}
 	
-	public int uelete(MemberDto dto) {
+	public int uelete(OrderDto dto) {
 		
 		return dao.uelete(dto);
 	}
 	
-	public int delete(MemberDto dto) {
+	public int delete(OrderDto dto) {
 		
 		return dao.delete(dto);
 	}

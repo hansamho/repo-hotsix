@@ -28,6 +28,12 @@ public class MemberController {
 		return "adm/infra/member/memberForm";
 	}
 	
+	@RequestMapping(value = "/memberAdd")
+	public String memberAdd() throws Exception {
+		
+		return "adm/infra/member/memberAdd";
+	}
+	
 	@RequestMapping(value = "/insert")
 	public String insert(MemberDto dto) {
 		

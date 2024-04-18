@@ -17,10 +17,11 @@
 		,a.memberModDate
 		,a.memberDelNy
 		,b.companyName
+		,b.companySeq
 	from 
 		member a
 	left join company b
-	on a.memberSeq = b.memberSeqF
+	on a.companySeqF = b.companySeq
 	
 	</select>
 	
@@ -33,36 +34,33 @@
 		,a.phoneNumber
 		,a.memberTypeCd
 		,b.companyName
+		,b.companySeq
 	from 
 		member a
 	left join company b
-	on a.memberSeq = b.memberSeqF
+	on a.companySeqF = b.companySeq
 	where
 		memberSeq = #{memberSeq}
 	</select>
 	
-	<insert id="companyInsert">
-	insert into company (
-	companyName
-	)values (
-	${companyName}
-	)
-	</insert>
+	
 	<insert id="insert">
 		insert into member (
 		 	memberName
             ,memberId
             ,memberPwd
+            ,genderCd
          	,phoneNumber
-         	,memberTypeCd
-         	,companyName
+            ,memberTypeCd
+         	,companySeqF
 		) values (
 		#{memberName}
 		,#{memberId}
 		,#{memberPwd}
+		,#{genderCd}
 		,#{phoneNumber}
 		,#{memberTypeCd}
-		,#{companyName}
+		,#{companySeqF}
 		)
 	</insert>
 	
@@ -70,16 +68,16 @@
 	<update id="update">
 		update member a
 		left join company b
-		on b.memberSeqF = a.memberSeq
+		on b.companySeq = a.companySeqF
 		set
-			memberName = #{memberName}
-            ,memberId = #{memberId}
-            ,memberPwd = #{memberPwd}
-         	,phoneNumber = #{phoneNumber}
-         	,memberTypeCd = #{memberTypeCd}
-         	,companyName = #{companyName}
+			a.memberName = #{memberName}
+            ,a.memberId = #{memberId}
+            ,a.memberPwd = #{memberPwd}
+         	,a.phoneNumber = #{phoneNumber}
+         	,a.memberTypeCd = #{memberTypeCd}
+         	,a.companySeqF = #{companySeqF}
     		where 1=1
-    		and memberSeq = #{memberSeq}
+    		and a.memberSeq = #{memberSeq}
 	</update>
 	
 	<update id="uelete">
