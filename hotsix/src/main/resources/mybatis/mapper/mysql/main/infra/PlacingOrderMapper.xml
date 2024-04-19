@@ -18,9 +18,12 @@
 			,d.memberTypeCd
 		FROM
 				placingOrder a
-		LEFT JOIN poProduct b on a.poSeq = b.poSeqF
-		LEFT JOIN product c on b.productSeqF = c.productSeq
-		LEFT JOIN member d on a.memberSeqF = d.memberSeq
+		LEFT JOIN poProduct b 
+			on a.poSeq = b.poSeqF
+		LEFT JOIN product c 
+			on b.productSeqF = c.productSeq
+		LEFT JOIN member d 
+			on a.memberSeqF = d.memberSeq
 		
 	</select>
 	
@@ -46,10 +49,14 @@
 	</select>
 	
 	<insert id="insert">
-	INSERT INTO poProduct(
-		poAccount
+	INSERT INTO product(
+		productName
+		,productPrice
+		,productTypeCd
 	)VALUES(
-		#{poAccount}
+		#{productName}
+		,#{productPrice}
+		,#{productTypeCd}
 	)
 	</insert>
 	<update id="update">

@@ -1,10 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="ko"xmlns:th="http://www.thymeleaf.org">
 
 	<head th:replace="~{adm/infra/include/head :: head}"></head>
 
 	<body>
-
+<script>
+// 	alert("1.현대자동차 \n 2.기아 \n 3.포르쉐 \n 4.벤츠 \n 5.공백");
+</script>
 		<!-- Page wrapper start -->
 		<div class="page-wrapper">
 			
@@ -20,6 +23,7 @@
 				<nav class="sidebar-wrapper">
 					<div th:replace="~{adm/infra/include/nav :: nav}"></div>					
 				</nav>
+
 
 				<!-- Content wrapper scroll start -->
 				<div class="content-wrapper-scroll">
@@ -67,52 +71,42 @@
 								<div class="card">
 									<div class="card-body">
 										<div class="card-header">
-											<div class="card-title">코드그룹 관리</div>
+											<div class="card-title">멤버 관리</div>
 										</div>
-									<form method="post" action="placingInsert">
-										<div class="row">
-											<div class="col-lg-6 col-sm-4 col-12 gy-2">
-											  		<label class="form-label">상품 이름</label>
-											  		<input type="text" name="productName" id="productName" class="form-control" >
-											 </div>
-										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
-										  		<label class="form-label">상품 가격</label>
-										  		<input type="text" name="productPrice" id="productPrice" class="form-control" required>
-<!-- 										  		<div id="cgNameFeedback" class="invalid-feedback"></div> -->
-										  	</div>
-										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
-											  		<label class="form-label">상품 종류</label>
-											  		<input type="text" name="productTypeCd" id="productTypeCd" class="form-control" >
-											 </div>
-											 <div class="col-lg-6 col-sm-4 col-12 gy-2">
-											  		<label class="form-label">멤버 이름</label>
-											  		<select id="memberSeqF" name="memberSeqF" class="form-select col-md-6" >
-														<option th:if="${#lists.isEmpty(List)}" th:each="list : ${list}" th:text="${list.memberName}"></option>
-													</select>
-											 </div>
-											 <div class="col-lg-6 col-sm-4 col-12 gy-2">
-											  		<label class="form-label">멤버 타입</label>
-											  		<input type="text" name="memberTypeCd" id="memberTypeCd" class="form-control" >
-	<!-- 										  		<div id="cgNameFeedback" class="invalid-feedback"></div> -->
-											 </div>
-										  	<div class="d-flex justify-content-between mt-4">
-											  	<div class="" align="left">
-											  		<button type="submit" class="btn btn-primary"><a th:href="@{/placingOrderXdmList}" th:text="뒤로가기"></a></button>
-											  	</div>
-											  	
-											  	<div class="" align="right">
-											  		<button type="submit" id="btnSubmit" class="btn btn-primary">저장</button>
-											  	</div>
-										  	</div>
-										  </div>
-  										</form>
-									</div>
-								</div>
-										  
-									</div>
+										<form method="post">
+											<div class="row">
+													<input type="hidden" name="arrivalSeq" th:value="${item.arrivalSeq}" class="form-control">
+												<div class="col-lg-6 col-sm-4 col-12 gy-2">
+													<label class="form-label">입고상품 이름</label>
+													<input type="text" name="productName" th:value="${item.productName}" class="form-control">
+												</div>
+												<div class="col-lg-6 col-sm-4 col-12 gy-2">
+													<label class="form-label">회사 이름</label>
+													<input type="text" name="companyName" th:value="${item.companyName}" class="form-control">
+												</div>
+												<div class="col-lg-6 col-sm-4 col-12 gy-2">
+													<label class="form-label">입고 수량</label>
+													<input type="text" name="arrivalAccount" th:value="${item.arrivalAccount}" class="form-control">
+												</div>
+												<div class="d-flex justify-content-between mt-4">
+												  	<div class="" align="left">
+												  		<button type="submit" class="btn btn-primary"><a th:href="@{/arrivalXdmList}" th:text="뒤로가기"></a></button>
+												  	</div>
+												  	
+												  	<div class="" align="right">
+												  		<button type="submit" class="btn btn-primary" onclick="javascript: form.action='delete';">데이터 삭제</button>
+														<button type="submit" class="btn btn-primary" onclick="javascript: form.action='uelete';">N,Y수정</button>
+														<button type="submit" class="btn btn-primary" onclick="javascript: form.action='update';">저장</button>
+												  	</div>
+										  		</div>
+											</div>
+										</form>
+										
+										
 								</div>
 							</div>
 						</div>
+					</div>
 							
 						<!-- Row end -->
 
@@ -160,65 +154,6 @@
 		
 		<!-- Data Tables -->
 		<script src="/adm/template/gear/assets/vendor/datatables/dataTables.min.js"></script>
-	
-	<script type="text/javascript">
-	
-	let goUrlXdmList = "/codeGroupXdmList";
-	let goUrlXdmLogin = "/codeGroupLogin";
-	let goUrlXdmForm = "/codeGroupForm";
-	let goUrlXdmUpdt = "/codeGroupUpdt";
-	let goUrlXdmInsert = "/codeGroupInsert";								/* ### */
-	let goUrlXdmMultiUele = "/codeGroupXdmMultiUele";			/* ### */
-	let goUrlXdmMultiDele = "/codeGroupXdmMultiDele";			/* ### */
-	let goUrlXdmView = "/codeGroupAdmView";
-	
-	
-	document.getElementById("btnSubmit").onclick = function () {
-		if(validationInsert() == false){
-			return false;
-		} else { 
-			form.action = goUrlXdmInsert;
-			form.submit();
-		}
-		
-		
-// 		validationInsert();
-// 		if(seq.value == "0" || seq.value == ""){
-// 			if(validationInsert() == false) return false;
-// 			form.action = goUrlXdmInsert;
-// 			form.submit();
-// 		} else {
-// 			if(validationUpdt() == false) return false;
-// 			form.action = goUrlXdmUpdt;
-// 			form.submit();
-// 		}
-	}
-	
-	function validationInsert(){
-		if(validationUpdt() == false) return false;
-// 		validationUpdt();
-// 		alert("validationInsert");
-	}
-	
-	function validationUpdt(){
-		if(!checkOnlyKoreanEnglishNumber('cgName', 2, 0, "코드그룹 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")) return false;
-	
-	}
-		
-// 		alert("validationUpdt");
-// 		alert("cgName : "+document.getElementById("cgName").value);	
-	
-	
-	nullToEmpty = function(value){
-		if(value == null || value == 'null' || value.length == 0){
-			return false;
-		} else {
-			return true;
-		}
-	}
-	
-	</script>
-	
 	</body>
 
 </html>

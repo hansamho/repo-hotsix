@@ -73,7 +73,7 @@
 								<div class="card">
 									<div class="card-body">
 										<div class="card-header">
-											<div class="card-title">상품 관리</div>
+											<div class="card-title">입고 관리</div>
 										</div>
 										<form name="formList" id="formList" method="post" autocomplete="off">
 											<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
@@ -144,31 +144,31 @@
 													<tr>
 														<th><input type="checkbox" id="checkboxType"></th>
 														<th>Seq</th>
-														<th>상품이름</th>
-														<th>주문수량</th>
-														<th>상품가격</th>
-														<td>상품종류</td>
-														<td>멤버이름</td>
-														<th>멤버타입</th>
-														<th>주문 등록일</th>
-														<th>주문 수정일</th>
-														<th>주문 삭제여부</th>
+														<th>입고상품 이름</th>
+														<th>입고상품 종류</th>
+														<th>입고상품 가격</th>
+														<th>입고상품 코드</th>
+														<th>회사 이름</th>
+														<th>입고 등록일</th>
+														<th>입고 수정일</th>
+														<th>입고 삭제여부</th>
+														<td></td>
 													</tr>
 												</thead>
 												<tbody>
 													<tr  th:if="${#lists.isEmpty(List)}" th:each="list : ${list}">
 														<td><input type="checkbox" id="checkboxType2"></td>
-														<td th:text="${list.orderSeq}"></td>
-														<td><a th:href="@{/memberForm(orderSeq=${list.orderSeq})}" th:text="${list.productName}"></a></td>
-														<td th:text="${list.orderAccount}"></td>
-														<td th:text="${list.productPrice}"></td>
-														<td th:text="${list.productTypeCd}"></td>
-														<td th:text="${list.memberName}"></td>
-														<td th:text="${list.memberTypeCd}"></td>
-														<td  th:text="${#dates.format(list.orderRegDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
-														<td  th:text="${#dates.format(list.orderModDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
-														<td th:if="${list.orderDelNy eq 1}">Y</td>
-    													<td th:unless="${list.orderDelNy eq 1}">N</td>
+														<td th:text="${list.arrivalSeq}"></td>
+														<td><a th:href="@{/arrivalForm(arrivalSeq=${list.arrivalSeq})}" th:text="${list.productName}"></a></td>
+														<td th:if="${list.productTypeCd != null}" th:text="${@codeService.selectOneCachedCode(list.productTypeCd)}"class="productTypeCd align-middle"></td>
+														<td th:unless="${list.productTypeCd != null}"class="productTypeCd align-middle"></td>
+														<td th:text="${#numbers.formatInteger(list.productPrice,1,'COMMA')}"></td>
+														<td th:text="${list.productCode}"></td>
+														<td th:text="${list.companyName}"></td>
+														<td  th:text="${#dates.format(list.arrivalRegDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+														<td  th:text="${#dates.format(list.arrivalModDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+														<td th:if="${list.arrivalDelNy eq 1}">Y</td>
+    													<td th:unless="${list.arrivalDelNy eq 1}">N</td>
 													</tr>
 												</tbody>
 												<tfoot>
@@ -233,7 +233,7 @@
 										</div>
 									</div>
 										<div class="col" align="Right">
-  											<button type="submit" class="btn btn-primary"><a th:href="@{/orderAdd}" th:text="등록"></a></button>
+  											<button type="submit" class="btn btn-primary"><a th:href="@{memberAdd}" th:text="등록"></a></button>
 										</div>
 								</div>
 								

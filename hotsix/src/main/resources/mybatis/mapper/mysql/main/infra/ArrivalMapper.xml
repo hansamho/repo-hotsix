@@ -6,76 +6,45 @@
 	
 	<select id="selectList">
 		SELECT
-			a.poSeq
-			,a.poRegDate
-			,a.poModDate
-			,a.poDelNy
-			,b.poAccount
-			,c.productName
-			,c.productPrice
-			,c.productTypeCd
-			,d.memberName
-			,d.memberTypeCd
+			a.arrivalSeq
+			,a.arrivalAccount
+			,a.arrivalRegDate
+			,a.arrivalModDate
+			,a.arrivalDelNy
+			,b.productName
+			,b.productCode
+			,b.productPrice
+			,b.productTypeCd
+			,c.companyName
 		FROM
-				placingOrder a
-		LEFT JOIN poProduct b on a.poSeq = b.poSeqF
-		LEFT JOIN product c on b.productSeqF = c.productSeq
-		LEFT JOIN member d on a.memberSeqF = d.memberSeq
-		
+			arrival a
+		LEFT JOIN product b
+			on a.productSeqF = b.productSeq
+		LEFT JOIN company c
+			on c.companySeq = b.companySeqF
 	</select>
 	
 	<select id="selectOne">
-	SELECT
-			a.poSeq
-			,a.poRegDate
-			,a.poModDate
-			,a.poDelNy
-			,b.poAccount
-			,c.productName
-			,c.productPrice
-			,c.productTypeCd
-			,d.memberName
-			,d.memberTypeCd
+		SELECT
+			a.arrivalSeq
+			,a.arrivalAccount
+			,a.arrivalRegDate
+			,a.arrivalModDate
+			,a.arrivalDelNy
+			,b.productName
+			,b.productCode
+			,b.productPrice
+			,b.productTypeCd
+			,c.companyName
 		FROM
-				placingOrder a
-		LEFT JOIN poProduct b on a.poSeq = b.poSeqF
-		LEFT JOIN product c on b.productSeqF = c.productSeq
-		LEFT JOIN member d on a.memberSeqF = d.memberSeq
-		WHERE 
-		 	poSeq = #{poSeq}
+			arrival a
+		LEFT JOIN product b
+			on a.productSeqF = b.productSeq
+		LEFT JOIN company c
+			on c.companySeq = b.companySeqF
+		WHERE a.arrivalSeq = #{arrivalSeq}
+	
 	</select>
-	
-	<insert id="insert">
-	INSERT INTO poProduct(
-		poAccount
-	)VALUES(
-		#{poAccount}
-	)
-	</insert>
-	<update id="update">
-		UPDATE placingOrder a 
-		LEFT JOIN poProduct b on a.poSeq = b.poSeqF
-		LEFT JOIN product c on b.productSeqF = c.productSeq
-		LEFT JOIN member d on a.memberSeqF = d.memberSeq
-		SET
-		b.poAccount = #{poAccount}
-		,c.productName = #{productName}
-		,d.memberName = #{memberName}
-		WHERE 
-			poSeq= #{poSeq}
-	</update>
-	
-	<delete id="delete">
-    	DELETE FROM  placingOrder
-    	WHERE poSeq = #{poSeq}
-    </delete>
-	
-	<update id="uelete">
-		UPDATE placingOrder
-    	set
-    	poDelNy = 1
-    	WHERE poSeq = #{poSeq}
-	</update>
 	
 	
 	

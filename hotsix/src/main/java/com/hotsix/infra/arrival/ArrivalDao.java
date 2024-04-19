@@ -1,5 +1,10 @@
 package com.hotsix.infra.arrival;
 
-public interface ArrivalDao {
+import java.util.List;
 
+public interface ArrivalDao {
+	
+	public List<ArrivalDto> selectList(ArrivalVo vo);
+	
+	public ArrivalDto selectOne(ArrivalDto dto);
 }
