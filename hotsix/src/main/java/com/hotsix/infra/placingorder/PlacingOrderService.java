@@ -22,6 +22,10 @@ public class PlacingOrderService {
 		return dao.insert(dto);
 	}
 	
+	public int update(PlacingOrderDto dto) {
+		return dao.update(dto);
+	}
+	
 	public int delete(PlacingOrderDto dto) {
 		return dao.delete(dto);
 	}

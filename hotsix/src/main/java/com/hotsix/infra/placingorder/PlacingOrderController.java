@@ -43,9 +43,36 @@ public class PlacingOrderController {
 		return "adm/infra/placingorder/placingOrderAdd";
 	}
 	
-//	@RequestMapping(value= "/insert")
-//	public String insert(PlacingOrderDto dto) throws Exception {
-//	
-//		return "redirect:/placingOrderXdmList";
-//	}
+	@RequestMapping(value="/placingInsert")
+	public String placingInsert(PlacingOrderDto dto) throws Exception {
+		
+		service.insert(dto);
+	
+		return "redirect:/placingOrderXdmList";
+	}
+	
+	@RequestMapping(value="/placingUpdate")
+	public String placingUpdate(PlacingOrderDto dto) throws Exception {
+		
+		service.update(dto);
+	
+		return "redirect:/placingOrderXdmList";
+	}
+	
+	@RequestMapping(value="/placingDelete")
+	public String placingDelete(PlacingOrderDto dto) throws Exception {
+		
+		service.delete(dto);
+	
+		return "redirect:/placingOrderXdmList";
+	}
+	
+	@RequestMapping(value="/placingUelete")
+	public String placingUelete(PlacingOrderDto dto) throws Exception {
+		
+		service.uelete(dto);
+	
+		return "redirect:/placingOrderXdmList";
+	}
+	
 }

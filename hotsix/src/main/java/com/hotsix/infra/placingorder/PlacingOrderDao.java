@@ -10,7 +10,11 @@ public interface PlacingOrderDao {
 	
 	public int insert(PlacingOrderDto dto);
 	
+	public int update(PlacingOrderDto dto);
+	
 	public int uelete(PlacingOrderDto dto);
 	
 	public int delete(PlacingOrderDto dto);
+	
+	
 }

@@ -74,18 +74,22 @@
 										</ul>
 									</div>
 								</li>
-<!-- 								<li> -->
-<!-- 									<a href="login.html"> -->
-<!-- 										<i class="bi bi-shield-lock"></i> -->
-<!-- 										<span class="menu-text">Login</span> -->
-<!-- 									</a> -->
-<!-- 								</li> -->
-<!-- 								<li> -->
-<!-- 									<a href="signup.html"> -->
-<!-- 										<i class="bi bi-unlock"></i> -->
-<!-- 										<span class="menu-text">Signup</span> -->
-<!-- 									</a> -->
-<!-- 								</li> -->
+								<li class="sidebar-dropdown">
+									<a href="#">
+										<i class="bi bi-grid-3x3"></i>
+										<span class="menu-text">발주 테이블</span>
+									</a>
+									<div class="sidebar-submenu">
+										<ul>
+											<li>
+												<a th:href="@{/placingOrderXdmList}">발주 관리</a>
+											</li>
+											<li>
+												<a th:href="@{/placingOrderAdd}">발주 등록</a>
+											</li>
+										</ul>
+									</div>
+								</li>	
 							</ul>
 						</div>
 					</div>
