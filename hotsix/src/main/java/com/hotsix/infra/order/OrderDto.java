@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class OrderDto {
 	
+	private String orderProductSeq;
 	private String orderSeq;
 	private String productName;
 	private Integer productPrice;
@@ -16,7 +17,11 @@ public class OrderDto {
 	private Integer orderDelNy;
 	
 	private Integer orderAccount;
-
+	
+	private String productSeqF;
+	private String memberSeqF;
+	private String orderSeqF;
+	
 	public String getOrderSeq() {
 		return orderSeq;
 	}
@@ -96,5 +101,38 @@ public class OrderDto {
 	public void setOrderAccount(Integer orderAccount) {
 		this.orderAccount = orderAccount;
 	}
+
+	public String getProductSeqF() {
+		return productSeqF;
+	}
+
+	public void setProductSeqF(String productSeqF) {
+		this.productSeqF = productSeqF;
+	}
+
+	public String getMemberSeqF() {
+		return memberSeqF;
+	}
+
+	public void setMemberSeqF(String memberSeqF) {
+		this.memberSeqF = memberSeqF;
+	}
+
+	public String getOrderSeqF() {
+		return orderSeqF;
+	}
+
+	public void setOrderSeqF(String orderSeqF) {
+		this.orderSeqF = orderSeqF;
+	}
+
+	public String getOrderProductSeq() {
+		return orderProductSeq;
+	}
+
+	public void setOrderProductSeq(String orderProductSeq) {
+		this.orderProductSeq = orderProductSeq;
+	}
+	
 
 }

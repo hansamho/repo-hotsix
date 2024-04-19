@@ -5,11 +5,8 @@
 <resultMap id="resultMapObj" type="com.hotsix.infra.order.OrderDto"></resultMap>
 	
 	<select id="selectList" resultMap="resultMapObj">
-	select
-		a.orderSeq
-		,a. orderRegDate
-		,a. orderModDate
-		,a. orderDelNy
+	 select
+        b.orderProductSeq
 		,d.memberName
 		,d.memberTypeCd
 		,c.productName
@@ -17,13 +14,11 @@
 		,c.productTypeCd
 		,b.orderAccount
 	from
-		orders a
-	left join orderProduct b
-		on a.orderSeq = b.orderSeqF
+		orderProduct b
 	left join product c
 		on c.productSeq = b.productSeqF
 	left join member d
-		on d.memberSeq = a.memberSeqF
+		on d.memberSeq = b.orderSeqF
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
@@ -32,10 +27,22 @@
 	
 	
 	<insert id="insert">
-		insert into order(
-			orderAccount		
+		insert into orderProduct(
+			orderAccount
+			,productSeqF
+			,orderSeqF
 		)values(
 			#{orderAccount}
+			,#{productSeqF}
+			,#{memberSeqF}
+		)
+	</insert>
+	
+	<insert id="orderInsert">
+		insert into orders(
+			memberSeqF
+		)values(
+			#{memberSeqF}
 		)
 	</insert>
 	

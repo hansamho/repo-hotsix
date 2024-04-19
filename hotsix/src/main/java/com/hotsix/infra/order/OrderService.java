@@ -23,7 +23,10 @@ public class OrderService {
 	
 	public int insert(OrderDto dto) {
 		
-		return dao.insert(dto); 
+		dao.insert(dto);
+		dao.orderInsert(dto);
+		return  1;
+				
 	}
 	
 	public int update(OrderDto dto) {

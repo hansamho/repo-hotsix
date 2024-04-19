@@ -69,20 +69,21 @@
 										<div class="card-header">
 											<div class="card-title">주문 관리</div>
 										</div>
-									<form method="post" action='insert' class="needs-validation" novalidate>
+									<form method="post" action='/orderInsert' class="needs-validation" novalidate>
 										<div class="row">
 										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
 										  		<label class="form-label">상품이름</label>
 										  		<select id="productSeqF" name="productSeqF" class="form-select col-md-6" >
-													<option th:if="${#lists.isEmpty(List)}" th:each="list : ${list}"></option>
+													<option th:if="${#lists.isEmpty(pList)}" th:each="list : ${plist}" th:text="${list.productName}" th:value="${list.productSeq}"></option>
 												</select>
 										  		<div id="cgNameFeedback" class="invalid-feedback"></div>
 										  	</div>
 										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
 										  		<label class="form-label">멤버이름</label>
 										  		<select id="memberSeqF" name="memberSeqF" class="form-select col-md-6" >
-													<option th:if="${#lists.isEmpty(List)}" th:each="list : ${list}" th:text="${list.memberName}"></option>
+													<option th:if="${#lists.isEmpty(List)}" th:each="list : ${list}" th:text="${list.memberName}" th:value="${list.memberSeq}"></option>
 												</select>
+												<input type="hidden" name="orderSeqF" id="orderSeqF">
 										  		<div id="cgNameFeedback" class="invalid-feedback"></div>
 										  	</div>
 										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
@@ -169,15 +170,7 @@
 	let goUrlXdmView = "/codeGroupAdmView";
 	
 	
-	document.getElementById("btnSubmit").onclick = function () {
-		if(validationInsert() == false){
-			return false;
-		} else { 
-			form.action = goUrlXdmInsert;
-			form.submit();
-		}
-		
-		
+	
 // 		validationInsert();
 // 		if(seq.value == "0" || seq.value == ""){
 // 			if(validationInsert() == false) return false;
@@ -188,7 +181,7 @@
 // 			form.action = goUrlXdmUpdt;
 // 			form.submit();
 // 		}
-	}
+//	}
 	
 	function validationInsert(){
 		if(validationUpdt() == false) return false;
