@@ -67,33 +67,22 @@
 								<div class="card">
 									<div class="card-body">
 										<div class="card-header">
-											<div class="card-title">멤버 관리</div>
+											<div class="card-title">주문 관리</div>
 										</div>
 									<form method="post" action='insert' class="needs-validation" novalidate>
 										<div class="row">
 										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
 										  		<label class="form-label">상품이름</label>
-										  		<input type="text" name="productName" id="memberName" class="form-control" readonly>
-										  		<div id="cgNameFeedback" class="invalid-feedback"></div>
-										  	</div>
-										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
-										  		<label class="form-label">상품가격</label>
-										  		<input type="text" name="productPrice" id="productPrice" class="form-control" readonly>
-										  		<div id="cgNameFeedback" class="invalid-feedback"></div>
-										  	</div>
-										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
-										  		<label class="form-label">상품종류</label>
-										  		<input type="text" name="productTypeCd" id="productTypeCd" class="form-control" readonly>
+										  		<select id="productSeqF" name="productSeqF" class="form-select col-md-6" >
+													<option th:if="${#lists.isEmpty(List)}" th:each="list : ${list}"></option>
+												</select>
 										  		<div id="cgNameFeedback" class="invalid-feedback"></div>
 										  	</div>
 										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
 										  		<label class="form-label">멤버이름</label>
-										  		<input type="text" name="memberName" id="memberName" class="form-control" readonly>
-										  		<div id="cgNameFeedback" class="invalid-feedback"></div>
-										  	</div>
-										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
-										  		<label class="form-label">멤버타입</label>
-										  		<input type="text" name="memberTypeCd" id="memberTypeCd" class="form-control" readonly >
+										  		<select id="memberSeqF" name="memberSeqF" class="form-select col-md-6" >
+													<option th:if="${#lists.isEmpty(List)}" th:each="list : ${list}" th:text="${list.memberName}"></option>
+												</select>
 										  		<div id="cgNameFeedback" class="invalid-feedback"></div>
 										  	</div>
 										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
