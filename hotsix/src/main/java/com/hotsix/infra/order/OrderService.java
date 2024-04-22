@@ -43,4 +43,8 @@ public class OrderService {
 		
 		return dao.delete(dto);
 	}
+	
+	public int selectOneCount(OrderVo vo) {
+		return dao.selectOneCount(vo);
+	}
 }

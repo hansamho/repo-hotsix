@@ -159,8 +159,8 @@
 												<tbody>
 													<tr  th:if="${#lists.isEmpty(List)}" th:each="list : ${list}">
 														<td><input type="checkbox" id="checkboxType2"></td>
-														<td th:text="${list.poSeq}"></td>
-														<td><a th:href="@{/placingOrderForm(poSeq=${list.poSeq})}" th:text="${list.productName}"></a></td>
+														<td th:text="${list.poProductSeq}"></td>
+														<td><a th:href="@{/placingOrderForm(poProductSeq=${list.poProductSeq})}" th:text="${list.productName}"></a></td>
 														<td th:text="${#numbers.formatInteger(list.productPrice,1,'COMMA')}"></td>
 														<td th:if="${list.productTypeCd != null}" th:text="${@codeService.selectOneCachedCode(list.productTypeCd)}"class="productTypeCd align-middle"></td>
 														<td th:unless="${list.productTypeCd != null}"class="productTypeCd align-middle"></td>

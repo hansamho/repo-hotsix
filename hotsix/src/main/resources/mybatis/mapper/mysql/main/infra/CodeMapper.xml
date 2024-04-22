@@ -48,9 +48,12 @@
 			,a.codeDelNy
 			,a.codeRegDate
 			,a.codeModDate
+			,b.codeGroupName
+			,b.codeGroupSeq
          FROM code a
         WHERE 1=1
         AND a.codeSeq = #{codeSeq}
+        ORDER BY a.cdSeq DESC
     </select>
 	
 	

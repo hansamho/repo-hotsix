@@ -17,4 +17,6 @@ public List<OrderDto> selectList(OrderVo vo);
 	public int uelete(OrderDto dto);
 
 	public int delete(OrderDto dto);
+	
+	public int selectOneCount(OrderVo vo);
 }

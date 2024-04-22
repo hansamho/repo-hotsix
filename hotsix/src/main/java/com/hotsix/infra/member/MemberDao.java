@@ -15,4 +15,6 @@ public interface MemberDao {
 	public int uelete(MemberDto dto);
 
 	public int delete(MemberDto dto);
+	
+	public int selectOneCount(MemberVo vo);
 }

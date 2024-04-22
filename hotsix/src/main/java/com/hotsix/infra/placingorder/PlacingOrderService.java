@@ -19,8 +19,13 @@ public class PlacingOrderService {
 	}
 	
 	public int insert(PlacingOrderDto dto) {
-		return dao.insert(dto);
+		
+		dao.insert(dto);
+		dao.placingInsert(dto);
+		return 1;
 	}
+	
+	
 	
 	public int update(PlacingOrderDto dto) {
 		return dao.update(dto);

@@ -7,6 +7,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hotsix.infra.codegroup.CodeGroupService;
+import com.hotsix.infra.member.MemberDto;
+import com.hotsix.infra.member.MemberService;
+import com.hotsix.infra.member.MemberVo;
+import com.hotsix.infra.order.OrderDto;
+import com.hotsix.infra.order.OrderService;
+import com.hotsix.infra.product.ProductDto;
+import com.hotsix.infra.product.ProductService;
+import com.hotsix.infra.product.ProductVo;
 
 
 
@@ -17,6 +25,12 @@ public class PlacingOrderController {
 	
 	@Autowired
 	CodeGroupService codeGroupService;
+	
+	@Autowired
+	MemberService memberService;
+	
+	@Autowired
+	ProductService productService;
 	
 	@RequestMapping(value = "/placingOrderXdmList")
 	public String placingOrderXdmList(@ModelAttribute("vo") PlacingOrderVo vo,PlacingOrderDto dto, Model model) throws Exception {
@@ -37,8 +51,10 @@ public class PlacingOrderController {
 	}
 	
 	@RequestMapping(value = "/placingOrderAdd")
-	public String placingOrderAdd(PlacingOrderDto dto, Model model) throws Exception {
+	public String placingOrderAdd(PlacingOrderDto dto,MemberVo mvo,ProductVo pvo,  Model model) throws Exception {
 		
+		model.addAttribute("list", memberService.selectList(mvo));
+		model.addAttribute("plist", productService.selectList(pvo));
 		
 		return "adm/infra/placingorder/placingOrderAdd";
 	}

@@ -40,4 +40,8 @@ public class MemberService {
 		
 		return dao.delete(dto);
 	}
+	
+	public int selectOneCount(MemberVo vo) {
+		return dao.selectOneCount(vo);
+	}
 }

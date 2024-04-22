@@ -9,7 +9,7 @@ public class PlacingOrderDto {
 	private Date poModDate;
 	private Integer poDelNy;
 	private Integer poUseNy;
-	
+	private String poProductSeq;
 	//수량
 	private int poAccount;
 	
@@ -17,15 +17,36 @@ public class PlacingOrderDto {
 	private String productName;
 	private int productPrice;
 	private Integer productTypeCd;
+	private String productSeqF;
 	
 	//멤버
 	private String memberName;
 	private Integer memberTypeCd;
 	private Integer genderCd;
 	
+	//주문
+	private String orderSeqF;
 	
 	
 	
+	public String getPoProductSeq() {
+		return poProductSeq;
+	}
+	public void setPoProductSeq(String poProductSeq) {
+		this.poProductSeq = poProductSeq;
+	}
+	public String getProductSeqF() {
+		return productSeqF;
+	}
+	public void setProductSeqF(String productSeqF) {
+		this.productSeqF = productSeqF;
+	}
+	public String getOrderSeqF() {
+		return orderSeqF;
+	}
+	public void setOrderSeqF(String orderSeqF) {
+		this.orderSeqF = orderSeqF;
+	}
 	public Integer getGenderCd() {
 		return genderCd;
 	}

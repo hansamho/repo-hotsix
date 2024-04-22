@@ -5,83 +5,95 @@
 <resultMap id="resultMapObj" type="com.hotsix.infra.placingorder.PlacingOrderDto"></resultMap>
 	
 	<select id="selectList">
-		SELECT
-			a.poSeq
-			,a.poRegDate
-			,a.poModDate
-			,a.poDelNy
-			,b.poAccount
+		 SELECT
+			a.poProductSeq
+			,a.poAccount
 			,c.productName
 			,c.productPrice
 			,c.productTypeCd
 			,d.memberName
 			,d.memberTypeCd
+			,b.poDelNy
+            ,b.poRegDate
+            ,b.poModDate
 		FROM
-				placingOrder a
-		LEFT JOIN poProduct b 
-			on a.poSeq = b.poSeqF
+				poProduct a
+		LEFT JOIN placingOrder b 
+			on a.poSeqF = b.poSeq
 		LEFT JOIN product c 
-			on b.productSeqF = c.productSeq
+			on a.productSeqF = c.productSeq
 		LEFT JOIN member d 
-			on a.memberSeqF = d.memberSeq
+			on b.memberSeqF = d.memberSeq
 		
 	</select>
 	
 	<select id="selectOne">
 	SELECT
-			a.poSeq
-			,a.poRegDate
-			,a.poModDate
-			,a.poDelNy
-			,b.poAccount
+			a.poProductSeq
+			,a.poAccount
 			,c.productName
 			,c.productPrice
 			,c.productTypeCd
 			,d.memberName
 			,d.memberTypeCd
+			,b.poDelNy
+            ,b.poRegDate
+            ,b.poModDate
 		FROM
-				placingOrder a
-		LEFT JOIN poProduct b on a.poSeq = b.poSeqF
-		LEFT JOIN product c on b.productSeqF = c.productSeq
-		LEFT JOIN member d on a.memberSeqF = d.memberSeq
+				poProduct a
+		LEFT JOIN placingOrder b 
+			on a.poSeqF = b.poSeq
+		LEFT JOIN product c 
+			on a.productSeqF = c.productSeq
+		LEFT JOIN member d 
+			on b.memberSeqF = d.memberSeq
 		WHERE 
-		 	poSeq = #{poSeq}
+		 	poProductSeq = #{poProductSeq}
 	</select>
 	
+	
 	<insert id="insert">
-	INSERT INTO product(
-		productName
-		,productPrice
-		,productTypeCd
-	)VALUES(
-		#{productName}
-		,#{productPrice}
-		,#{productTypeCd}
-	)
+		insert into poProduct(
+			poAccount
+			,productSeqF
+			,poSeqF
+		)values(
+			#{poAccount}
+			,#{productSeqF}
+			,#{memberSeqF}
+		)
+	</insert>
+	
+	<insert id="placingInsert">
+		insert into placingOrder(
+			memberSeqF
+		)values(
+			#{memberSeqF}
+		)
 	</insert>
 	<update id="update">
-		UPDATE placingOrder a 
-		LEFT JOIN poProduct b on a.poSeq = b.poSeqF
-		LEFT JOIN product c on b.productSeqF = c.productSeq
-		LEFT JOIN member d on a.memberSeqF = d.memberSeq
+		UPDATE poProduct a 
+		LEFT JOIN placingOrder b on a.poSeqF = b.poSeq
+		LEFT JOIN product c on a.productSeqF = c.productSeq
+		LEFT JOIN member d on b.memberSeqF = d.memberSeq
 		SET
-		b.poAccount = #{poAccount}
+		a.poAccount = #{poAccount}
 		,c.productName = #{productName}
 		,d.memberName = #{memberName}
 		WHERE 
-			poSeq= #{poSeq}
+			a.poProductSeq= #{poProductSeq}
 	</update>
 	
 	<delete id="delete">
-    	DELETE FROM  placingOrder
-    	WHERE poSeq = #{poSeq}
+    	DELETE FROM  poProduct
+    	WHERE poProductSeq = #{poProductSeq}
     </delete>
 	
 	<update id="uelete">
-		UPDATE placingOrder
+		UPDATE poProduct
     	set
-    	poDelNy = 1
-    	WHERE poSeq = #{poSeq}
+    	poProductDelNy = 1
+    	WHERE poProductSeq = #{poProductSeq}
 	</update>
 	
 	
