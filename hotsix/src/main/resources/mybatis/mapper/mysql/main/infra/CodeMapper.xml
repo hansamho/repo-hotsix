@@ -28,7 +28,7 @@
        </sql>
 	
 	
-	<select id="selectList">
+	<select id="selectList" resultMap="resultMapObj">
 		SELECT
 			a.codeSeq
 			,a.codeName

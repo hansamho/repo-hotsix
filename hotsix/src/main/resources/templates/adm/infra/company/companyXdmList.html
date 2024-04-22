@@ -74,7 +74,7 @@
 								<div class="card">
 									<div class="card-body">
 										<div class="card-header">
-											<div class="card-title">상품 관리</div>
+											<div class="card-title">회사 관리</div>
 										</div>
 										<form name="formList" id="formList" method="post" autocomplete="off">
 											<input type="hidden" name="thisPage" th:value="${vo.thisPage}" default="1"/>
@@ -145,33 +145,26 @@
 													<tr>
 														<th><input type="checkbox" id="checkboxType"></th>
 														<th>seq</th>
-														<th>상품 이름</th>
-														<th>상품 타입</th>
-														<th>상품 가격</th>
-														<th>상품 코드</th>
-														<th>상품 등록일</th>
-														<th>상품 수정일</th>
-														<th>상품 삭제여부</th>
+														<th>회사 이름</th>
+														<th>회사 번호</th>
+														<th>회사 등록일</th>
+														<th>회사 수정일</th>
+														<th>회사 삭제여부</th>
 														
 													</tr>
 												</thead>
 												<tbody>
 													<tr  th:if="${#lists.isEmpty(List)}" th:each="list : ${list}">
 														<td><input type="checkbox" id="checkboxType2"></td>
-														<td th:text="${list.productSeq}"></td>
+														<td th:text="${list.companySeq}"></td>
 														<td>
-															<a th:href="@{/codeForm(productSeq=${list.productSeq})}" th:text="${list.productName}"></a>
+															<a th:href="@{/comPanyForm(companySeq=${list.companySeq},name=${list.companyName})}" th:text="${list.companyName}"></a>
 														</td>
-														<td th:if="${list.productTypeCd != null}"
-															th:text="${@codeService.selectOneCachedCode(list.productTypeCd)}"
-															class="productTypeCd align-middle">
-														</td>
-														<td th:text="${list.productPrice}"></td>
-														<td th:text="${list.productCode}"></td>
-														<td  th:text="${#dates.format(list.productRegDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
-														<td  th:text="${#dates.format(list.productModDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
-														<td th:if="${list.productDelNy eq 0}">N</td>
-    													<td th:unless="${list.productDelNy ne 1}">Y</td>
+														<td th:text="${list.companyNumber}"></td>
+														<td  th:text="${#dates.format(list.companyRegDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+														<td  th:text="${#dates.format(list.companyModDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+														<td th:if="${list.companyDelNy eq 0}">N</td>
+    													<td th:unless="${list.companyDelNy ne 1}">Y</td>
 													</tr>
 												</tbody>
 												<tfoot>

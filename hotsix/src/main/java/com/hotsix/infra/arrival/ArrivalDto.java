@@ -18,6 +18,17 @@ public class ArrivalDto {
 	private int productPrice;
 	private Integer productTypeCd;
 	private String companyName;
+	
+	//회사
+	private String companySeqF;
+	
+	
+	public String getCompanySeqF() {
+		return companySeqF;
+	}
+	public void setCompanySeqF(String companySeqF) {
+		this.companySeqF = companySeqF;
+	}
 	public String getArrivalSeq() {
 		return arrivalSeq;
 	}

@@ -4,7 +4,7 @@
 <mapper namespace="com.hotsix.infra.placingorder.PlacingOrderDao">
 <resultMap id="resultMapObj" type="com.hotsix.infra.placingorder.PlacingOrderDto"></resultMap>
 	
-	<select id="selectList">
+	<select id="selectList" resultMap="resultMapObj">
 		 SELECT
 			a.poProductSeq
 			,a.poAccount
@@ -27,7 +27,7 @@
 		
 	</select>
 	
-	<select id="selectOne">
+	<select id="selectOne" resultMap="resultMapObj">
 	SELECT
 			a.poProductSeq
 			,a.poAccount

@@ -17,4 +17,8 @@ public class ArrivalService {
 	public ArrivalDto selectOne(ArrivalDto dto) {
 		return dao.selectOne(dto);
 	}
+	
+	public int insert(ArrivalDto dto) {
+		return dao.insert(dto);
+	}
 }

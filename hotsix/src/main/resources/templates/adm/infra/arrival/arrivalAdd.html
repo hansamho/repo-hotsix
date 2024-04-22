@@ -69,7 +69,7 @@
 										<div class="card-header">
 											<div class="card-title">코드그룹 관리</div>
 										</div>
-									<form method="post" action="placingInsert">
+									<form method="post" action="arrivalInsert">
 										<div class="row">
 											<div class="col-lg-6 col-sm-4 col-12 gy-2">
 											  		<label class="form-label">상품 이름</label>
@@ -79,8 +79,8 @@
 											 </div>
 											 <div class="col-lg-6 col-sm-4 col-12 gy-2">
 											  		<label class="form-label">멤버 이름</label>
-											  		<select id="memberSeqF" name="memberSeqF" class="form-select col-md-6" >
-														<option th:if="${#lists.isEmpty(List)}" th:each="list : ${list}" th:text="${list.memberName}" th:value="${list.memberSeq}"></option>
+											  		<select id="companySeqF" name="companySeqF" class="form-select col-md-6" >
+														<option th:if="${#lists.isEmpty(List)}" th:each="list : ${list}" th:text="${list.companyName}" th:value="${list.arrivalSeq}"></option>
 													</select>
 											 </div>
 											 <div class="col-lg-6 col-sm-4 col-12 gy-2">

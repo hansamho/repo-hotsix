@@ -48,28 +48,14 @@
 	
 	<insert id="insert">
 		INSERT INTO arrival(
-			arrivalAccount,
-			poSeqF
-				
+			arrivalAccount
+			,productSeqF
+			,poSeqF
 		)VALUES(
-			
+			#{arrivalAccount}
+			,#{productSeqF}
+			,#{companySeqF}
 		)
 	</insert>
 	
-	<insert id="arrivalInsert">
-	
-	</insert>
-	
-	<update id="update">
-		UPDATE 
-	</update>
-	
-	<update id="uelete">
-	
-	</update>
-	
-	<delete id="delete">
-	
-	
-	</delete>
 </mapper>
