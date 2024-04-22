@@ -159,14 +159,14 @@
 													<tr  th:if="${#lists.isEmpty(List)}" th:each="list : ${list}">
 														<td><input type="checkbox" id="checkboxType2"></td>
 														<td th:text="${list.orderProductSeq}"></td>
-														<td><a th:href="@{/memberForm(orderSeq=${list.orderSeq})}" th:text="${list.productName}"></a></td>
+														<td><a th:href="@{/orderForm(orderProductSeq=${list.orderProductSeq})}" th:text="${list.productName}"></a></td>
 														<td th:text="${list.orderAccount}"></td>
 														<td th:text="${list.productPrice}"></td>
 														<td th:text="${list.productTypeCd}"></td>
 														<td th:text="${list.memberName}"></td>
 														<td th:text="${list.memberTypeCd}"></td>
-														<td  th:text="${#dates.format(list.orderRegDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
-														<td  th:text="${#dates.format(list.orderModDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+														<td  th:text="${#dates.format(list.orderProductRegDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+														<td  th:text="${#dates.format(list.orderProductModDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 														<td th:if="${list.orderDelNy eq 1}">Y</td>
     													<td th:unless="${list.orderDelNy eq 1}">N</td>
 													</tr>

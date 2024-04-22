@@ -11,6 +11,7 @@ import com.hotsix.common.util.UtilDateTime;
 import com.hotsix.infra.code.CodeVo;
 import com.hotsix.infra.member.MemberService;
 import com.hotsix.infra.member.MemberVo;
+import com.hotsix.infra.placingorder.PlacingOrderDto;
 import com.hotsix.infra.product.ProductService;
 import com.hotsix.infra.product.ProductVo;
 
@@ -78,10 +79,43 @@ public class OrderController {
 		return "adm/infra/order/orderAdd";
 	}
 	
+	@RequestMapping(value = "/orderForm")
+	public String orderForm(@ModelAttribute("vo") ProductVo pvo,OrderDto dto, Model model) throws Exception {
+		
+		model.addAttribute("item", service.selectOne(dto));
+		model.addAttribute("plist", pservice.selectList(pvo));
+		
+		return "adm/infra/order/orderForm";
+	}
+	
 	@RequestMapping(value = "/orderInsert")
 	public String orderInsert(OrderDto dto) throws Exception{
 		
 		service.insert(dto);
+		return "redirect:/orderXdmList";
+	}
+	
+	@RequestMapping(value="/orderUpdate")
+	public String orderUpdate(OrderDto dto) throws Exception {
+		
+		service.update(dto);
+	
+		return "redirect:/orderXdmList";
+	}
+	
+	@RequestMapping(value="/orderDelete")
+	public String orderDelete(OrderDto dto) throws Exception {
+		
+		service.delete(dto);
+	
+		return "redirect:/orderXdmList";
+	}
+	
+	@RequestMapping(value="/orderUelete")
+	public String orderUelete(OrderDto dto) throws Exception {
+		
+		service.uelete(dto);
+	
 		return "redirect:/orderXdmList";
 	}
 }

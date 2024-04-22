@@ -22,10 +22,8 @@ public class OrderService {
 	}
 	
 	public int insert(OrderDto dto) {
-		
-		dao.insert(dto);
-		dao.orderInsert(dto);
-		return  1;
+
+		return dao.insert(dto);
 				
 	}
 	

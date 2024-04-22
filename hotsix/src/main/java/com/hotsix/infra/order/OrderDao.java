@@ -10,8 +10,6 @@ public List<OrderDto> selectList(OrderVo vo);
 	
 	public int insert(OrderDto dto);
 	
-	public int orderInsert(OrderDto dto);
-	
 	public int update(OrderDto dto);
 	
 	public int uelete(OrderDto dto);
