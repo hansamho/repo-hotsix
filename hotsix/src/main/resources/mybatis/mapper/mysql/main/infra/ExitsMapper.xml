@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hotsix.infra.exits.ExitsDao">
+<resultMap id="resultMapObj" type="com.hotsix.infra.exits.ExitsDto"></resultMap>
+	
+	<select id="selectList" resultMap="resultMapObj">
+	
+	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+	
+	</select>
+	
+	
+	<insert id="insert">
+		insert into orderProduct(
+			orderAccount
+			,productSeqF
+			,orderSeqF
+		)values(
+			#{orderAccount}
+			,#{productSeqF}
+			,#{memberSeqF}
+		)
+	</insert>
+	
+	<insert id="orderInsert">
+		insert into orders(
+			memberSeqF
+		)values(
+			#{memberSeqF}
+		)
+	</insert>
+	
+	
+	<update id="update">
+		
+	</update>
+	
+	<update id="uelete">
+		
+	</update>
+	
+	<delete id="delete">
+		
+	</delete>	
+	
+
+</mapper>
