@@ -16,6 +16,11 @@ public class MemberService {
 		return dao.selectList(vo);
 	}
 	
+	public List<MemberDto> memberList(MemberVo vo) {
+		
+		return dao.memberList(vo);
+	}
+	
 	public MemberDto selectOne(MemberDto dto) {
 		
 		return dao.selectOne(dto);

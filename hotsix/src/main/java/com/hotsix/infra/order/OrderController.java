@@ -73,7 +73,7 @@ public class OrderController {
 	@RequestMapping(value = "/orderAdd")
 	public String orderAdd(@ModelAttribute("vo") MemberVo mvo,ProductVo pvo, Model model) throws Exception {
 		
-		model.addAttribute("list", mservice.selectList(mvo));
+		model.addAttribute("list", mservice.memberList(mvo));
 		model.addAttribute("plist", pservice.selectList(pvo));
 		
 		return "adm/infra/order/orderAdd";

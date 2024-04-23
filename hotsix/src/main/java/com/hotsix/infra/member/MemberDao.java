@@ -6,6 +6,8 @@ public interface MemberDao {
 
 	public List<MemberDto> selectList(MemberVo vo);
 	
+	public List<MemberDto> memberList(MemberVo vo);
+	
 	public MemberDto selectOne(MemberDto dto);
 	
 	public int insert(MemberDto dto);

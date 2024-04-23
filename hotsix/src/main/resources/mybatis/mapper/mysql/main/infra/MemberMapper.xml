@@ -53,6 +53,13 @@
 		<include refid="selectCommon" />
 	</select>
 	
+	<select id="memberList" resultMap="resultMapObj">
+	select
+		memberSeq
+		,memberName
+	from
+		member	
+	</select>
 	
 	
 	<select id="selectOne" resultMap="resultMapObj">
