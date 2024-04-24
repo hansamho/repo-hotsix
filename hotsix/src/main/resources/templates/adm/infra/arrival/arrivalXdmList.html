@@ -149,6 +149,7 @@
 														<th>입고상품 가격</th>
 														<th>입고상품 수량</th>
 														<th>입고상품 코드</th>
+														<th>발주자</th>
 														<th>회사 이름</th>
 														<th>입고 등록일</th>
 														<th>입고 수정일</th>
@@ -166,6 +167,7 @@
 														<td th:text="${#numbers.formatInteger(list.productPrice,1,'COMMA')}"></td>
 														<td th:text="${list.arrivalAccount}"></td>
 														<td th:text="${list.productCode}"></td>
+														<td th:text="${list.memberName}"></td>
 														<td th:text="${list.companyName}"></td>
 														<td  th:text="${#dates.format(list.arrivalRegDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 														<td  th:text="${#dates.format(list.arrivalModDate, 'yyyy-MM-dd HH:mm:ss')}"></td>

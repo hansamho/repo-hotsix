@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hotsix.infra.company.CompanyService;
 import com.hotsix.infra.company.CompanyVo;
+import com.hotsix.infra.member.MemberDto;
 import com.hotsix.infra.member.MemberService;
 import com.hotsix.infra.member.MemberVo;
 import com.hotsix.infra.product.ProductService;
@@ -41,12 +42,12 @@ public class ArrivalController {
 	}
 	
 	@RequestMapping(value="arrivalAdd")
-	public String arrivalAdd(ArrivalVo vo,ArrivalDto dto,CompanyVo cvo,ProductVo pvo, Model model)throws Exception{
+	public String arrivalAdd(ArrivalVo vo,ArrivalDto dto,CompanyVo cvo,MemberVo mvo, ProductVo pvo, Model model)throws Exception{
 		
 		model.addAttribute("list", companyService.selectList(cvo));
+		model.addAttribute("mlist", memberService.selectList(mvo));
 		model.addAttribute("plist", productService.selectList(pvo));
 		
-		model.addAttribute("item", service.selectOne(dto));
 		
 		return "/adm/infra/arrival/arrivalAdd";
 	}

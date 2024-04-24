@@ -19,6 +19,10 @@ public class ArrivalService {
 	}
 	
 	public int insert(ArrivalDto dto) {
-		return dao.insert(dto);
+		
+		dao.insert(dto);
+		dao.companyInsert(dto);
+		
+		return 1;
 	}
 }

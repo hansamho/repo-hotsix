@@ -4,6 +4,31 @@
 <mapper namespace="com.hotsix.infra.placingorder.PlacingOrderDao">
 <resultMap id="resultMapObj" type="com.hotsix.infra.placingorder.PlacingOrderDto"></resultMap>
 	
+	<sql id ="selectCommon">
+        FROM code a
+        LEFT JOIN codeGroup b
+		ON a.codeGroupSeqF = b.codeGroupSeq
+        WHERE 1=1
+<!--         <if test="shUseNy != null and !shUseNy.equals('')">AND ifcgUseNy = #{shUseNy}</if> -->
+        <if test="shDelny != null and !shDelny.equals('')">AND a.codeDelNy = #{shDelny}</if>
+       
+				<choose>
+					<when test="shOptionDate == 1">AND a.codeRegDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND a.codeModDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				</choose>
+    
+        <choose>
+            <when test="shOption == 1">AND a.codeGroupSeqF = #{shValue}</when>
+            <when test="shOption == 2">AND a.codedSeq = #{shValue}</when>
+            <when test="shOption == 3">AND a.codeName LIKE CONCAT('%',#{shValue},'%')</when>
+            
+            
+<!--             <when test="shOption == 3">AND ifcgNameEng LIKE CONCAT('%',#{shValue},'%')</when> -->
+        </choose>
+       </sql>
+	
+	
+	
 	<select id="selectList" resultMap="resultMapObj">
 		 SELECT
 			a.poProductSeq

@@ -25,7 +25,8 @@
 				<div class="content-wrapper-scroll">
 
 					<!-- Main header starts -->
-					<div class="main-header d-flex align-items-center justify-content-between position-relative">
+					<div class="main-header d-flex align-
+s-center justify-content-between position-relative">
 						<div class="d-flex align-items-center justify-content-center">
 							<div class="page-icon">
 <!-- 								<i class="bi bi-window-split"></i> -->
@@ -78,7 +79,7 @@
 													</select>
 											 </div>
 											 <div class="col-lg-6 col-sm-4 col-12 gy-2">
-											  		<label class="form-label">멤버 이름</label>
+											  		<label class="form-label">회사 이름</label>
 											  		<select id="companySeqF" name="companySeqF" class="form-select col-md-6" >
 														<option th:if="${#lists.isEmpty(List)}" th:each="list : ${list}" th:text="${list.companyName}" th:value="${list.arrivalSeq}"></option>
 													</select>
@@ -87,6 +88,12 @@
 										  		<label class="form-label">상품 수량</label>
 										  		<input type="text" name="poAccount" id="poAccount" class="form-control" required>
 <!-- 										  		<div id="cgNameFeedback" class="invalid-feedback"></div> -->
+										  	</div>
+										  	 <div class="col-lg-6 col-sm-4 col-12 gy-2">
+										  		<label class="form-label">멤버 이름</label>
+										  		<select id="memberSeqF" name="memberSeqF" class="form-select col-md-6">
+													<option th:if="${#lists.isEmpty(mlist)}" th:each="mlist : ${mlist}" th:text="${list.memberName}" th:value="${list.memberSeq}"></option>										  		
+										  		</select>
 										  	</div>
 										  	<div class="d-flex justify-content-between mt-4">
 											  	<div class="" align="left">

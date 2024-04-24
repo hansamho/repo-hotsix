@@ -23,6 +23,25 @@ public class ArrivalDto {
 	private String companySeqF;
 	
 	
+	//멤버
+	private String memberName;
+	private Integer memberTypeCd;
+	
+	
+	
+	
+	public String getMemberName() {
+		return memberName;
+	}
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+	public Integer getMemberTypeCd() {
+		return memberTypeCd;
+	}
+	public void setMemberTypeCd(Integer memberTypeCd) {
+		this.memberTypeCd = memberTypeCd;
+	}
 	public String getCompanySeqF() {
 		return companySeqF;
 	}

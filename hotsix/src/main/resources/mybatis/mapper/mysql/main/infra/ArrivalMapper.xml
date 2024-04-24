@@ -4,58 +4,70 @@
 <mapper namespace="com.hotsix.infra.arrival.ArrivalDao">
 <resultMap id="resultMapObj" type="com.hotsix.infra.arrival.ArrivalDto"></resultMap>
 	
-	<select id="selectList">
+	<select id="selectList" resultMap="resultMapObj">
 		SELECT
 			a.arrivalSeq
-			,a.arrivalAccount
 			,a.arrivalRegDate
 			,a.arrivalModDate
 			,a.arrivalDelNy
-			,b.productName
-			,b.productCode
-			,b.productPrice
-			,b.productTypeCd
-			,c.companyName
-		FROM
-			arrival a
-		LEFT JOIN product b
-			on a.productSeqF = b.productSeq
-		LEFT JOIN company c
-			on c.companySeq = b.companySeqF
+			,d.productName
+			,d.productTypeCd
+			,d.productPrice
+			,e.memberTypeCd
+			,e.memberName
+			,a.arrivalAccount
+			,f.companyName
+		FROM arrival a
+		LEFT JOIN placingOrder b on a.arrivalSeq = b.poSeq
+		LEFT JOIN poProduct c on c.poProductSeq = b.poSeq
+		LEFT JOIN product d on d.productSeq = c.productSeqF
+		LEFT JOIN member e on e.memberSeq = b.memberSeqF
+		LEFT JOIN company f on f.companySeq = d.companySeqF
 	</select>
 	
-	<select id="selectOne">
+	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			a.arrivalSeq
-			,a.arrivalAccount
 			,a.arrivalRegDate
 			,a.arrivalModDate
 			,a.arrivalDelNy
-			,b.productName
-			,b.productCode
-			,b.productPrice
-			,b.productTypeCd
-			,c.companyName
-		FROM
-			arrival a
-		LEFT JOIN product b
-			on a.productSeqF = b.productSeq
-		LEFT JOIN company c
-			on c.companySeq = b.companySeqF
-		WHERE a.arrivalSeq = #{arrivalSeq}
+			,d.productName
+			,d.productTypeCd
+			,d.productPrice
+			,e.memberTypeCd
+			,e.memberName
+			,a.arrivalAccount
+			,f.companyName
+		FROM arrival a
+		LEFT JOIN placingOrder b on a.arrivalSeq = b.poSeq
+		LEFT JOIN poProduct c on c.poProductSeq = b.poSeq
+		LEFT JOIN product d on d.productSeq = c.productSeqF
+		LEFT JOIN member e on e.memberSeq = b.memberSeqF
+		LEFT JOIN company f on f.companySeq = d.companySeqF
+		WHERE 1=1
+		AND a.arrivalSeq = #{arrivalSeq}
 	
 	</select>
 	
 	<insert id="insert">
 		INSERT INTO arrival(
-			arrivalAccount
+			,arrivalAccount
 			,productSeqF
 			,poSeqF
 		)VALUES(
-			#{arrivalAccount}
+			,#{arrivalAccount}
 			,#{productSeqF}
-			,#{companySeqF}
+			,#{memberSeqF}
 		)
+	</insert>
+	
+	<insert id="companyInsert">
+		INSERT INTO product(
+			companySeqF
+		)VALUES(
+			#{companySeqF}
+		)
+		
 	</insert>
 	
 </mapper>

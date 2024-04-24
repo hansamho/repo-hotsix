@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.hotsix.common.constants.Constants;
 import com.hotsix.common.util.UtilDateTime;
 
@@ -91,6 +92,33 @@ public class CodeGroupController {
 		model.addAttribute("item", service.selectOne(dto));
 	
 		return "/adm/infra/codegroup/codeGroupForm"; //
+		
+	}
+	
+	@RequestMapping(value = "/codeGroupUpdate")
+	public String codeGroupUpdt(CodeGroupDto dto) throws Exception{
+
+		service.update(dto);
+		
+		return "redirect:/codeGroupXdmList"; //
+		
+	}
+	
+	@RequestMapping(value = "/codeGroupDelete")
+	public String codeGroupDelete(CodeGroupDto dto) throws Exception{
+
+		service.delete(dto);
+		
+		return "redirect:/codeGroupXdmList"; //
+		
+	}
+	
+	@RequestMapping(value = "/codeGroupUelete")
+	public String codeGroupUpdtDt(CodeGroupDto dto) throws Exception{
+
+		service.updateDelete(dto);
+		
+		return "redirect:/codeGroupXdmList"; //
 		
 	}
 }

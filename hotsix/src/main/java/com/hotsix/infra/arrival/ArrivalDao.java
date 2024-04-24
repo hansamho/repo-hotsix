@@ -9,4 +9,6 @@ public interface ArrivalDao {
 	public ArrivalDto selectOne(ArrivalDto dto);
 	
 	public int insert(ArrivalDto dto);
+	
+	public int companyInsert(ArrivalDto dto);
 }
