@@ -12,8 +12,8 @@ public class OrderDto {
 	private String memberName;
 	private Integer memberTypeCd;
 	
-	private Date orderProductRegDate;
-	private Date orderProductModDate;
+	private Date orderRegDate;
+	private Date orderModDate;
 	private Integer orderDelNy;
 	
 	private Integer orderAccount;
@@ -63,18 +63,6 @@ public class OrderDto {
 	public void setMemberTypeCd(Integer memberTypeCd) {
 		this.memberTypeCd = memberTypeCd;
 	}
-	public Date getOrderProductRegDate() {
-		return orderProductRegDate;
-	}
-	public void setOrderProductRegDate(Date orderProductRegDate) {
-		this.orderProductRegDate = orderProductRegDate;
-	}
-	public Date getOrderProductModDate() {
-		return orderProductModDate;
-	}
-	public void setOrderProductModDate(Date orderProductModDate) {
-		this.orderProductModDate = orderProductModDate;
-	}
 	public Integer getOrderDelNy() {
 		return orderDelNy;
 	}
@@ -104,6 +92,18 @@ public class OrderDto {
 	}
 	public void setOrderSeqF(String orderSeqF) {
 		this.orderSeqF = orderSeqF;
+	}
+	public Date getOrderRegDate() {
+		return orderRegDate;
+	}
+	public void setOrderRegDate(Date orderRegDate) {
+		this.orderRegDate = orderRegDate;
+	}
+	public Date getOrderModDate() {
+		return orderModDate;
+	}
+	public void setOrderModDate(Date orderModDate) {
+		this.orderModDate = orderModDate;
 	}
 	
 }

@@ -162,11 +162,17 @@
 														<td><a th:href="@{/orderForm(orderProductSeq=${list.orderProductSeq})}" th:text="${list.productName}"></a></td>
 														<td th:text="${list.orderAccount}"></td>
 														<td th:text="${list.productPrice}"></td>
-														<td th:text="${list.productTypeCd}"></td>
+														<td th:if="${list.productTypeCd != null}"
+															th:text="${@codeService.selectOneCachedCode(list.productTypeCd)}"
+															class="productTypeCd align-middle">
+														</td>
 														<td th:text="${list.memberName}"></td>
-														<td th:text="${list.memberTypeCd}"></td>
-														<td  th:text="${#dates.format(list.orderProductRegDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
-														<td  th:text="${#dates.format(list.orderProductModDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+														<td th:if="${list.memberTypeCd != null}"
+															th:text="${@codeService.selectOneCachedCode(list.memberTypeCd)}"
+															class="productTypeCd align-middle">
+														</td>
+														<td  th:text="${#dates.format(list.orderRegDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+														<td  th:text="${#dates.format(list.orderModDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 														<td th:if="${list.orderDelNy eq 1}">Y</td>
     													<td th:unless="${list.orderDelNy eq 1}">N</td>
 													</tr>
