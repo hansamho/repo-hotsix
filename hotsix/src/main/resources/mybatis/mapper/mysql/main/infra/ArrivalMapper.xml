@@ -18,9 +18,9 @@
 			,a.arrivalAccount
 			,f.companyName
 		FROM arrival a
-		LEFT JOIN placingOrder b on a.arrivalSeq = b.poSeq
+		LEFT JOIN placingOrder b on b.memberSeqF = a.poSeqF
 		LEFT JOIN poProduct c on c.poProductSeq = b.poSeq
-		LEFT JOIN product d on d.productSeq = c.productSeqF
+		LEFT JOIN product d on d.productSeq = a.productSeqF
 		LEFT JOIN member e on e.memberSeq = b.memberSeqF
 		LEFT JOIN company f on f.companySeq = d.companySeqF
 	</select>
@@ -39,9 +39,9 @@
 			,a.arrivalAccount
 			,f.companyName
 		FROM arrival a
-		LEFT JOIN placingOrder b on a.arrivalSeq = b.poSeq
+		LEFT JOIN placingOrder b on b.memberSeqF = a.poSeqF
 		LEFT JOIN poProduct c on c.poProductSeq = b.poSeq
-		LEFT JOIN product d on d.productSeq = c.productSeqF
+		LEFT JOIN product d on d.productSeq = a.productSeqF
 		LEFT JOIN member e on e.memberSeq = b.memberSeqF
 		LEFT JOIN company f on f.companySeq = d.companySeqF
 		WHERE 1=1
@@ -49,13 +49,17 @@
 	
 	</select>
 	
+	<select id="arrivalList" resultMap="resultMapObj">
+		
+	</select>
+	
 	<insert id="insert">
 		INSERT INTO arrival(
-			,arrivalAccount
+			arrivalAccount
 			,productSeqF
 			,poSeqF
 		)VALUES(
-			,#{arrivalAccount}
+			#{arrivalAccount}
 			,#{productSeqF}
 			,#{memberSeqF}
 		)
@@ -69,5 +73,29 @@
 		)
 		
 	</insert>
+	
+	<update id="update">
+		UPDATE arrival a
+		LEFT JOIN product b on b.productSeq = a.productSeqF
+		SET
+		 	a.arrivalAccount = #{arrivalAccount}
+		 	,b.productName = #{productName}
+		 	,b.productPrice = #{productPrice}
+		 WHERE a.arrivalSeq = #{arrivalSeq}	
+	</update>
+	
+	<delete id="delete">
+    	DELETE FROM  arrival
+    	WHERE  1=1
+    		AND arrivalSeq = #{arrivalSeq}
+    </delete>
+	
+	<update id="uelete">
+		UPDATE arrival
+    	set
+    	arrivalDelNy = 1
+    	WHERE 1=1 
+    	AND	arrivalSeq = #{arrivalSeq}
+	</update>
 	
 </mapper>

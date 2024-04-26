@@ -74,12 +74,14 @@
 											<div class="col-lg-6 col-sm-4 col-12 gy-2">
 											  		<label class="form-label">상품 이름</label>
 											  		<select id="productSeqF" name="productSeqF" class="form-select col-md-6" >
+											  			<option value="">상품 이름을 선택하세요</option>
 														<option th:if="${#lists.isEmpty(pList)}" th:each="plist : ${plist}" th:text="${plist.productName}" th:value="${plist.productSeq}"></option>
 													</select>
 											 </div>
 											 <div class="col-lg-6 col-sm-4 col-12 gy-2">
 											  		<label class="form-label">멤버 이름</label>
 											  		<select id="memberSeqF" name="memberSeqF" class="form-select col-md-6" >
+											  			<option value="">멤버 이름을 선택하세요</option>
 														<option th:if="${#lists.isEmpty(List)}" th:each="list : ${list}" th:text="${list.memberName}" th:value="${list.memberSeq}"></option>
 													</select>
 											 </div>

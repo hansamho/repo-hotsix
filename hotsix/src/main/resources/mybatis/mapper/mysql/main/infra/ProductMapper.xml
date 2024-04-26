@@ -20,12 +20,35 @@
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
-	
+		select
+		productSeq
+		,productName
+		,productCode
+		,productPrice
+		,productTypeCd
+		,productAccount
+		,productRegDate
+		,productModDate
+		,productDelNy
+	from
+		product
+	WHERE 1=1
+	AND productSeq = #{productSeq}	
 	</select>
 	
 	
 	<insert id="insert">
-		
+		INSERT INTO product(
+			productName
+			,productPrice
+			,productTypeCd
+			,productAccount
+		)VALUES(
+			#{productName}
+			,#{productPrice}
+			,#{productTypeCd}
+			,#{productAccount}
+		)
 	</insert>
 	
 	

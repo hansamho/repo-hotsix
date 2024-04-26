@@ -38,9 +38,9 @@
 			,c.productTypeCd
 			,d.memberName
 			,d.memberTypeCd
-			,b.poDelNy
-            ,b.poRegDate
-            ,b.poModDate
+			,a.poProductDelNy
+            ,a.poProductRegDate
+            ,a.poProductModDate
 		FROM
 				poProduct a
 		LEFT JOIN placingOrder b 
@@ -61,9 +61,9 @@
 			,c.productTypeCd
 			,d.memberName
 			,d.memberTypeCd
-			,b.poDelNy
-            ,b.poRegDate
-            ,b.poModDate
+			,a.poProductDelNy
+            ,a.poProductRegDate
+            ,a.poProductModDate
 		FROM
 				poProduct a
 		LEFT JOIN placingOrder b 
@@ -89,23 +89,23 @@
 		)
 	</insert>
 	
-	<insert id="placingInsert">
-		insert into placingOrder(
-			memberSeqF
-		)values(
-			#{memberSeqF}
-		)
-	</insert>
+<!-- 	<insert id="placingInsert"> -->
+<!-- 		insert into placingOrder( -->
+<!-- 			memberSeqF -->
+<!-- 		)values( -->
+<!-- 			#{memberSeqF} -->
+<!-- 		) -->
+<!-- 	</insert> -->
+
 	<update id="update">
 		UPDATE poProduct a 
 		LEFT JOIN placingOrder b on a.poSeqF = b.poSeq
 		LEFT JOIN product c on a.productSeqF = c.productSeq
-		LEFT JOIN member d on b.memberSeqF = d.memberSeq
 		SET
 		a.poAccount = #{poAccount}
 		,c.productName = #{productName}
-		,d.memberName = #{memberName}
-		WHERE 
+		,c.productPrice = #{productPrice}
+		WHERE
 			a.poProductSeq= #{poProductSeq}
 	</update>
 	

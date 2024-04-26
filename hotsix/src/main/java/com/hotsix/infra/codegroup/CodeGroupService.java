@@ -28,8 +28,8 @@ public class CodeGroupService {
 		return dao.update(dto);
 	}
 	
-	public int updateDelete(CodeGroupDto dto) {
-		return dao.updateDelete(dto);
+	public int uelete(CodeGroupDto dto) {
+		return dao.uelete(dto);
 	}
 	
 	public int selectOneCount(CodeGroupVo vo) {

@@ -21,15 +21,27 @@ public class ArrivalDto {
 	
 	//회사
 	private String companySeqF;
-	
+	private String companySeq;
 	
 	//멤버
 	private String memberName;
 	private Integer memberTypeCd;
+	private String memberSeqF;
 	
 	
 	
-	
+	public String getCompanySeq() {
+		return companySeq;
+	}
+	public void setCompanySeq(String companySeq) {
+		this.companySeq = companySeq;
+	}
+	public String getMemberSeqF() {
+		return memberSeqF;
+	}
+	public void setMemberSeqF(String memberSeqF) {
+		this.memberSeqF = memberSeqF;
+	}
 	public String getMemberName() {
 		return memberName;
 	}

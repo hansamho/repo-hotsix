@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hotsix.infra.company.CompanyService;
 import com.hotsix.infra.company.CompanyVo;
-import com.hotsix.infra.member.MemberDto;
 import com.hotsix.infra.member.MemberService;
 import com.hotsix.infra.member.MemberVo;
 import com.hotsix.infra.product.ProductService;
@@ -45,7 +44,7 @@ public class ArrivalController {
 	public String arrivalAdd(ArrivalVo vo,ArrivalDto dto,CompanyVo cvo,MemberVo mvo, ProductVo pvo, Model model)throws Exception{
 		
 		model.addAttribute("list", companyService.selectList(cvo));
-		model.addAttribute("mlist", memberService.selectList(mvo));
+		model.addAttribute("mlist", memberService.memberList(mvo));
 		model.addAttribute("plist", productService.selectList(pvo));
 		
 		
@@ -56,6 +55,28 @@ public class ArrivalController {
 	public String arrivalInsert(ArrivalDto dto) throws Exception {
 		
 		service.insert(dto);
+	
+		return "redirect:/arrivalXdmList";
+	}
+	
+	@RequestMapping(value="/arrivalUpdate")
+	public String arrivalUpdate(ArrivalDto dto) throws Exception {
+		
+		service.update(dto);
+	
+		return "redirect:/arrivalXdmList";
+	}
+	@RequestMapping(value="/arrivalUelete")
+	public String arrivalUelete(ArrivalDto dto) throws Exception {
+		
+		service.update(dto);
+	
+		return "redirect:/arrivalXdmList";
+	}
+	@RequestMapping(value="/arrivalDelete")
+	public String arrivalDelete(ArrivalDto dto) throws Exception {
+		
+		service.delete(dto);
 	
 		return "redirect:/arrivalXdmList";
 	}

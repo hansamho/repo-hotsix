@@ -27,4 +27,21 @@ public class ProductController {
 //		
 //		return "adm/infra/order/orderAdd";
 //	}
+	
+	@RequestMapping(value = "/productAdd")
+	public String productAdd(ProductDto dto,Model model) throws Exception {
+		
+		
+		
+		return "adm/infra/product/productAdd";
+	}
+	
+	
+	@RequestMapping(value = "/productInsert")
+	public String productInsert(ProductDto dto) throws Exception {
+		
+		service.insert(dto);
+		
+		return "redirect:/productXdmList";
+	}
 }

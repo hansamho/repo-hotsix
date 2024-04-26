@@ -11,4 +11,10 @@ public interface ArrivalDao {
 	public int insert(ArrivalDto dto);
 	
 	public int companyInsert(ArrivalDto dto);
+	
+	public int update(ArrivalDto dto);
+	
+	public int uelete(ArrivalDto dto);
+	
+	public int delete(ArrivalDto dto);
 }

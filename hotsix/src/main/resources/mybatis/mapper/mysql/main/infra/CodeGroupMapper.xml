@@ -65,13 +65,22 @@
   
     </update>
   	
-  	<update id="updateDelete">
+<!--   	<update id="uelete"> -->
     	
-    	UPDATE codeGroup 
-    	set
-    	codeGroupgDelNy = 1
-    	WHERE codeGroupSeq = #{codeGroupSeq}
+<!--     	UPDATE codeGroup  -->
+<!--     	set -->
+<!--     		codeGroupDelNy = 1 -->
+<!--     	WHERE 1=1  -->
+<!--     	AND	codeGroupSeq = #{codeGroupSeq} -->
   
+<!--     </update> -->
+    
+    <update id="uelete">
+    	UPDATE codeGroup
+    	SET
+    		codeGroupDelNy = 1
+    	WHERE 1=1
+    		AND codeGroupSeq = #{codeGroupSeq}
     </update>
   	
   	<delete id="delete">

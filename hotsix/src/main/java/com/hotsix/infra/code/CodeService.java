@@ -32,8 +32,8 @@ public class CodeService {
 		return dao.update(dto);
 	}
 	
-	public int updateDelete(CodeDto dto) {
-		return dao.updateDelete(dto);
+	public int uelete(CodeDto dto) {
+		return dao.uelete(dto);
 	}
 	
 	public int delete(CodeDto dto) {

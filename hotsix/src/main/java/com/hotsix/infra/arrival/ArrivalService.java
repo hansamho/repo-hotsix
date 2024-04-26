@@ -21,8 +21,20 @@ public class ArrivalService {
 	public int insert(ArrivalDto dto) {
 		
 		dao.insert(dto);
-		dao.companyInsert(dto);
+//		dao.companyInsert(dto);
 		
 		return 1;
+	}
+	
+	public int update(ArrivalDto dto) {
+		return dao.update(dto);
+	}
+	
+	public int uelete(ArrivalDto dto) {
+		return dao.uelete(dto);
+	}
+	
+	public int delete(ArrivalDto dto) {
+		return dao.delete(dto);
 	}
 }

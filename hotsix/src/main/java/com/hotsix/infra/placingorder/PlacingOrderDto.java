@@ -18,6 +18,7 @@ public class PlacingOrderDto {
 	private int productPrice;
 	private Integer productTypeCd;
 	private String productSeqF;
+	private String poAccoint;
 	
 	//멤버
 	private String memberName;
@@ -27,8 +28,37 @@ public class PlacingOrderDto {
 	//주문
 	private String orderSeqF;
 	
+	//poProduct
+	private String poProductDelNy;
+	private Date poProductRegDate;  
+	private Date poProductModDate;
 	
 	
+	
+	public String getPoAccoint() {
+		return poAccoint;
+	}
+	public void setPoAccoint(String poAccoint) {
+		this.poAccoint = poAccoint;
+	}
+	public Date getPoProductRegDate() {
+		return poProductRegDate;
+	}
+	public void setPoProductRegDate(Date poProductRegDate) {
+		this.poProductRegDate = poProductRegDate;
+	}
+	public Date getPoProductModDate() {
+		return poProductModDate;
+	}
+	public void setPoProductModDate(Date poProductModDate) {
+		this.poProductModDate = poProductModDate;
+	}
+	public String getPoProductDelNy() {
+		return poProductDelNy;
+	}
+	public void setPoProductDelNy(String poProductDelNy) {
+		this.poProductDelNy = poProductDelNy;
+	}
 	public String getPoProductSeq() {
 		return poProductSeq;
 	}

@@ -51,9 +51,10 @@
 			,b.codeGroupName
 			,b.codeGroupSeq
          FROM code a
+       LEFT JOIN codeGroup b
+			ON a.codeGroupSeqF = b.codeGroupSeq
         WHERE 1=1
-        AND a.codeSeq = #{codeSeq}
-        ORDER BY a.cdSeq DESC
+       		AND a.codeSeq = #{codeSeq}
     </select>
 	
 	
@@ -81,18 +82,20 @@
   
     </update>
     
-    <update id="updateDelete">
+    <update id="uelete">
     	
     	UPDATE code
     	set
     	codeDelNy = 1
-    	WHERE codeSeq = #{codeSeq}
+    	WHERE 1=1 
+    		AND codeSeq = #{codeSeq}
   
     </update>
    
    <delete id="delete">
     	DELETE FROM  code
-    	WHERE codeSeq = #{codeSeq}
+    	WHERE 1=1
+    		AND codeSeq = #{codeSeq}
     </delete>
 	
 	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">

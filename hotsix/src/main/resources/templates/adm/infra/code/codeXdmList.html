@@ -166,8 +166,8 @@
 														
 														<td  th:text="${#dates.format(list.codeRegDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 														<td  th:text="${#dates.format(list.codeModDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
-														<td th:if="${list.codeDelNy eq 0}">N</td>
-    													<td th:unless="${list.codeDelNy ne 1}">Y</td>
+														<td th:if="${list.codeDelNy eq 1}">Y</td>
+    													<td th:unless="${list.codeDelNy eq 1}">N</td>
 													</tr>
 												</tbody>
 												<tfoot>

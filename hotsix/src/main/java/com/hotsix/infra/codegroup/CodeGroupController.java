@@ -47,7 +47,6 @@ public class CodeGroupController {
 	@RequestMapping(value = "/codeGroupXdmList")
 	public String codeGroupAdmList(@ModelAttribute("vo") CodeGroupVo vo,Model model)throws Exception{
 		
-		model.addAttribute("list", service.selectList(vo));
 		
 		setSearch(vo);
 		
@@ -63,13 +62,6 @@ public class CodeGroupController {
 		return "/adm/infra/codegroup/codeGroupXdmList";
 	}
 	
-	@RequestMapping(value = "/")
-	public String codeGroupAdmView(CodeGroupDto dto, Model model) throws Exception{
-		model.addAttribute("item", service.selectOne(dto));
-	
-		return ""; //
-		
-	}
 	
 	
 	@RequestMapping(value = "/codeGroupAdd")
@@ -96,7 +88,7 @@ public class CodeGroupController {
 	}
 	
 	@RequestMapping(value = "/codeGroupUpdate")
-	public String codeGroupUpdt(CodeGroupDto dto) throws Exception{
+	public String codeGroupUpdate(CodeGroupDto dto) throws Exception{
 
 		service.update(dto);
 		
@@ -114,9 +106,9 @@ public class CodeGroupController {
 	}
 	
 	@RequestMapping(value = "/codeGroupUelete")
-	public String codeGroupUpdtDt(CodeGroupDto dto) throws Exception{
+	public String codeGroupUelete(CodeGroupDto dto) throws Exception{
 
-		service.updateDelete(dto);
+		service.uelete(dto);
 		
 		return "redirect:/codeGroupXdmList"; //
 		

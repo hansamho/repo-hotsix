@@ -160,8 +160,8 @@
 														<td><input type="checkbox" id="checkboxType2"></td>
 														<td th:text="${list.memberSeq}"></td>
 														<td><a th:href="@{/memberForm(memberSeq=${list.memberSeq})}" th:text="${list.memberName}"></a></td>
-														<td th:text="${list.genderCd}"></td>
-														<td th:text="${list.memberTypeCd}"></td>
+														<td th:if="${list.genderCd != null}" th:text="${@codeService.selectOneCachedCode(list.genderCd)}"class=" align-middle"></td>
+														<td th:if="${list.memberTypeCd != null}" th:text="${@codeService.selectOneCachedCode(list.memberTypeCd)}"class=" align-middle"></td>
 														<td th:text="${list.companyName}"></td>
 														<td th:text="${list.memberId}"></td>
 														<td th:text="${list.memberPwd}"></td>

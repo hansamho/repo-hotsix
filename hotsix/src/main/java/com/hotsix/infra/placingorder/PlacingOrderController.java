@@ -53,7 +53,7 @@ public class PlacingOrderController {
 	@RequestMapping(value = "/placingOrderAdd")
 	public String placingOrderAdd(PlacingOrderDto dto,MemberVo mvo,ProductVo pvo,  Model model) throws Exception {
 		
-		model.addAttribute("list", memberService.selectList(mvo));
+		model.addAttribute("list", memberService.memberList(mvo));
 		model.addAttribute("plist", productService.selectList(pvo));
 		
 		return "adm/infra/placingorder/placingOrderAdd";

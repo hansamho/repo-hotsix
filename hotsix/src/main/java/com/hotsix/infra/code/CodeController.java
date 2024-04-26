@@ -87,8 +87,8 @@ public class CodeController {
 		
 	}
 	
-	@RequestMapping(value = "/codeupdate")
-	public String codeupdate(CodeDto dto ) throws Exception{
+	@RequestMapping(value = "/codeUpdate")
+	public String codeUpdate(CodeDto dto ) throws Exception{
 
 		service.update(dto);
 	
@@ -96,10 +96,10 @@ public class CodeController {
 		
 	}
 	
-	@RequestMapping(value = "/codeupdateDelete")
-	public String codeupdateDelete(CodeDto dto ) throws Exception{
+	@RequestMapping(value = "/codeUelete")
+	public String codeUelete(CodeDto dto ) throws Exception{
 
-		service.updateDelete(dto);
+		service.uelete(dto);
 	
 		return "redirect:/codeXdmList";   //
 		
