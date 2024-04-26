@@ -15,6 +15,11 @@ public class ExitsDto {
 	private Date exitRegDate;
 	private Date exitModDate;
 	private Integer exitDelNy;
+	private String productName;
+	private String productPrice;
+	private String orderAccount;
+	private String productCode;
+	private String productTypeCd;
 	public String getExitSeq() {
 		return exitSeq;
 	}
@@ -80,6 +85,36 @@ public class ExitsDto {
 	}
 	public void setExitDelNy(Integer exitDelNy) {
 		this.exitDelNy = exitDelNy;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public String getProductPrice() {
+		return productPrice;
+	}
+	public void setProductPrice(String productPrice) {
+		this.productPrice = productPrice;
+	}
+	public String getOrderAccount() {
+		return orderAccount;
+	}
+	public void setOrderAccount(String orderAccount) {
+		this.orderAccount = orderAccount;
+	}
+	public String getProductCode() {
+		return productCode;
+	}
+	public void setProductCode(String productCode) {
+		this.productCode = productCode;
+	}
+	public String getProductTypeCd() {
+		return productTypeCd;
+	}
+	public void setProductTypeCd(String productTypeCd) {
+		this.productTypeCd = productTypeCd;
 	}
 	
 }

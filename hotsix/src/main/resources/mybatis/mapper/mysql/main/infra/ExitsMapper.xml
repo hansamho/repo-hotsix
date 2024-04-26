@@ -5,7 +5,28 @@
 <resultMap id="resultMapObj" type="com.hotsix.infra.exits.ExitsDto"></resultMap>
 	
 	<select id="selectList" resultMap="resultMapObj">
-	
+	 select
+		 a.orderSeq
+		, a.orderRegDate
+		, a.orderModDate
+		, b.orderProductSeq
+		, b.orderAccount
+		, c.productName
+		, c.productPrice
+		, c.productTypeCd
+		, d.memberTypeCd
+		, d.memberName
+        , e.deliverName
+        , e.delivaryNumber
+        , e.delivaryNameCd
+        , e.statusCd
+        from
+         exits e
+		left join orders a on e.orderSeqF = a.orderSeq
+		left join orderProduct b on b.productSeqF = a.orderSeq
+		left join product c on c.productSeq = b.productSeqF
+		left join member d on d.memberSeq = b.orderSeqF
+        ;
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
@@ -14,25 +35,19 @@
 	
 	
 	<insert id="insert">
-		insert into orderProduct(
-			orderAccount
-			,productSeqF
-			,orderSeqF
+		insert into exits(
+			orderSeqF
+			,exitAccount
+			,delivaryNameCd
+			,delivaryNumber
+			,deliverName
+			,statusCd
 		)values(
 			#{orderAccount}
 			,#{productSeqF}
 			,#{memberSeqF}
 		)
 	</insert>
-	
-	<insert id="orderInsert">
-		insert into orders(
-			memberSeqF
-		)values(
-			#{memberSeqF}
-		)
-	</insert>
-	
 	
 	<update id="update">
 		

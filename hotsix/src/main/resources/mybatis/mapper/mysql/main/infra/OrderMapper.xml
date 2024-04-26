@@ -78,8 +78,10 @@
 	<insert id="insert">
 		insert into orders(
 			memberSeqF
+			
 		)values(
 			#{memberSeqF}
+			
 		)
 	</insert>
 	
