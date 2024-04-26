@@ -95,7 +95,7 @@
     	set
     	arrivalDelNy = 1
     	WHERE 1=1 
-    	AND	arrivalSeq = #{arrivalSeq}
+    		AND	arrivalSeq = #{arrivalSeq}
 	</update>
 	
 </mapper>

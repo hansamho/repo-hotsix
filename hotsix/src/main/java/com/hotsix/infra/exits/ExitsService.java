@@ -16,9 +16,27 @@ public class ExitsService {
 		return dao.selectList(vo);
 	}
 	
-	public int insert(ExitsDto dto) {
-		
-		return dao.insert(dto);
+	public ExitsDto selectOne(ExitsDto dto) {
+		return dao.selectOne(dto);
 	}
-
+	
+	public int insert(ExitsDto dto) {
+			
+		dao.insert(dto);
+//		dao.accountInsert(dto);
+		
+		return 1;
+	}
+	
+	public int update(ExitsDto dto) {
+		return dao.update(dto);
+	}
+	
+	public int delete(ExitsDto dto) {
+		return dao.delete(dto);
+	}
+	
+	public int uelete(ExitsDto dto) {
+		return dao.uelete(dto);
+	}
 }

@@ -4,27 +4,57 @@ import java.util.Date;
 
 public class ExitsDto {
 	
-	private String exitSeq;
+	private String exitsSeq;
 	private String orderSeq;
-	private String prdouctSeqF;
-	private Integer exitAccount;
+	private Integer exitsAccount;
 	private String delivaryNumber;
 	private String delivaryName;
 	private String deliverName;
-	private Integer statusCd;
-	private Date exitRegDate;
-	private Date exitModDate;
-	private Integer exitDelNy;
+	private Integer delivaryStatusCd;
+	private Date exitsRegDate;
+	private Date exitsModDate;
+	private Integer exitsDelNy;
 	private String productName;
 	private String productPrice;
 	private String orderAccount;
 	private String productCode;
 	private String productTypeCd;
-	public String getExitSeq() {
-		return exitSeq;
+	private String memberSeqF;
+	private String delivaryNameCd;
+	private String productSeqF;
+	private String orderSeqF;
+	
+	
+	
+	public String getOrderSeqF() {
+		return orderSeqF;
 	}
-	public void setExitSeq(String exitSeq) {
-		this.exitSeq = exitSeq;
+	public void setOrderSeqF(String orderSeqF) {
+		this.orderSeqF = orderSeqF;
+	}
+	public String getProductSeqF() {
+		return productSeqF;
+	}
+	public void setProductSeqF(String productSeqF) {
+		this.productSeqF = productSeqF;
+	}
+	public String getDelivaryNameCd() {
+		return delivaryNameCd;
+	}
+	public void setDelivaryNameCd(String delivaryNameCd) {
+		this.delivaryNameCd = delivaryNameCd;
+	}
+	public String getMemberSeqF() {
+		return memberSeqF;
+	}
+	public void setMemberSeqF(String memberSeqF) {
+		this.memberSeqF = memberSeqF;
+	}
+	public String getExitsSeq() {
+		return exitsSeq;
+	}
+	public void setExitsSeq(String exitsSeq) {
+		this.exitsSeq = exitsSeq;
 	}
 	public String getOrderSeq() {
 		return orderSeq;
@@ -32,17 +62,12 @@ public class ExitsDto {
 	public void setOrderSeq(String orderSeq) {
 		this.orderSeq = orderSeq;
 	}
-	public String getPrdouctSeqF() {
-		return prdouctSeqF;
+	
+	public Integer getExitsAccount() {
+		return exitsAccount;
 	}
-	public void setPrdouctSeqF(String prdouctSeqF) {
-		this.prdouctSeqF = prdouctSeqF;
-	}
-	public Integer getExitAccount() {
-		return exitAccount;
-	}
-	public void setExitAccount(Integer exitAccount) {
-		this.exitAccount = exitAccount;
+	public void setExitsAccount(Integer exitsAccount) {
+		this.exitsAccount = exitsAccount;
 	}
 	public String getDelivaryNumber() {
 		return delivaryNumber;
@@ -62,29 +87,33 @@ public class ExitsDto {
 	public void setDeliverName(String deliverName) {
 		this.deliverName = deliverName;
 	}
-	public Integer getStatusCd() {
-		return statusCd;
+	
+	
+	public Integer getDelivaryStatusCd() {
+		return delivaryStatusCd;
 	}
-	public void setStatusCd(Integer statusCd) {
-		this.statusCd = statusCd;
+	public void setDelivaryStatusCd(Integer delivaryStatusCd) {
+		this.delivaryStatusCd = delivaryStatusCd;
 	}
-	public Date getExitRegDate() {
-		return exitRegDate;
+	
+	public Date getExitsRegDate() {
+		return exitsRegDate;
 	}
-	public void setExitRegDate(Date exitRegDate) {
-		this.exitRegDate = exitRegDate;
+	public void setExitsRegDate(Date exitsRegDate) {
+		this.exitsRegDate = exitsRegDate;
 	}
-	public Date getExitModDate() {
-		return exitModDate;
+	public Date getExitsModDate() {
+		return exitsModDate;
 	}
-	public void setExitModDate(Date exitModDate) {
-		this.exitModDate = exitModDate;
+	public void setExitsModDate(Date exitsModDate) {
+		this.exitsModDate = exitsModDate;
 	}
-	public Integer getExitDelNy() {
-		return exitDelNy;
+	
+	public Integer getExitsDelNy() {
+		return exitsDelNy;
 	}
-	public void setExitDelNy(Integer exitDelNy) {
-		this.exitDelNy = exitDelNy;
+	public void setExitsDelNy(Integer exitsDelNy) {
+		this.exitsDelNy = exitsDelNy;
 	}
 	public String getProductName() {
 		return productName;

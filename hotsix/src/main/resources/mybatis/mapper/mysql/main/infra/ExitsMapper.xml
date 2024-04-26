@@ -5,60 +5,118 @@
 <resultMap id="resultMapObj" type="com.hotsix.infra.exits.ExitsDto"></resultMap>
 	
 	<select id="selectList" resultMap="resultMapObj">
-	 select
-		 a.orderSeq
-		, a.orderRegDate
-		, a.orderModDate
-		, b.orderProductSeq
-		, b.orderAccount
-		, c.productName
-		, c.productPrice
-		, c.productTypeCd
-		, d.memberTypeCd
-		, d.memberName
-        , e.deliverName
-        , e.delivaryNumber
-        , e.delivaryNameCd
-        , e.statusCd
-        from
-         exits e
-		left join orders a on e.orderSeqF = a.orderSeq
-		left join orderProduct b on b.productSeqF = a.orderSeq
-		left join product c on c.productSeq = b.productSeqF
-		left join member d on d.memberSeq = b.orderSeqF
-        ;
+	SELECT 
+			a.exitsSeq
+			,b.orderSeq
+			, a.exitsRegDate
+			, a.exitsModDate
+			, c.orderProductSeq
+			, a.exitsAccount
+			, d.productName
+			, d.productPrice
+			, d.productTypeCd
+			, e.memberTypeCd
+			, e.memberName
+			, a.deliverName
+			, a.delivaryNumber
+			, a.delivaryNameCd
+			, a.delivaryStatusCd
+			,a.orderSeqF
+        FROM exits a
+        LEFT JOIN orders b ON b.orderSeq = a.orderSeqF
+        LEFT JOIN orderProduct c ON c.orderSeqF = b.orderSeq
+        LEFT JOIN product d ON d.productSeq = c.productSeqF
+        LEFT JOIN member e ON e.memberSeq = b.memberSeqF
+        
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
-	
+		SELECT 
+			a.exitsSeq
+			,b.orderSeq
+			, a.exitsRegDate
+			, a.exitsModDate
+			, c.orderProductSeq
+			, a.exitsAccount
+			, d.productName
+			, d.productPrice
+			, d.productTypeCd
+			, e.memberTypeCd
+			, e.memberName
+			, a.deliverName
+			, a.delivaryNumber
+			, a.delivaryNameCd
+			, a.delivaryStatusCd
+			,a.orderSeqF
+        FROM exits a
+        LEFT JOIN orders b ON b.orderSeq = a.orderSeqF
+        LEFT JOIN orderProduct c ON c.orderSeqF = b.orderSeq
+        LEFT JOIN product d ON d.productSeq = c.productSeqF
+        LEFT JOIN member e ON e.memberSeq = b.memberSeqF
+        WHERE 1=1
+        	AND a.exitsSeq = #{exitsSeq}
 	</select>
 	
 	
-	<insert id="insert">
-		insert into exits(
-			orderSeqF
-			,exitAccount
-			,delivaryNameCd
-			,delivaryNumber
-			,deliverName
-			,statusCd
-		)values(
-			#{orderAccount}
-			,#{productSeqF}
-			,#{memberSeqF}
-		)
-	</insert>
-	
-	<update id="update">
+<!-- 	<insert id="insert"> -->
+<!-- 		insert into exits( -->
+<!-- 			orderSeqF -->
+<!-- 			,exitAccount -->
+<!-- 			,delivaryNameCd -->
+<!-- 			,delivaryNumber -->
+<!-- 			,deliverName -->
+<!-- 			,statusCd -->
+<!-- 		)values( -->
+<!-- 			#{orderAccount} -->
+<!-- 			,#{productSeqF} -->
+<!-- 			,#{memberSeqF} -->
+<!-- 		) -->
+<!-- 	</insert> -->
+
+		<insert id="insert">
+			INSERT INTO exits(
+				orderSeqF
+				,delivaryNameCd
+				,deliverName
+				,delivaryNumber
+				,productSeqF
+				,exitsAccount
+			)VALUES(
+				#{orderSeq}
+				,#{delivaryNameCd}
+				,#{deliverName}
+				,#{delivaryNumber}
+				,#{productSeqF}
+				,#{exitsAccount}
+			)
+		</insert>
 		
+
+	<update id="update">
+		UPDATE exits a
+		LEFT JOIN product b ON a.productSeqF = b.productSeq
+		SET 
+			a.exitsAccount = #{exitsAccount}
+			,a.delivaryStatusCd = #{delivaryStatusCd}
+			,b.productName = #{productName}
+			,b.productPrice = #{productPrice}
+		WHERE 1=1
+			AND a.exitsSeq = #{exitsSeq}
+			
 	</update>
 	
 	<update id="uelete">
-		
+		UPDATE exits
+    	set
+    	exitsDelNy = 1
+    	WHERE 1=1 
+    		AND	exitsSeq = #{exitsSeq}
 	</update>
 	
 	<delete id="delete">
-		
+		DELETE FROM  exits
+    	WHERE  1=1
+    		AND exitsSeq = #{exitsSeq}
 	</delete>	
 	
 

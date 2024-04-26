@@ -55,9 +55,12 @@ public class ExitsController {
 		
 		setSearch(vo);
 		
-		if (vo.getTotalRows() > 0) {
-			model.addAttribute("list", service.selectList(vo));
-		}
+		model.addAttribute("list", service.selectList(vo));
+		
+		
+//		if (vo.getTotalRows() > 0) {
+//			model.addAttribute("list", service.selectList(vo));
+//		}
 		
 		return "adm/infra/exits/exitsXdmList";
 	}
@@ -73,7 +76,41 @@ public class ExitsController {
 	}
 	
 	@RequestMapping(value = "/exitsInsert")
-	public String exitsInsert() throws Exception {
+	public String exitsInsert(ExitsDto dto) throws Exception {
+		
+		service.insert(dto);
+		
+		return "redirect:/exitsXdmList";
+	}
+	
+	@RequestMapping(value = "/exitsUpdate")
+	public String exitsUpdate(ExitsDto dto) throws Exception {
+		
+		service.update(dto);
+		
+		return "redirect:/exitsXdmList";
+	}
+	
+	@RequestMapping(value = "/exitsForm")
+	public String exitsForm(ExitsDto dto,Model model) throws Exception {
+		
+		model.addAttribute("item", service.selectOne(dto));
+		
+		return "adm/infra/exits/exitsForm";
+	}
+	
+	@RequestMapping(value = "/exitsUelete")
+	public String exitsUelete(ExitsDto dto) throws Exception {
+		
+		service.uelete(dto);
+		
+		return "redirect:/exitsXdmList";
+	}
+	
+	@RequestMapping(value = "/exitsDelete")
+	public String exitsDelete(ExitsDto dto) throws Exception {
+		
+		service.delete(dto);
 		
 		return "redirect:/exitsXdmList";
 	}
