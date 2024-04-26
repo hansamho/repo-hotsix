@@ -16,11 +16,26 @@ public class ProductService {
 		return dao.selectList(vo);
 	}
 	
+	public List<ProductDto> companyList(ProductVo vo){
+		
+		return dao.companyList(vo);
+	}
+	
 	public ProductDto selectOne(ProductDto dto) {
 	
 		return dao.selectOne(dto);
 	}
+	
+	public ProductDto memberOne(ProductDto dto) {
+		
+		return dao.memberOne(dto);
+	}
 
+	public int selectOneCount(ProductVo vo) {
+		
+		return dao.selectOneCount(vo);
+	}
+	
 	public int insert(ProductDto dto) {
 		
 		return dao.insert(dto);
@@ -41,10 +56,5 @@ public class ProductService {
 		return dao.delete(dto);
 	}
 	
-//	public int selectOneCount(ProductVo vo) {
-//		
-//		return dao.selectOneCount(vo);
-//	}
-//	
 
 }

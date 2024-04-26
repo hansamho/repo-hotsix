@@ -111,7 +111,6 @@
 													<option value="1" th:selected="${vo.shOption == 1}">코드그룹 seq</option>
 <!-- 													<option value="2" th:selected="${vo.shOption == 2}">코드그룹 이름</option> -->
 													<option value="2" th:selected="${vo.shOption == 2}">코드 seq</option>
-													<option value="3" th:selected="${vo.shOption == 3}">코드 이름</option>
 												</select>
 											</div>
 											<div class="col-2 gy-2">
@@ -127,7 +126,7 @@
 										<div class="row  gx-2">
 											<div class="col gx-2">
 												<strong>Total :</strong>
-												<label class="form-label" th:text="${count}"></label>
+												<label class="form-label" th:text="${vo.totalRows}"></label>
 											</div>
 											<div class="col-1 gy-2" align="right">
 												<select class="form-select form-select-sm" id="rowNumToShow" name="rowNumToShow"
@@ -160,7 +159,7 @@
 														<td><input type="checkbox" id="checkboxType2"></td>
 														<td th:text="${list.productSeq}"></td>
 														<td>
-															<a th:href="@{/codeForm(productSeq=${list.productSeq})}" th:text="${list.productName}"></a>
+															<a th:href="@{/productForm(productSeq=${list.productSeq})}" th:text="${list.productName}"></a>
 														</td>
 														<td th:if="${list.productTypeCd != null}"
 															th:text="${@codeService.selectOneCachedCode(list.productTypeCd)}"
@@ -299,8 +298,8 @@
 	 		format: 'Y-m-d'
 			  });
 			 });
-			let goUrlXdmList = "/codeXdmList";								/* ### */
-			let goUrlXdmForm = "/codeForm";								/* ### */
+			let goUrlXdmList = "/productXdmList";								/* ### */
+			let goUrlXdmForm = "/productForm";								/* ### */
 			let goUrlXdmMultiUele = "/codeXdmMultiUele";			/* ### */
 			let goUrlXdmMultiDele = "/codeXdmMultiDele";			/* ### */
 			let goUrlXdmView = "/codeView";								/* ### */

@@ -4,6 +4,28 @@
 <mapper namespace="com.hotsix.infra.product.ProductDao">
 <resultMap id="resultMapObj" type="com.hotsix.infra.product.ProductDto"></resultMap>
 
+<sql id ="selectCommon">
+      from
+		product
+	  where 1=1 
+		<!--AND d.memberTypeCd = 8-->
+<!--         <if test="shUseNy != null and !shUseNy.equals('')">AND ifcgUseNy = #{shUseNy}</if> -->
+        <if test="shDelny != null and !shDelny.equals('')">AND productDelNy = #{shDelny}</if>
+       
+				<choose>
+					<when test="shOptionDate == 1">AND productRegDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND productModDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				</choose>
+    
+        <choose>
+            <when test="shOption == 2">AND productSeq = #{shValue}</when>
+            <when test="shOption == 3">AND productName LIKE CONCAT('%',#{shValue},'%')</when>
+            
+            
+<!--             <when test="shOption == 3">AND ifcgNameEng LIKE CONCAT('%',#{shValue},'%')</when> -->
+        </choose>
+       </sql>
+
 <select id="selectList" resultMap="resultMapObj">
 	select
 		productSeq
@@ -15,8 +37,31 @@
 		,productRegDate
 		,productModDate
 		,productDelNy
+	<include refid="selectCommon" />         
+      limit #{rowNumToShow} offset #{startRnumForMysql}
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	<select id="companyList" resultMap="resultMapObj">
+	select
+		companySeq
+		,companyName
 	from
-		product
+		company
+	</select>
+	
+	<select id="memberOne" resultMap="resultMapObj">
+	select
+		memberSeq
+		,memberName
+	from
+		member
+	where
+		companySeqF = #{companySeqF}
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
@@ -42,26 +87,44 @@
 			productName
 			,productPrice
 			,productTypeCd
-			,productAccount
+			,productCode
+			,memberSeqF
+			,companySeqF
 		)VALUES(
 			#{productName}
 			,#{productPrice}
 			,#{productTypeCd}
-			,#{productAccount}
+			,#{productCode}
+			,#{memberSeqF}
+			,#{companySeqF}
 		)
 	</insert>
 	
 	
 	<update id="update">
+	update product
+		set
+			productName = #{productName}
+            ,productPrice = #{productPrice}
+         	,productTypeCd = #{productTypeCd}
+         	,productCode = #{productCode}
+    		where 1=1
+    		and productSeq = #{productSeq}
 		
 	</update>
 	
 	<update id="uelete">
-		
+		update product
+		set
+		productDelNy = 1
+    		where 1=1
+    		and productSeq = #{productSeq}
 	</update>
 	
 	<delete id="delete">
-		
+		delete from product
+		where 1 = 1
+			and productSeq = #{productSeq}
 	</delete>	
 		
 </mapper>

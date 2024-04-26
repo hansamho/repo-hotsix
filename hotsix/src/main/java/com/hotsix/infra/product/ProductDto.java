@@ -13,6 +13,13 @@ public class ProductDto {
 	private Date productRegDate;
 	private Date productModDate;
 	private Integer productDelNy;
+	private String companySeq;
+	private String companyName;
+	private String memberSeq;
+	private String memberName;
+	private String companySeqF;
+	private String memberSeqF;
+	
 	public String getProductName() {
 		return productName;
 	}
@@ -66,6 +73,42 @@ public class ProductDto {
 	}
 	public void setProductSeq(String productSeq) {
 		this.productSeq = productSeq;
+	}
+	public String getCompanySeq() {
+		return companySeq;
+	}
+	public void setCompanySeq(String companySeq) {
+		this.companySeq = companySeq;
+	}
+	public String getCompanyName() {
+		return companyName;
+	}
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+	public String getMemberSeq() {
+		return memberSeq;
+	}
+	public void setMemberSeq(String memberSeq) {
+		this.memberSeq = memberSeq;
+	}
+	public String getCompanySeqF() {
+		return companySeqF;
+	}
+	public void setCompanySeqF(String companySeqF) {
+		this.companySeqF = companySeqF;
+	}
+	public String getMemberName() {
+		return memberName;
+	}
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+	public String getMemberSeqF() {
+		return memberSeqF;
+	}
+	public void setMemberSeqF(String memberSeqF) {
+		this.memberSeqF = memberSeqF;
 	}
 	
 }
