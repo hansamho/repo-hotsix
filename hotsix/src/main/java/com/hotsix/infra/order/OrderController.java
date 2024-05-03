@@ -74,7 +74,7 @@ public class OrderController {
 	public String orderAdd(@ModelAttribute("vo") MemberVo mvo,ProductVo pvo, Model model) throws Exception {
 		
 		model.addAttribute("list", mservice.memberList(mvo));
-		model.addAttribute("plist", pservice.selectList(pvo));
+		model.addAttribute("plist", pservice.productList(pvo));
 		
 		return "adm/infra/order/orderAdd";
 	}

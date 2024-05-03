@@ -56,5 +56,8 @@ public class ProductService {
 		return dao.delete(dto);
 	}
 	
-
+	public List<ProductDto> productList(ProductVo vo){
+		return dao.productList(vo);
+	}
+	
 }

@@ -45,7 +45,7 @@ public class ArrivalController {
 		
 		model.addAttribute("list", companyService.selectList(cvo));
 		model.addAttribute("mlist", memberService.memberList(mvo));
-		model.addAttribute("plist", productService.selectList(pvo));
+		model.addAttribute("plist", productService.productList(pvo));
 		
 		
 		return "/adm/infra/arrival/arrivalAdd";

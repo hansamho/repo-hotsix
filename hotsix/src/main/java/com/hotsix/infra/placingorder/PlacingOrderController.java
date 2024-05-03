@@ -54,7 +54,7 @@ public class PlacingOrderController {
 	public String placingOrderAdd(PlacingOrderDto dto,MemberVo mvo,ProductVo pvo,  Model model) throws Exception {
 		
 		model.addAttribute("list", memberService.memberList(mvo));
-		model.addAttribute("plist", productService.selectList(pvo));
+		model.addAttribute("plist", productService.productList(pvo));
 		
 		return "adm/infra/placingorder/placingOrderAdd";
 	}

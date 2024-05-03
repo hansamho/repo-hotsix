@@ -41,6 +41,23 @@
       limit #{rowNumToShow} offset #{startRnumForMysql}
 	</select>
 	
+	<select id="productList">
+		select
+			productSeq
+			,productName
+			,productCode
+			,productPrice
+			,productTypeCd
+			,productAccount
+			,productRegDate
+			,productModDate
+			,productDelNy
+		from
+		product
+	  where 1=1 
+	</select>
+	
+	
 	<select id="selectOneCount" resultType="Integer">
 		SELECT COUNT(*)
 		<include refid="selectCommon" />

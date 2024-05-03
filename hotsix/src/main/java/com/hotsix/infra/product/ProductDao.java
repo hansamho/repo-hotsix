@@ -21,5 +21,7 @@ public List<ProductDto> selectList(ProductVo vo);
 	public int uelete(ProductDto dto);
 
 	public int delete(ProductDto dto);
+	
+	public List<ProductDto> productList(ProductVo vo);
 
 }
