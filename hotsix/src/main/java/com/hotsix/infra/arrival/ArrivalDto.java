@@ -28,8 +28,16 @@ public class ArrivalDto {
 	private Integer memberTypeCd;
 	private String memberSeqF;
 	
+	//발주
+	private String poProductSeq;
 	
 	
+	public String getPoProductSeq() {
+		return poProductSeq;
+	}
+	public void setPoProductSeq(String poProductSeq) {
+		this.poProductSeq = poProductSeq;
+	}
 	public String getCompanySeq() {
 		return companySeq;
 	}

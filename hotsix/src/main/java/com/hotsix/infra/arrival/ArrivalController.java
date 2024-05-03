@@ -1,10 +1,14 @@
 package com.hotsix.infra.arrival;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hotsix.common.constants.Constants;
 import com.hotsix.common.util.UtilDateTime;
@@ -12,6 +16,9 @@ import com.hotsix.infra.company.CompanyService;
 import com.hotsix.infra.company.CompanyVo;
 import com.hotsix.infra.member.MemberService;
 import com.hotsix.infra.member.MemberVo;
+import com.hotsix.infra.placingorder.PlacingOrderDto;
+import com.hotsix.infra.placingorder.PlacingOrderService;
+import com.hotsix.infra.placingorder.PlacingOrderVo;
 import com.hotsix.infra.product.ProductService;
 import com.hotsix.infra.product.ProductVo;
 
@@ -26,6 +33,8 @@ public class ArrivalController {
 	@Autowired
 	CompanyService companyService;
 	
+	@Autowired 
+	PlacingOrderService poService;
 	
 	public void setSearch(ArrivalVo vo) throws Exception {
 		/* 최초 화면 로딩시에 세팅은 문제가 없지만 */
@@ -79,15 +88,41 @@ public class ArrivalController {
 	}
 	
 	@RequestMapping(value="arrivalAdd")
-	public String arrivalAdd(ArrivalVo vo,ArrivalDto dto,CompanyVo cvo,MemberVo mvo, ProductVo pvo, Model model)throws Exception{
+	public String arrivalAdd(ArrivalVo vo,ArrivalDto dto,CompanyVo cvo,MemberVo mvo,PlacingOrderVo povo ,ProductVo pvo, Model model)throws Exception{
 		
 		model.addAttribute("list", companyService.selectList(cvo));
 		model.addAttribute("mlist", memberService.memberList(mvo));
 		model.addAttribute("plist", productService.productList(pvo));
+		model.addAttribute("polist",service.placingOrderList(dto));
 		
 		
 		return "/adm/infra/arrival/arrivalAdd";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "placingSelect")
+	public Map<String, Object> placingSelect(ArrivalDto dto,PlacingOrderDto pdto,Model model) throws Exception {
+		
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+			System.out.println(pdto.getPoProductSeq());
+			System.out.println("------------------");
+			System.out.println("------------------");
+			System.out.println("------------------");
+			System.out.println("------------------");
+		if(pdto.getPoProductSeq() != null) {
+			
+	        // returnMap에도 성공 여부와 함께 데이터를 담아 전달
+	        returnMap.put("rt", "success");
+	        returnMap.put("itemPo", service.placingOrderOne(dto));
+		} else {
+			System.out.println(pdto.getPoProductSeq());
+			returnMap.put("rt", "fail");
+		}
+		return returnMap;
+	}
+	
+	
+	
 	
 	@RequestMapping(value="/arrivalInsert")
 	public String arrivalInsert(ArrivalDto dto) throws Exception {

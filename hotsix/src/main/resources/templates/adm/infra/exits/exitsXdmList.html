@@ -169,7 +169,8 @@
 														<td th:text="${list.exitsAccount}"></td>
 <!-- 														<td th:text="${list.productCode}"></td> -->
 														<td th:text="${list.deliverName}"></td>
-														<td th:text="${list.delivaryName}"></td>
+														<td th:if="${list.delivaryNameCd != null}" th:text="${@codeService.selectOneCachedCode(list.delivaryNameCd)}"class="delivaryNameCd align-middle"></td>
+														<td th:unless="${list.delivaryNameCd != null}"class="delivaryNameCd align-middle"></td>
 														<td th:text="${list.delivaryNumber}"></td>
 														<td th:if="${list.delivaryStatusCd != null}" th:text="${@codeService.selectOneCachedCode(list.delivaryStatusCd)}"class="delivaryStatusCd align-middle"></td>
 														<td th:unless="${list.delivaryStatusCd != null}"class="delivaryStatusCd align-middle"></td>

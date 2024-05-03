@@ -41,4 +41,12 @@ public class ArrivalService {
 	public int selectOneCount(ArrivalVo vo) {
 		return dao.selectOneCount(vo);
 	}
+	
+	public List<ArrivalDto> placingOrderList(ArrivalDto dto){
+		return dao.placingOrderList(dto);
+	}
+	
+	public ArrivalDto placingOrderOne(ArrivalDto dto) {
+		return dao.placingOrderOne(dto);
+	}
 }

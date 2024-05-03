@@ -76,11 +76,57 @@
 		LEFT JOIN company f on f.companySeq = d.companySeqF
 		WHERE 1=1
 		AND a.arrivalSeq = #{arrivalSeq}
-	
 	</select>
 	
-	<select id="arrivalList" resultMap="resultMapObj">
-		
+	<select id="placingOrderList" resultMap="resultMapObj">
+		SELECT
+			a.poProductSeq
+			,a.poAccount
+			,c.productName
+			,c.productPrice
+			,c.productTypeCd
+			,d.memberName
+			,d.memberTypeCd
+			,a.poProductDelNy
+            ,a.poProductRegDate
+            ,a.poProductModDate
+		FROM
+				poProduct a
+		LEFT JOIN placingOrder b 
+			on a.poSeqF = b.poSeq
+		LEFT JOIN product c 
+			on a.productSeqF = c.productSeq
+		LEFT JOIN member d 
+			on b.memberSeqF = d.memberSeq
+		WHERE 1=1 
+		 	
+	</select>
+	
+	
+	<select id="placingOrderOne" resultMap="resultMapObj">
+		SELECT
+			a.poProductSeq
+			,a.poAccount
+			,c.productName
+			,c.productPrice
+			,c.productTypeCd
+			,d.memberName
+			,d.memberTypeCd
+			,a.poProductDelNy
+            ,a.poProductRegDate
+            ,a.poProductModDate
+            ,a.productSeqF
+            ,b.memberSeqF
+		FROM
+				poProduct a
+		LEFT JOIN placingOrder b 
+			on a.poSeqF = b.poSeq
+		LEFT JOIN product c 
+			on a.productSeqF = c.productSeq
+		LEFT JOIN member d 
+			on b.memberSeqF = d.memberSeq
+		WHERE 1=1 
+		AND poProductSeq = #{poProductSeq}
 	</select>
 	
 	<insert id="insert">

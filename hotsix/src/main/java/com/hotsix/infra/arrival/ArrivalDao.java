@@ -19,4 +19,8 @@ public interface ArrivalDao {
 	public int delete(ArrivalDto dto);
 	
 	public int selectOneCount(ArrivalVo vo);
+	
+	public List<ArrivalDto> placingOrderList(ArrivalDto dto);
+	
+	public ArrivalDto placingOrderOne(ArrivalDto dto);
 }

@@ -97,7 +97,8 @@
 										  		<label class="form-label">택배사</label>
 										  		<select id="delivaryNameCd" name="delivaryNameCd" class="form-select">
 														<option value="">택배사를 선택하세요</option>
-														<option th:each="list : ${@codeService.selectListCachedCode(6)}" th:value="${list.codeGroupSeqF}" th:text="${list.codeName}"></option>
+														<option th:each="list : ${@codeService.selectListCachedCode(6)}" th:value="${list.codeSeq}" th:text="${list.codeName}"
+														th:selected="${list.codeSeq} == ${item?.delivaryNameCd}"></option>
 												</select>
 										  	</div>
 										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
@@ -113,7 +114,7 @@
 										  		<select id="delivaryStatusCd" name="delivaryStatusCd" class="form-select">
 														<option value="">배송상태를 선택하세요</option>
 														<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.codeSeq}" th:text="${list.codeName}"
-														th:selected="${list.codeSeq} == ${item?.delivaryNameCd}"></option>
+														th:selected="${list.codeSeq} == ${item?.delivaryStatusCd}"></option>
 												</select>
 										  	</div>
 										  	<div class="d-flex justify-content-between mt-4">
