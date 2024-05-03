@@ -63,9 +63,11 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/memberForm")
-	public String memberForm(MemberDto dto, Model model) throws Exception {
+	public String memberForm(MemberDto dto, CompanyVo vo,Model model) throws Exception {
 		
 		model.addAttribute("item", service.selectOne(dto));
+		
+		model.addAttribute("list", companyService.selectList(vo));
 		
 		return "adm/infra/member/memberForm";
 	}

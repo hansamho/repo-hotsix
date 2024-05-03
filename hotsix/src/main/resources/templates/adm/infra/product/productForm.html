@@ -72,7 +72,7 @@
 										<div class="card-header">
 											<div class="card-title">상품 관리</div>
 										</div>
-										<form method="post">
+										<form method="post" action="productUpDate">
 											<div class="row">
 													<input type="hidden" name="productSeq" th:value="${item.productSeq}" class="form-control">
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
@@ -87,7 +87,8 @@
 												</div>
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
 													<label class="form-label">상품가격</label>
-													<input type="text" name="productPrice" th:value="${item.productPrice}" class="form-control">
+													<input type="text" id="productPrice" name="productPrice" th:value="${item.productPrice}" class="form-control">
+													<div id="productPriceFeedback" class="invalid-feedback"></div>
 												</div>
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
 													<label class="form-label">상품코드</label>
@@ -99,7 +100,7 @@
 												<div class="col gy-2" align="right">	
 													<button type="submit" class="btn btn-primary" onclick="javascript: form.action='productDelete';">데이터 삭제</button>
 													<button type="submit" class="btn btn-primary" onclick="javascript: form.action='productUelete';">N,Y수정</button>
-													<button type="submit" class="btn btn-primary" onclick="javascript: form.action='productUpDate';">저장</button>
+													<button type="submit" id="btnSubmit" class="btn btn-primary" onclick="javascript: form.action='productUpDate';">저장</button>
 												</div>
 											</div>
 										</form>
@@ -157,5 +158,49 @@
 		<!-- Data Tables -->
 		<script src="/adm/template/gear/assets/vendor/datatables/dataTables.min.js"></script>
 	</body>
+	
+	<script type="text/javascript">
+	let goUrlXdmList = "/productXdmList";
+	let goUrlXdmLogin = "/codeGroupLogin";
+	let goUrlXdmForm = "/codeGroupForm";
+	let goUrlXdmUpdt = "/productUpDate";
+	let goUrlXdmInsert = "/productInsert";								/* ### */
+	
+	
+	document.getElementById("btnSubmit").onclick = function () {
+		if(validationInsert() == false){
+			return false;
+		} else { 
+			form.action = goUrlXdmUpdt;
+			form.submit();
+		}
+		
+		
 
+	}
+	
+	function validationInsert(){
+		if(validationUpdt() == false) return false;
+
+	}
+	
+	function validationUpdt(){
+		if(!checkOnlyNumberH('productPrice', 2, 0, "상품 가격은 숫자만 입력 가능합니다.")) return false;
+	
+	}
+		
+
+	
+	
+	nullToEmpty = function(value){
+		if(value == null || value == 'null' || value.length == 0){
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	
+	</script>
+	
 </html>

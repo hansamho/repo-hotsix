@@ -74,6 +74,7 @@
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
 													<label class="form-label">상품이름</label>
 													<input type="text" name="productName" id="productName" class="form-control">
+													<div id="productNameFeedback" class="invalid-feedback"></div>
 												</div>
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
 													<label for="productTypeCd" class="form-label">상품타입</label>
@@ -85,10 +86,12 @@
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
 													<label class="form-label">상품가격</label>
 													<input type="text" name="productPrice" id="productPrice" class="form-control">
+													<div id="productPriceFeedback" class="invalid-feedback"></div>
 												</div>
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
 													<label class="form-label">상품코드</label>
 													<input type="text" name="productCode" id="productCode" class="form-control">
+													<div id="productCodeFeedback" class="invalid-feedback"></div>
 												</div>
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
 													<label class="form-label">회사이름</label>
@@ -168,14 +171,11 @@
 	
 	<script type="text/javascript">
 	
-	let goUrlXdmList = "/codeGroupXdmList";
+	let goUrlXdmList = "/productXdmList";
 	let goUrlXdmLogin = "/codeGroupLogin";
 	let goUrlXdmForm = "/codeGroupForm";
-	let goUrlXdmUpdt = "/codeGroupUpdt";
-	let goUrlXdmInsert = "/codeGroupInsert";								/* ### */
-	let goUrlXdmMultiUele = "/codeGroupXdmMultiUele";			/* ### */
-	let goUrlXdmMultiDele = "/codeGroupXdmMultiDele";			/* ### */
-	let goUrlXdmView = "/codeGroupAdmView";
+	let goUrlXdmUpdt = "/productUpdate";
+	let goUrlXdmInsert = "/productInsert";								/* ### */
 	
 	
 	document.getElementById("btnSubmit").onclick = function () {
@@ -187,31 +187,22 @@
 		}
 		
 		
-// 		validationInsert();
-// 		if(seq.value == "0" || seq.value == ""){
-// 			if(validationInsert() == false) return false;
-// 			form.action = goUrlXdmInsert;
-// 			form.submit();
-// 		} else {
-// 			if(validationUpdt() == false) return false;
-// 			form.action = goUrlXdmUpdt;
-// 			form.submit();
-// 		}
+
 	}
 	
 	function validationInsert(){
 		if(validationUpdt() == false) return false;
-// 		validationUpdt();
-// 		alert("validationInsert");
+
 	}
 	
 	function validationUpdt(){
-		if(!checkOnlyKoreanEnglishNumber('cgName', 2, 0, "코드그룹 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")) return false;
+		if(!checkOnlyKoreanEnglishNumber('productName', 2, 0, "상품은 한글, 영문대소문자, 숫자만 입력 가능합니다.")) return false;
+		if(!checkOnlyNumberH('productPrice', 2, 0, "상품 가격은 숫자만 입력 가능합니다.")) return false;
+		if(!checkOnlyNumberH('productCode', 2, 0, "상품 코드는 숫자만 입력 가능합니다.")) return false;
 	
 	}
 		
-// 		alert("validationUpdt");
-// 		alert("cgName : "+document.getElementById("cgName").value);	
+
 	
 	
 	nullToEmpty = function(value){
@@ -261,5 +252,10 @@
 	</script>
 	
 	</body>
+
+
+	
+
+
 
 </html>

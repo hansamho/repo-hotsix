@@ -73,16 +73,18 @@
 										<div class="card-header">
 											<div class="card-title">멤버 관리</div>
 										</div>
-										<form method="post">
+										<form method="post" action="update">
 											<div class="row">
 													<input type="hidden" name="memberSeq" th:value="${item.memberSeq}" class="form-control">
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
 													<label class="form-label">이름</label>
-													<input type="text" name="memberName" th:value="${item.memberName}" class="form-control">
+													<input type="text" id="memberName" name="memberName" th:value="${item.memberName}" class="form-control">
+													<div id="memberNameFeedback" class="invalid-feedback"></div>
 												</div>
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
 													<label class="form-label">아이디</label>
-													<input type="text" name="memberId" th:value="${item.memberId}" class="form-control">
+													<input type="text" id="memberId" name="memberId" th:value="${item.memberId}" class="form-control">
+													<div id="memberIdFeedback" class="invalid-feedback"></div>
 												</div>
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
 													<label class="form-label">비밀번호</label>
@@ -90,23 +92,32 @@
 												</div>
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
 													<label class="form-label">전화번호</label>
-													<input type="text" name="phoneNumber" th:value="${item.phoneNumber}" class="form-control">
+													<input type="text" id="phoneNumber" name="phoneNumber" th:value="${item.phoneNumber}" class="form-control">
+													<div id="phoneNumberFeedback" class="invalid-feedback"></div>
 												</div>
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
-													<label class="form-label">권한</label>
-													<input type="text" name="memberTypeCd" th:value="${item.memberTypeCd}" class="form-control">
-												</div>
+										  		<label class="form-label">권한</label>
+										  		<select id="memberTypeCd" name="memberTypeCd" class="form-select">
+														<option value="">권한을 선택하세요</option>
+														<option th:each="list : ${@codeService.selectListCachedCode(3)}" th:value="${list.codeSeq}" th:text="${list.codeName}"
+														th:selected="${list.codeSeq} == ${item?.memberTypeCd}"></option>
+												</select>
+										  	</div>
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
-													<label class="form-label">회사이름(코드 값으로 입력하세요)</label>
-													<input type="text" id="companySeqF" name="companySeqF" th:value="${item.companyName}" class="form-control">
-												</div>
+										  		<label class="form-label">회사이름</label>
+										  		<select id="companySeq" name="companySeq" class="form-select col-md-6" >
+													<option value="">회사 이름을 선택하세요</option>
+													<option th:if="${#lists.isEmpty(List)}" th:each="list : ${list}" th:text="${list.companyName}" th:value="${list.companySeq}"></option>
+												</select>
+										  		<div id="cgNameFeedback" class="invalid-feedback"></div>
+										  	</div>
 												<div  class="col gy-2">
-													<button type="submit" class="btn btn-primary"><a th:href="@{/memberXdmList}" th:text="뒤로가기"></a></button>
+													<button type="submit" class="btn btn-primary"><a th:href="@{/memberXdmList}"></a>뒤로가기</button>
 												</div>
 												<div class="col gy-2" align="right">	
 													<button type="submit" class="btn btn-primary" onclick="javascript: form.action='delete';">데이터 삭제</button>
 													<button type="submit" class="btn btn-primary" onclick="javascript: form.action='uelete';">N,Y수정</button>
-													<button type="submit" class="btn btn-primary" onclick="javascript: form.action='update';">저장</button>
+													<button type="submit" id="btnSubmit" class="btn btn-primary" onclick="javascript: form.action='update';">저장</button>
 												</div>
 											</div>
 										</form>
@@ -164,5 +175,39 @@
 		<!-- Data Tables -->
 		<script src="/adm/template/gear/assets/vendor/datatables/dataTables.min.js"></script>
 	</body>
+	
+	
+	<script type="text/javascript">
+	
+	let goUrlXdmList = "/memberXdmList";
+	let goUrlXdmUpdt = "/memberUpdate";
+	let goUrlXdmInsert = "/memberInsert";								/* ### */
+	
+	
+	document.getElementById("btnSubmit").onclick = function () {
+		if(validationInsert() == false){
+			return false;
+		} else { 
+			form.action = goUrlXdmUpdt;
+			form.submit();
+		}
+		
+
+	}
+	
+	function validationInsert(){
+		if(validationUpdt() == false) return false;
+
+	}
+	
+	function validationUpdt(){
+		if(!checkOnlyKoreanEnglish('memberName', 2, 0, " 이름은 한글, 영문대소문자만 입력 가능합니다.")) return false;
+		if(!checkOnlyEnglishNumber('memberId', 2, 0, " 아이디는 영어, 숫자만 입력 가능합니다.")) return false;
+		if(!checkphoneNumberH('phoneNumber', 2, 0, "번호는 숫자만(11자리) 입력 가능합니다.")) return false;
+	}
+	
+	
+	
+	</script>
 
 </html>
