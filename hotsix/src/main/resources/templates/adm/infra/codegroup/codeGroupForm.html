@@ -71,7 +71,7 @@
 										<div class="card-header">
 											<div class="card-title">코드그룹 관리</div>
 										</div>
-										<form method="post">
+										<form method="post" action="codeGroupUpdate">
 											<div class="row">
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
 													<label class="form-label">seq</label>
@@ -79,8 +79,8 @@
 												</div>
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
 													<label class="form-label">코드그룹 이름</label>
-													<input type="text" name="codeGroupName" th:value="${item.codeGroupName}" class="form-control">
-													
+													<input type="text" id="codeGroupName" name="codeGroupName" th:value="${item.codeGroupName}" class="form-control">
+													<div id="codeGroupNameFeedback" class="invalid-feedback"></div>
 												</div>
 												<div  class="col gy-2">
 													<button type="submit" class="btn btn-primary"><a th:href="@{/codeGroupXdmList(codeGroupSeq=${item.codeGroupSeq})}" th:text="뒤로가기"></a></button>
@@ -88,7 +88,7 @@
 												<div class="col gy-2" align="right">	
 													<button type="submit" class="btn btn-primary" onclick="javascript: form.action='codeGroupDelete';">데이터 삭제</button>
 													<button type="submit" class="btn btn-primary" onclick="javascript: form.action='codeGroupUelete';">N,Y수정</button>
-													<button type="submit" class="btn btn-primary" onclick="javascript: form.action='codeGroupUpdate';">저장</button>
+													<button type="submit" id="btnSubmit" class="btn btn-primary" onclick="javascript: form.action='codeGroupUpdate';">저장</button>
 												</div>
 											</div>
 										</form>
@@ -145,6 +145,43 @@
 		
 		<!-- Data Tables -->
 		<script src="/adm/template/gear/assets/vendor/datatables/dataTables.min.js"></script>
+		
+		<script type="text/javascript">
+			
+		
+		</script>
+		
 	</body>
+	
+	<script type="text/javascript">
+	
+	let goUrlXdmList = "/codeGroupXdmList";
+	let goUrlXdmLogin = "/codeGroupLogin";
+	let goUrlXdmForm = "/codeGroupForm";
+	let goUrlXdmUpdt = "/codeGroupUpdate";
+	let goUrlXdmInsert = "/codeGroupInsert";								/* ### */
+	
+		
+	document.getElementById("btnSubmit").onclick = function () {
+		if(validationInsert() == false){
+			return false;
+		} else { 
+			form.action = goUrlXdmUpdt;
+			form.submit();
+		}
+
+	}
+	
+	function validationInsert(){
+		if(validationUpdt() == false) return false;
+
+	}
+	
+	function validationUpdt(){
+		if(!checkOnlyEnglish('codeGroupName', 2, 0, "코드 이름은 영문대소문자만 입력 가능합니다.")) return false;
+	}
+	
+	
+	</script>
 
 </html>

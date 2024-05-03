@@ -75,7 +75,7 @@
   										  	<input type="hidden" name="codeGroupSeq" id="codeGroupSeq" class="form-control" placeholder="seq" required>
   										  	<label class="form-label">코드그룹 이름</label>
 										  		<input type="text" name="codeGroupName" id="codeGroupName" class="form-control" placeholder="name" required>
-										  		<div id="cgNameFeedback" class="invalid-feedback"></div>
+										  		<div id="codeGroupNameFeedback" class="invalid-feedback"></div>
 										  	</div>
 										  	<div class="d-flex justify-content-between mt-4">
 											  	<div class="" align="left">
@@ -184,7 +184,7 @@
 	}
 	
 	function validationUpdt(){
-		if(!checkOnlyKoreanEnglishNumber('cgName', 2, 0, "코드그룹 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")) return false;
+		if(!checkOnlyKoreanEnglishNumber('codeGroupName', 2, 0, "코드그룹 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")) return false;
 	
 	}
 		

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hotsix.common.constants.Constants;
 import com.hotsix.common.util.UtilDateTime;
+import com.hotsix.infra.company.CompanyService;
+import com.hotsix.infra.company.CompanyVo;
 
 @Controller
 public class MemberController {
@@ -15,6 +17,8 @@ public class MemberController {
 	@Autowired
 	MemberService service;
 	
+	@Autowired
+	CompanyService companyService;
 	
 	
 	public void setSearch(MemberVo vo) throws Exception {
@@ -67,7 +71,9 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/memberAdd")
-	public String memberAdd() throws Exception {
+	public String memberAdd(CompanyVo vo,Model model) throws Exception {
+		
+		model.addAttribute("list", companyService.selectList(vo));
 		
 		return "adm/infra/member/memberAdd";
 	}

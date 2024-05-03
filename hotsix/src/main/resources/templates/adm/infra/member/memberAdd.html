@@ -74,22 +74,26 @@
 										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
 										  		<label class="form-label">이름</label>
 										  		<input type="text" name="memberName" id="memberName" class="form-control" >
-										  		<div id="cgNameFeedback" class="invalid-feedback"></div>
+										  		<div id="memberName
+										  		Feedback" class="invalid-feedback"></div>
 										  	</div>
-											<div class="col-lg-6 col-sm-4 col-12 gy-2">
-										  		<label class="form-label">아이디</label>
-										  		<input type="text" name="memberId" id="memberId" class="form-control">
-										  		<div id="cgNameFeedback" class="invalid-feedback"></div>
-										  	</div>
-										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
-										  		<label class="form-label">비밀번호</label>
-										  		<input type="text" name="memberPwd" id="memberPwd" class="form-control">
-										  		<div id="cgNameFeedback" class="invalid-feedback"></div>
-										  	</div>
+<!-- 											<div class="col-lg-6 col-sm-4 col-12 gy-2"> -->
+<!-- 										  		<label class="form-label">아이디</label> -->
+<!-- 										  		<input type="text" name="memberId" id="memberId" class="form-control"> -->
+<!-- 										  		<div id="cgNameFeedback" class="invalid-feedback"></div> -->
+<!-- 										  	</div> -->
+<!-- 										  	<div class="col-lg-6 col-sm-4 col-12 gy-2"> -->
+<!-- 										  		<label class="form-label">비밀번호</label> -->
+<!-- 										  		<input type="text" name="memberPwd" id="memberPwd" class="form-control"> -->
+<!-- 										  		<div id="cgNameFeedback" class="invalid-feedback"></div> -->
+<!-- 										  	</div> -->
 											<div class="col-lg-6 col-sm-4 col-12 gy-2">
 										  		<label class="form-label">성별</label>
-										  		<input type="text" name="genderCd" id="genderCd" class="form-control">
-										  		<div id="cgNameFeedback" class="invalid-feedback"></div>
+										  		<select id="genderCd" name="genderCdCd" class="form-select">
+														<option value="">성별을 선택하세요</option>
+														<option th:each="list : ${@codeService.selectListCachedCode(1)}" th:value="${list.codeSeq}" th:text="${list.codeName}"
+														th:selected="${list.codeSeq} == ${item?.genderCd}"></option>
+												</select>
 										  	</div>
 										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
 										  		<label class="form-label">전화번호</label>
@@ -98,7 +102,18 @@
 										  	</div>
 											<div class="col-lg-6 col-sm-4 col-12 gy-2">
 										  		<label class="form-label">권한</label>
-										  		<input type="text" name="memberTypeCd" id="memberTypeCd" class="form-control">
+										  		<select id="memberTypeCd" name="memberTypeCd" class="form-select">
+														<option value="">권한을 선택하세요</option>
+														<option th:each="list : ${@codeService.selectListCachedCode(3)}" th:value="${list.codeSeq}" th:text="${list.codeName}"
+														th:selected="${list.codeSeq} == ${item?.memberTypeCd}"></option>
+												</select>
+										  	</div>
+										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
+										  		<label class="form-label">회사이름</label>
+										  		<select id="companySeq" name="companySeq" class="form-select col-md-6" >
+													<option value="">회사 이름을 선택하세요</option>
+													<option th:if="${#lists.isEmpty(List)}" th:each="list : ${list}" th:text="${list.companyName}" th:value="${list.companySeq}"></option>
+												</select>
 										  		<div id="cgNameFeedback" class="invalid-feedback"></div>
 										  	</div>
 										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
@@ -172,17 +187,16 @@
 		
 		<!-- Data Tables -->
 		<script src="/adm/template/gear/assets/vendor/datatables/dataTables.min.js"></script>
+	</body>
+	
+	
+	
 	
 	<script type="text/javascript">
 	
-	let goUrlXdmList = "/codeGroupXdmList";
-	let goUrlXdmLogin = "/codeGroupLogin";
-	let goUrlXdmForm = "/codeGroupForm";
-	let goUrlXdmUpdt = "/codeGroupUpdt";
-	let goUrlXdmInsert = "/codeGroupInsert";								/* ### */
-	let goUrlXdmMultiUele = "/codeGroupXdmMultiUele";			/* ### */
-	let goUrlXdmMultiDele = "/codeGroupXdmMultiDele";			/* ### */
-	let goUrlXdmView = "/codeGroupAdmView";
+	let goUrlXdmList = "/memberXdmList";
+	let goUrlXdmUpdt = "/memberUpdate";
+	let goUrlXdmInsert = "/memberInsert";								/* ### */
 	
 	
 	document.getElementById("btnSubmit").onclick = function () {
@@ -193,44 +207,20 @@
 			form.submit();
 		}
 		
-		
-// 		validationInsert();
-// 		if(seq.value == "0" || seq.value == ""){
-// 			if(validationInsert() == false) return false;
-// 			form.action = goUrlXdmInsert;
-// 			form.submit();
-// 		} else {
-// 			if(validationUpdt() == false) return false;
-// 			form.action = goUrlXdmUpdt;
-// 			form.submit();
-// 		}
+
 	}
 	
 	function validationInsert(){
 		if(validationUpdt() == false) return false;
-// 		validationUpdt();
-// 		alert("validationInsert");
+
 	}
 	
 	function validationUpdt(){
-		if(!checkOnlyKoreanEnglishNumber('cgName', 2, 0, "코드그룹 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")) return false;
-	
+		if(!checkOnlyKoreanEnglishNumber('codeName', 2, 0, "코드 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")) return false;
 	}
-		
-// 		alert("validationUpdt");
-// 		alert("cgName : "+document.getElementById("cgName").value);	
 	
-	
-	nullToEmpty = function(value){
-		if(value == null || value == 'null' || value.length == 0){
-			return false;
-		} else {
-			return true;
-		}
-	}
+
 	
 	</script>
-	
-	</body>
 
 </html>
