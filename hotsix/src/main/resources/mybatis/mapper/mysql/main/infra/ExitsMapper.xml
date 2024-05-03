@@ -82,7 +82,7 @@
 				,productSeqF
 				,exitsAccount
 			)VALUES(
-				#{orderSeq}
+				#{orderSeqF}
 				,#{delivaryNameCd}
 				,#{deliverName}
 				,#{delivaryNumber}

@@ -68,7 +68,7 @@ public class ExitsController {
 	@RequestMapping(value = "/exitsXdmAdd")
 	public String exitsXdmAdd(@ModelAttribute("vo") MemberVo mvo,ProductVo pvo,Model model) throws Exception {
 		
-		model.addAttribute("plist", pservice.selectList(pvo));
+		model.addAttribute("plist", pservice.productList(pvo));
 		
 		model.addAttribute("mlist", mservice.memberList(mvo));
 		
