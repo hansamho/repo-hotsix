@@ -18,6 +18,10 @@ public class PlacingOrderService {
 		return dao.selectOne(dto);
 	}
 	
+	public int selectOneCount(PlacingOrderVo vo) {
+		
+		return dao.selectOneCount(vo);
+	}
 	public int insert(PlacingOrderDto dto) {
 		
 		dao.insert(dto);

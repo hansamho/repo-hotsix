@@ -8,6 +8,8 @@ public interface PlacingOrderDao {
 	
 	public PlacingOrderDto selectOne(PlacingOrderDto dto);
 	
+	public int selectOneCount(PlacingOrderVo vo);
+	
 	public int insert(PlacingOrderDto dto);
 	
 	public int placingInsert(PlacingOrderDto dto);

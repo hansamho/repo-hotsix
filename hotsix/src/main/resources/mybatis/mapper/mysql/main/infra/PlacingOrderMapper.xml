@@ -5,22 +5,26 @@
 <resultMap id="resultMapObj" type="com.hotsix.infra.placingorder.PlacingOrderDto"></resultMap>
 	
 	<sql id ="selectCommon">
-        FROM code a
-        LEFT JOIN codeGroup b
-		ON a.codeGroupSeqF = b.codeGroupSeq
+        FROM
+				poProduct a
+		LEFT JOIN placingOrder b 
+			on a.poSeqF = b.poSeq
+		LEFT JOIN product c 
+			on a.productSeqF = c.productSeq
+		LEFT JOIN member d 
+			on b.memberSeqF = d.memberSeq
         WHERE 1=1
 <!--         <if test="shUseNy != null and !shUseNy.equals('')">AND ifcgUseNy = #{shUseNy}</if> -->
-        <if test="shDelny != null and !shDelny.equals('')">AND a.codeDelNy = #{shDelny}</if>
+        <if test="shDelny != null and !shDelny.equals('')">AND a.poProductDelNy = #{shDelny}</if>
        
 				<choose>
-					<when test="shOptionDate == 1">AND a.codeRegDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
-					<when test="shOptionDate == 2">AND a.codeModDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 1">AND a.poProductRegDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND a.poProductModDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
 				</choose>
     
         <choose>
-            <when test="shOption == 1">AND a.codeGroupSeqF = #{shValue}</when>
-            <when test="shOption == 2">AND a.codedSeq = #{shValue}</when>
-            <when test="shOption == 3">AND a.codeName LIKE CONCAT('%',#{shValue},'%')</when>
+            <when test="shOption == 1">AND a.poProductSeq = #{shValue}</when>
+            <when test="shOption == 3">AND c.productName LIKE CONCAT('%',#{shValue},'%')</when>
             
             
 <!--             <when test="shOption == 3">AND ifcgNameEng LIKE CONCAT('%',#{shValue},'%')</when> -->
@@ -41,15 +45,15 @@
 			,a.poProductDelNy
             ,a.poProductRegDate
             ,a.poProductModDate
-		FROM
-				poProduct a
-		LEFT JOIN placingOrder b 
-			on a.poSeqF = b.poSeq
-		LEFT JOIN product c 
-			on a.productSeqF = c.productSeq
-		LEFT JOIN member d 
-			on b.memberSeqF = d.memberSeq
 		
+			<include refid="selectCommon" />         
+    		limit #{rowNumToShow} offset #{startRnumForMysql}
+		
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">

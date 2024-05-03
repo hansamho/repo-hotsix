@@ -126,7 +126,7 @@
 										<div class="row  gx-2">
 											<div class="col gx-2">
 												<strong>Total :</strong>
-												<label class="form-label" th:text="${count}"></label>
+												<label class="form-label" th:text="${vo.totalRows}"></label>
 											</div>
 											<div class="col-1 gy-2" align="right">
 												<select class="form-select form-select-sm" id="rowNumToShow" name="rowNumToShow"
@@ -299,8 +299,8 @@
 	 		format: 'Y-m-d'
 			  });
 			 });
-			let goUrlXdmList = "/codeXdmList";								/* ### */
-			let goUrlXdmForm = "/codeForm";								/* ### */
+			let goUrlXdmList = "/placingOrderXdmList";								/* ### */
+			let goUrlXdmForm = "/placingOrderForm";								/* ### */
 			let goUrlXdmMultiUele = "/codeXdmMultiUele";			/* ### */
 			let goUrlXdmMultiDele = "/codeXdmMultiDele";			/* ### */
 			let goUrlXdmView = "/codeView";								/* ### */
