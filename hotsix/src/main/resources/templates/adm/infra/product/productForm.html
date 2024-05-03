@@ -80,8 +80,8 @@
 													<input type="text" name="productName" th:value="${item.productName}" class="form-control">
 												</div>
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
-													<label for="poductTypeCd" class="form-label">상품타입</label>
-													<select id="poductTypeCd" name="poductTypeCd" class="form-select">
+													<label for="productTypeCd" class="form-label">상품타입</label>
+													<select id="productTypeCd" name="productTypeCd" class="form-select">
 														<option th:each="list : ${@codeService.selectListCachedCode(4)}" th:value="${list.codeSeq}" th:text="${list.codeName}" th:selected="${list.codeSeq} == ${item?.productTypeCd}"></option>
 													</select>
 												</div>

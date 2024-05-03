@@ -74,7 +74,7 @@ public class ProductController {
 		
 		return "adm/infra/product/productAdd";
 	}
-	// 결제 페이지 셀렉문 아작스
+	
 		@ResponseBody
 		@RequestMapping(value = "memberSelect")
 		public Map<String, Object> memberSelect(ProductDto dto, Model model) throws Exception {
