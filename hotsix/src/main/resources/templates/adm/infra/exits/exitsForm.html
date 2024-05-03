@@ -71,9 +71,9 @@
 								<div class="card">
 									<div class="card-body">
 										<div class="card-header">
-											<div class="card-title">멤버 관리</div>
+											<div class="card-title">출고 관리</div>
 										</div>
-										<form method="post">
+										<form method="post" action="exitsUpdate">
 											<div class="row">
 													<input type="hidden" name="exitsSeq" th:value="${item.exitsSeq}" class="form-control">
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
@@ -86,7 +86,8 @@
 												</div>
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
 													<label class="form-label">출고 수량</label>
-													<input type="text" name="exitsAccount" th:value="${item.exitsAccount}" class="form-control">
+													<input type="text" name="exitsAccount" id="exitsAccount" th:value="${item.exitsAccount}" class="form-control">
+													<div id="exitsAccountFeedback" class="invalid-feedback"></div>
 												</div>
 												<div class="col-lg-6 col-sm-4 col-12 gy-2">
 										  		<label class="form-label">배송상태</label>
@@ -104,7 +105,7 @@
 												  	<div class="" align="right">
 												  		<button type="submit" class="btn btn-primary" onclick="javascript: form.action='exitsDelete';">데이터 삭제</button>
 														<button type="submit" class="btn btn-primary" onclick="javascript: form.action='exitsUelete';">N,Y수정</button>
-														<button type="submit" class="btn btn-primary" onclick="javascript: form.action='exitsUpdate';">저장</button>
+														<button id="btnSubmit" type="submit" class="btn btn-primary">저장</button>
 												  	</div>
 										  		</div>
 											</div>
@@ -164,4 +165,48 @@
 		<script src="/adm/template/gear/assets/vendor/datatables/dataTables.min.js"></script>
 	</body>
 
+<script>
+	document.getElementById("btnSubmit").onclick = function () {
+		if(validationInsert() == false){
+			return false;
+		} else { 
+			form.submit();
+		}
+		
+		
+// 		validationInsert();
+// 		if(seq.value == "0" || seq.value == ""){
+// 			if(validationInsert() == false) return false;
+// 			form.action = goUrlXdmInsert;
+// 			form.submit();
+// 		} else {
+// 			if(validationUpdt() == false) return false;
+// 			form.action = goUrlXdmUpdt;
+// 			form.submit();
+// 		}
+	}
+	
+	function validationInsert(){
+		if(validationUpdt() == false) return false;
+// 		validationUpdt();
+// 		alert("validationInsert");
+	}
+	
+	function validationUpdt(){
+		if(!checkOnlyNumberH('exitsAccount', 2, 0, "숫자만 입력 가능합니다.")) return false;
+	
+	}
+		
+// 		alert("validationUpdt");
+// 		alert("cgName : "+document.getElementById("cgName").value);	
+	
+	
+	nullToEmpty = function(value){
+		if(value == null || value == 'null' || value.length == 0){
+			return false;
+		} else {
+			return true;
+		}
+	}
+</script>
 </html>

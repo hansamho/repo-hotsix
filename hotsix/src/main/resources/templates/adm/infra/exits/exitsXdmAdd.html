@@ -80,7 +80,8 @@
 											 </div>
 											 <div class="col-lg-6 col-sm-4 col-12 gy-2">
 										  		<label class="form-label">상품 수량</label>
-										  		<input type="text" name="exitsAccount" id="exitsAccount" class="form-control" required>
+										  		<input type="text" name="exitsAccount" id="exitsAccount" class="form-control">
+										  		<div id="exitsAccountFeedback" class="invalid-feedback"></div>
 										  	</div>
 										  	 <div class="col-lg-6 col-sm-4 col-12 gy-2">
 										  		<label class="form-label">멤버이름</label>
@@ -88,7 +89,6 @@
 													<option value="">멤버 이름을 선택하세요</option>
 													<option th:if="${#lists.isEmpty(List)}" th:each="list : ${mlist}" th:text="${list.memberName}" th:value="${list.memberSeq}"></option>
 												</select>
-										  		<div id="cgNameFeedback" class="invalid-feedback"></div>
 										  	</div>
 										  	<div class="">
 										  		
@@ -99,12 +99,10 @@
 														<option value="">택배사를 선택하세요</option>
 														<option th:each="list : ${@codeService.selectListCachedCode(6)}" th:value="${list.codeGroupSeqF}" th:text="${list.codeName}"></option>
 												</select>
-										  		<div id="cgNameFeedback" class="invalid-feedback"></div>
 										  	</div>
 										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
 										  		<label class="form-label">택배원</label>
 										  		<input type="text" name="deliverName" id="deliverName" class="form-control">
-										  		<div id="cgNameFeedback" class="invalid-feedback"></div>
 										  	</div>
 										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
 										  		<label class="form-label">송장번호</label>
@@ -200,7 +198,6 @@
 		if(validationInsert() == false){
 			return false;
 		} else { 
-			form.action = goUrlXdmInsert;
 			form.submit();
 		}
 		
@@ -224,7 +221,7 @@
 	}
 	
 	function validationUpdt(){
-		if(!checkOnlyKoreanEnglishNumber('cgName', 2, 0, "코드그룹 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")) return false;
+		if(!checkOnlyNumberH('exitsAccount', 2, 0, "숫자만 입력 가능합니다.")) return false;
 	
 	}
 		

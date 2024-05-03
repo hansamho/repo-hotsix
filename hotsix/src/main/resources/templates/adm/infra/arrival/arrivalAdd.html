@@ -68,7 +68,7 @@ s-center justify-content-between position-relative">
 								<div class="card">
 									<div class="card-body">
 										<div class="card-header">
-											<div class="card-title">코드그룹 관리</div>
+											<div class="card-title">입고 관리</div>
 										</div>
 									<form method="post" action="arrivalInsert">
 										<div class="row">
@@ -97,10 +97,11 @@ s-center justify-content-between position-relative">
 											 <div class="col-lg-6 col-sm-4 col-12 gy-2">
 										  		<label class="form-label">상품 수량</label>
 										  		<input type="text" name="arrivalAccount" id="arrivalAccount" class="form-control" required>
+										  		<div id="arrivalAccountFeedback" class="invalid-feedback"></div>
 										  	</div>
 										  	<div class="d-flex justify-content-between mt-4">
 											  	<div class="" align="left">
-											  		<button type="submit" class="btn btn-primary"><a th:href="@{/arrivalXdmList}" th:text="뒤로가기"></a></button>
+											  		<button type="button" class="btn btn-primary"><a th:href="@{/arrivalXdmList}" >뒤로가기</a></button>
 											  	</div>
 											  	
 											  	<div class="" align="right">
@@ -180,7 +181,6 @@ s-center justify-content-between position-relative">
 		if(validationInsert() == false){
 			return false;
 		} else { 
-			form.action = goUrlXdmInsert;
 			form.submit();
 		}
 		
@@ -204,7 +204,7 @@ s-center justify-content-between position-relative">
 	}
 	
 	function validationUpdt(){
-		if(!checkOnlyKoreanEnglishNumber('cgName', 2, 0, "코드그룹 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")) return false;
+				if(!checkOnlyNumberH('arrivalAccount', 2, 0, "숫자만 입력 가능합니다.")) return false;
 	
 	}
 		
