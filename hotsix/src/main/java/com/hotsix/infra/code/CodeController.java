@@ -57,7 +57,7 @@ public class CodeController {
 			model.addAttribute("list", service.selectList(vo));
 		}
 		
-		return "/adm/infra/code/codeXdmList";
+		return "adm/infra/code/codeXdmList";
 	}
 	
 	
@@ -65,7 +65,7 @@ public class CodeController {
 	public String codeForm(CodeDto dto, Model model) throws Exception{
 		model.addAttribute("item", service.selectOne(dto));
 	
-		return "/adm/infra/code/codeForm"; //
+		return "adm/infra/code/codeForm"; //
 		
 	}
 	
@@ -73,7 +73,7 @@ public class CodeController {
 	public String codeAdd(CodeDto dto, Model model) throws Exception{
 		model.addAttribute("listcodegroup", codeGroupService.selectListWithoutPaging());
 		
-		return "/adm/infra/code/codeAdd"; //
+		return "adm/infra/code/codeAdd"; //
 		
 	}
 	

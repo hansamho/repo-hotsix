@@ -110,6 +110,14 @@
 										  		<label class="form-label">송장번호</label>
 										  		<input type="text" name="delivaryNumber" id="delivaryNumber" class="form-control">
 										  	</div>
+										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
+										  		<label class="form-label">배송상태</label>
+										  		<select id="delivaryStatusCd" name="delivaryStatusCd" class="form-select">
+														<option value="">배송상태를 선택하세요</option>
+														<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.codeSeq}" th:text="${list.codeName}"
+														th:selected="${list.codeSeq} == ${item?.delivaryNameCd}"></option>
+												</select>
+										  	</div>
 										  	<div class="d-flex justify-content-between mt-4">
 											  	<div class="" align="left">
 											  		<button type="submit" class="btn btn-primary"><a th:href="@{/exitsXdmList}" th:text="뒤로가기"></a></button>

@@ -92,10 +92,9 @@
 										  		<label class="form-label">배송상태</label>
 										  		<select id="delivaryStatusCd" name="delivaryStatusCd" class="form-select">
 														<option value="">배송상태를 선택하세요</option>
-														<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.codeGroupSeqF}" th:text="${list.codeName}"
+														<option th:each="list : ${@codeService.selectListCachedCode(2)}" th:value="${list.codeSeq}" th:text="${list.codeName}"
 														th:selected="${list.codeSeq} == ${item?.delivaryNameCd}"></option>
 												</select>
-										  		<div id="cgNameFeedback" class="invalid-feedback"></div>
 										  	</div>
 												<div class="d-flex justify-content-between mt-4">
 												  	<div class="" align="left">

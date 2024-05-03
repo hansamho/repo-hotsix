@@ -81,6 +81,7 @@
 				,delivaryNumber
 				,productSeqF
 				,exitsAccount
+				,delivaryStatusCd
 			)VALUES(
 				#{orderSeqF}
 				,#{delivaryNameCd}
@@ -88,6 +89,7 @@
 				,#{delivaryNumber}
 				,#{productSeqF}
 				,#{exitsAccount}
+				,#{delivaryStatusCd}
 			)
 		</insert>
 		

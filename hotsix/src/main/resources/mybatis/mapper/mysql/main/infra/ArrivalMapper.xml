@@ -4,6 +4,35 @@
 <mapper namespace="com.hotsix.infra.arrival.ArrivalDao">
 <resultMap id="resultMapObj" type="com.hotsix.infra.arrival.ArrivalDto"></resultMap>
 	
+	<sql id ="selectCommon">
+      FROM arrival a
+		LEFT JOIN placingOrder b on b.memberSeqF = a.poSeqF
+		LEFT JOIN poProduct c on c.poProductSeq = b.poSeq
+		LEFT JOIN product d on d.productSeq = a.productSeqF
+		LEFT JOIN member e on e.memberSeq = b.memberSeqF
+		LEFT JOIN company f on f.companySeq = d.companySeqF
+	Where 1=1 
+		<!--AND d.memberTypeCd = 8-->
+<!--         <if test="shUseNy != null and !shUseNy.equals('')">AND ifcgUseNy = #{shUseNy}</if> -->
+        <if test="shDelny != null and !shDelny.equals('')">AND a.arrivalDelNy = #{shDelny}</if>
+       
+<!-- 				<choose> -->
+<!-- 					<when test="shOptionDate == 1">AND a.arrivalRegDate BETWEEN #{shDateStart} AND #{shDateEnd}</when> -->
+<!-- 					<when test="shOptionDate == 2">AND a.arrivalModDate BETWEEN #{shDateStart} AND #{shDateEnd}</when> -->
+<!-- 				</choose> -->
+    
+        <choose>
+            <when test="shOption == 1">AND a.codeGroupSeqF = #{shValue}</when>
+            <when test="shOption == 2">AND a.codedSeq = #{shValue}</when>
+            <when test="shOption == 3">AND a.codeName LIKE CONCAT('%',#{shValue},'%')</when>
+            
+            
+<!--             <when test="shOption == 3">AND ifcgNameEng LIKE CONCAT('%',#{shValue},'%')</when> -->
+        </choose>
+       </sql>
+	
+	
+	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
 			a.arrivalSeq
@@ -17,12 +46,8 @@
 			,e.memberName
 			,a.arrivalAccount
 			,f.companyName
-		FROM arrival a
-		LEFT JOIN placingOrder b on b.memberSeqF = a.poSeqF
-		LEFT JOIN poProduct c on c.poProductSeq = b.poSeq
-		LEFT JOIN product d on d.productSeq = a.productSeqF
-		LEFT JOIN member e on e.memberSeq = b.memberSeqF
-		LEFT JOIN company f on f.companySeq = d.companySeqF
+		<include refid="selectCommon" />         
+      limit #{rowNumToShow} offset #{startRnumForMysql}
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
