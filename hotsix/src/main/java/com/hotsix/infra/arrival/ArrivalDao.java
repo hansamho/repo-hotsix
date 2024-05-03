@@ -17,4 +17,6 @@ public interface ArrivalDao {
 	public int uelete(ArrivalDto dto);
 	
 	public int delete(ArrivalDto dto);
+	
+	public int selectOneCount(ArrivalVo vo);
 }

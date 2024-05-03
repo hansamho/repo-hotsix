@@ -16,15 +16,15 @@
 <!--         <if test="shUseNy != null and !shUseNy.equals('')">AND ifcgUseNy = #{shUseNy}</if> -->
         <if test="shDelny != null and !shDelny.equals('')">AND a.arrivalDelNy = #{shDelny}</if>
        
-<!-- 				<choose> -->
-<!-- 					<when test="shOptionDate == 1">AND a.arrivalRegDate BETWEEN #{shDateStart} AND #{shDateEnd}</when> -->
-<!-- 					<when test="shOptionDate == 2">AND a.arrivalModDate BETWEEN #{shDateStart} AND #{shDateEnd}</when> -->
-<!-- 				</choose> -->
+				<choose>
+					<when test="shOptionDate == 1">AND a.arrivalRegDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND a.arrivalModDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				</choose>
     
         <choose>
-            <when test="shOption == 1">AND a.codeGroupSeqF = #{shValue}</when>
-            <when test="shOption == 2">AND a.codedSeq = #{shValue}</when>
-            <when test="shOption == 3">AND a.codeName LIKE CONCAT('%',#{shValue},'%')</when>
+            <when test="shOption == 1">AND d.productName LIKE CONCAT('%',#{shValue},'%')</when>
+            <when test="shOption == 2">AND d.productPrice = #{shValue}</when>
+            <when test="shOption == 3">AND e.memberName LIKE CONCAT('%',#{shValue},'%')</when>
             
             
 <!--             <when test="shOption == 3">AND ifcgNameEng LIKE CONCAT('%',#{shValue},'%')</when> -->
@@ -48,6 +48,11 @@
 			,f.companyName
 		<include refid="selectCommon" />         
       limit #{rowNumToShow} offset #{startRnumForMysql}
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">

@@ -37,4 +37,8 @@ public class ArrivalService {
 	public int delete(ArrivalDto dto) {
 		return dao.delete(dto);
 	}
+	
+	public int selectOneCount(ArrivalVo vo) {
+		return dao.selectOneCount(vo);
+	}
 }
