@@ -20,6 +20,10 @@ public class ExitsService {
 		return dao.selectOne(dto);
 	}
 	
+	public int selectOneCount(ExitsVo vo) {
+		
+		return dao.selectOneCount(vo);
+	}
 	public int insert(ExitsDto dto) {
 			
 		dao.insert(dto);

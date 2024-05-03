@@ -6,6 +6,8 @@ public interface ExitsDao {
 
 	public List<ExitsDto> selectList(ExitsVo vo);
 	
+	public int selectOneCount(ExitsVo vo);
+	
 	public ExitsDto selectOne(ExitsDto dto);
 	
 	public int insert(ExitsDto dto);

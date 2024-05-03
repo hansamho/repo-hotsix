@@ -3,10 +3,35 @@
 
 <mapper namespace="com.hotsix.infra.exits.ExitsDao">
 <resultMap id="resultMapObj" type="com.hotsix.infra.exits.ExitsDto"></resultMap>
+
+	<sql id ="selectCommon">
+      FROM exits a
+        LEFT JOIN orders b ON b.orderSeq = a.orderSeqF
+        LEFT JOIN orderProduct c ON c.orderSeqF = b.orderSeq
+        LEFT JOIN product d ON d.productSeq = c.productSeqF
+        LEFT JOIN member e ON e.memberSeq = b.memberSeqF
+	WHERE 1=1
+<!--         <if test="shUseNy != null and !shUseNy.equals('')">AND ifcgUseNy = #{shUseNy}</if> -->
+        <if test="shDelny != null and !shDelny.equals('')">AND a.exitsDelNy = #{shDelny}</if>
+       
+				<choose>
+					<when test="shOptionDate == 1">AND a.exitsRegDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+					<when test="shOptionDate == 2">AND a.exitsModDate BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				</choose>
+    
+        <choose>
+            <when test="shOption == 1">AND a.exitsSeq = #{shValue}</when>
+            <when test="shOption == 2">AND b.productName LIKE CONCAT('%',#{shValue},'%')</when>
+            
+            
+<!--             <when test="shOption == 3">AND ifcgNameEng LIKE CONCAT('%',#{shValue},'%')</when> -->
+        </choose>
+       </sql>
 	
 	<select id="selectList" resultMap="resultMapObj">
 	SELECT 
 			a.exitsSeq
+			,a.exitsDelNy
 			,b.orderSeq
 			, a.exitsRegDate
 			, a.exitsModDate
@@ -22,12 +47,15 @@
 			, a.delivaryNameCd
 			, a.delivaryStatusCd
 			,a.orderSeqF
-        FROM exits a
-        LEFT JOIN orders b ON b.orderSeq = a.orderSeqF
-        LEFT JOIN orderProduct c ON c.orderSeqF = b.orderSeq
-        LEFT JOIN product d ON d.productSeq = c.productSeqF
-        LEFT JOIN member e ON e.memberSeq = b.memberSeqF
         
+        <include refid="selectCommon" />         
+    	limit #{rowNumToShow} offset #{startRnumForMysql}
+        
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">

@@ -55,12 +55,11 @@ public class ExitsController {
 		
 		setSearch(vo);
 		
-		model.addAttribute("list", service.selectList(vo));
+		vo.setParamsPaging(service.selectOneCount(vo));		
 		
-		
-//		if (vo.getTotalRows() > 0) {
-//			model.addAttribute("list", service.selectList(vo));
-//		}
+		if (vo.getTotalRows() > 0) {
+			model.addAttribute("list", service.selectList(vo));
+		}
 		
 		return "adm/infra/exits/exitsXdmList";
 	}
