@@ -21,9 +21,9 @@
 				</choose>
     
         <choose>
-            <when test="shOption == 1">AND a.codeGroupSeqF = #{shValue}</when>
-            <when test="shOption == 2">AND a.codedSeq = #{shValue}</when>
-            <when test="shOption == 3">AND a.codeName LIKE CONCAT('%',#{shValue},'%')</when>
+            <when test="shOption == 1">AND c.productName LIKE CONCAT('%',#{shValue},'%')</when>
+            <when test="shOption == 2">AND c.productPrice LIKE CONCAT('%',#{shValue},'%')</when>
+            <when test="shOption == 3">AND d.memberName LIKE CONCAT('%',#{shValue},'%')</when>
             
             
 <!--             <when test="shOption == 3">AND ifcgNameEng LIKE CONCAT('%',#{shValue},'%')</when> -->

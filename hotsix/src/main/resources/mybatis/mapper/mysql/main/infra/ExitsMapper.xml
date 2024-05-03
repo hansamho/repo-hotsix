@@ -21,7 +21,7 @@
     
         <choose>
             <when test="shOption == 1">AND a.exitsSeq = #{shValue}</when>
-            <when test="shOption == 2">AND b.productName LIKE CONCAT('%',#{shValue},'%')</when>
+            <when test="shOption == 2">AND d.productName LIKE CONCAT('%',#{shValue},'%')</when>
             
             
 <!--             <when test="shOption == 3">AND ifcgNameEng LIKE CONCAT('%',#{shValue},'%')</when> -->

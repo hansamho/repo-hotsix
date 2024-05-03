@@ -107,10 +107,9 @@
 											<div class="col-2 gy-2"  style="padding-left: 2%;">
 												<select id="shOption" name="shOption" class="form-select form-select-sm">
 													<option value="" th:selected="${vo.shOption == null}">검색구분</option>
-													<option value="1" th:selected="${vo.shOption == 1}">코드그룹 seq</option>
+													<option value="1" th:selected="${vo.shOption == 1}">exitsSeq</option>
 <!-- 													<option value="2" th:selected="${vo.shOption == 2}">코드그룹 이름</option> -->
-													<option value="2" th:selected="${vo.shOption == 2}">코드 seq</option>
-													<option value="3" th:selected="${vo.shOption == 3}">코드 이름</option>
+													<option value="2" th:selected="${vo.shOption == 2}">상품이름</option>
 												</select>
 											</div>
 											<div class="col-2 gy-2">
@@ -145,9 +144,9 @@
 														<th><input type="checkbox" id="checkboxType"></th>
 														<th>Seq</th>
 														<th>출고상품</th>
-														<th>출고상품 종류</th>
-														<th>출고상품 가격</th>
-														<th>출고상품 수량</th>
+														<th>출고 종류</th>
+														<th>출고 가격</th>
+														<th>출고 수량</th>
 <!-- 														<th>출고상품 코드</th> -->
 														<th>택배원</th>
 														<th>택배사</th>
