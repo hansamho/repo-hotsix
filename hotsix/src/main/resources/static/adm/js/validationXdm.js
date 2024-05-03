@@ -1,3 +1,23 @@
+/*								(function () {
+									'use strict'
+
+									// Fetch all the forms we want to apply custom Bootstrap validation styles to
+									var forms = document.querySelectorAll('.needs-validation')
+
+									// Loop over them and prevent submission
+									Array.prototype.slice.call(forms)
+										.forEach(function (form) {
+											form.addEventListener('submit', function (event) {
+												if (!form.checkValidity()) {
+													event.preventDefault()
+													event.stopPropagation()
+												}
+
+												form.classList.add('was-validated')
+											}, false)
+										})
+								})()*/
+
 validationTest = function() {
     alert("validationTest");
 }
@@ -32,7 +52,6 @@ function checkNullWithoutFocus (value, message) {
 
 function checkOnlyKoreanEnglishNumber (objName, pattern, nullAllowedNy, message) {
 // checkOnlyKoreanEnglishNumber = function(obj, value, message) {
-
     var regExp = /^[ㄱ-ㅎ가-힣A-Za-z0-9]+$/;
     return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
 }
@@ -66,12 +85,6 @@ function checkOnlyKorean (objName, pattern, nullAllowedNy, message) {
 }
 
 
-function checkbirthDay (objName, pattern, nullAllowedNy, message) {
-// checkId = function(obj, value, message) {
-    var regExp = /^[0-9]{8,8}$/;
-    return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
-}
-
 function checkOnlyNumber (objName, pattern, nullAllowedNy, minMaxCheckNy, min, max, message) {
 // checkOnlyNumber = function(obj, value, message) {
     var obj = document.getElementById(objName);
@@ -90,7 +103,6 @@ function checkOnlyNumber (objName, pattern, nullAllowedNy, minMaxCheckNy, min, m
         return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
     }
 }
-
 
 function checkSelectNull (objName, pattern, message) {
     var obj = document.getElementById(objName);
@@ -126,6 +138,24 @@ function checkId (objName, pattern, nullAllowedNy, message) {
 // checkId = function(obj, value, message) {
     var regExp = /^[A-Za-z0-9,_-]{4,20}$/;
     return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
+}
+
+function checkbirthDayH (objName, pattern, nullAllowedNy, message) {
+// checkId = function(obj, value, message) {
+    var regExp = /^[0-9]{6,6}$/;
+    return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
+}
+
+function checkphoneNumberH (objName, pattern, nullAllowedNy, message) {
+// checkId = function(obj, value, message) {
+    var regExp = /^[0-9]{11,11}$/;
+    return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
+}
+
+function checkOnlyNumberH (objName, pattern, nullAllowedNy, message) {
+// checkOnlyNumber = function(obj, value, message) {
+    var regExp = /^[0-9]+$/;
+        return checkLogic (objName, pattern, nullAllowedNy, message, regExp);
 }
 
 
@@ -188,8 +218,6 @@ function checkLogic (objName, pattern, nullAllowedNy, message, regExp) {
     var obj = document.getElementById(objName);
     var objValue = document.getElementById(objName).value.trim();
     var objFeedback = document.getElementById(objName+"Feedback");
-	
-//	alert(obj.name +" "+ objFeedback.name);
 	
     if(nullAllowedNy == 0) {
         if(regExp.test(objValue)){

@@ -67,7 +67,7 @@
 								<div class="card">
 									<div class="card-body">
 										<div class="card-header">
-											<div class="card-title">코드그룹 관리</div>
+											<div class="card-title">발주 관리</div>
 										</div>
 									<form method="post" action="placingInsert">
 										<div class="row">
@@ -87,8 +87,8 @@
 											 </div>
 											 <div class="col-lg-6 col-sm-4 col-12 gy-2">
 										  		<label class="form-label">상품 수량</label>
-										  		<input type="text" name="poAccount" id="poAccount" class="form-control" required>
-<!-- 										  		<div id="cgNameFeedback" class="invalid-feedback"></div> -->
+										  		<input type="text" name="poAccount" id="poAccount" class="form-control">
+ 										  		<div id="poAccountFeedback" class="invalid-feedback"></div> 
 										  	</div>
 										  	<div class="d-flex justify-content-between mt-4">
 											  	<div class="" align="left">
@@ -155,7 +155,7 @@
 		
 		<!-- Data Tables -->
 		<script src="/adm/template/gear/assets/vendor/datatables/dataTables.min.js"></script>
-	
+		
 	<script type="text/javascript">
 	
 	let goUrlXdmList = "/codeGroupXdmList";
@@ -196,7 +196,7 @@
 	}
 	
 	function validationUpdt(){
-		if(!checkOnlyKoreanEnglishNumber('cgName', 2, 0, "코드그룹 이름은 한글, 영문대소문자, 숫자만 입력 가능합니다.")) return false;
+		if(!checkphoneNumberH('poAccount', 2, 0, "숫자만 입력 가능합니다.")) return false;
 	
 	}
 		

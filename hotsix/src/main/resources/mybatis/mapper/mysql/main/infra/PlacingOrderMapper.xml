@@ -24,6 +24,7 @@
     
         <choose>
             <when test="shOption == 1">AND a.poProductSeq = #{shValue}</when>
+            <when test="shOption == 2">AND d.memberName = #{shValue}</when>
             <when test="shOption == 3">AND c.productName LIKE CONCAT('%',#{shValue},'%')</when>
             
             
