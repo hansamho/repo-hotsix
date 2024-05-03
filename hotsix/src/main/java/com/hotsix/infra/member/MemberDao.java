@@ -10,6 +10,7 @@ public interface MemberDao {
 	
 	public MemberDto selectOne(MemberDto dto);
 	
+	public MemberDto selectLogin(MemberDto dto);
 	public int insert(MemberDto dto);
 	
 	public int update(MemberDto dto);

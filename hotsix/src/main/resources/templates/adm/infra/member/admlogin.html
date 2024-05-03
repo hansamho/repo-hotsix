@@ -17,14 +17,14 @@
 						<h5 class="fw-light mb-5">로그인</h5>
 						<div class="mb-3">
 							<label  for="validationID" class="form-label">관리자ID</label>
-							<input type="text" class="form-control" id="memberID" name="memberID" placeholder="ID를 입력하세요" required/>
+							<input type="text" class="form-control" id="memberId" name="memberId" placeholder="ID를 입력하세요" value="aaaa" required/>
 							<div class="invalid-feedback">
 								ID를 입력하세요
 							</div>
 						</div>
 						<div class="mb-3">
 							<label for="validationPassword" class="form-label">비밀번호</label>
-							<input type="password" class="form-control" id="memberPassword" name="memberPassword" placeholder="비밀번호를 입력하세요" required/>
+							<input type="password" class="form-control" id="memberPwd" name="memberPwd" placeholder="비밀번호를 입력하세요" value="1234" required/>
 							<div class="invalid-feedback">
 								비밀번호를 입력하세요
 							</div>
@@ -67,6 +67,7 @@
 		<script src="/adm/template/gear/assets/js/validations.js"></script>
 		
 		<script type="text/javascript">
+			
 		document.getElementById("buttonSignIn").onclick = function () {
 // 			alert("asdasdasd");
 // 			if(validation() == false) return false;
@@ -79,11 +80,11 @@
 				/* ,dataType:"json" */
 				,url: "/signinAdm"
 				/* ,data : $("#formLogin").serialize() */
-				,data : { "memberID" : $("#memberID").val(), "memberPassword" : $("#memberPassword").val()}
+				,data : { "memberId" : $("#memberId").val(), "memberPwd" : $("#memberPwd").val()}
 				,success: function(response) {
 					if(response.rt == "success") {
 // 						alert("sqqqqqqqq");
-						location.href = "/admIndex";
+						location.href = "/admindex";
 
 					} else if (response.rt == "passfail"){
 						alert("비밀번호가 일치하지 않습니다.");
@@ -97,12 +98,6 @@
 				}
 			});
 		}
-		
-		
-// 		function validation(){
-// 			if(!checkOnlyEnglishNumber('memberID', 2, 0, "아이디는 영어, 숫자만 입력 가능합니다.")) return false;
-// 		}
-		
 		
 		</script>
 	</body>

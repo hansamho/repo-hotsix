@@ -1,15 +1,21 @@
 package com.hotsix.infra.member;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hotsix.common.constants.Constants;
 import com.hotsix.common.util.UtilDateTime;
 import com.hotsix.infra.company.CompanyService;
 import com.hotsix.infra.company.CompanyVo;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MemberController {
@@ -63,11 +69,9 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/memberForm")
-	public String memberForm(MemberDto dto, CompanyVo vo,Model model) throws Exception {
+	public String memberForm(MemberDto dto, Model model) throws Exception {
 		
 		model.addAttribute("item", service.selectOne(dto));
-		
-		model.addAttribute("list", companyService.selectList(vo));
 		
 		return "adm/infra/member/memberForm";
 	}
@@ -108,5 +112,72 @@ public class MemberController {
 		return "redirect:/memberXdmList";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/signinAdm")
+	public Map<String, Object> signinAdm(MemberDto dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		System.out.println("aaaaaaaaaaa");
+		System.out.println(dto.getMemberId());
+		
+		
+		MemberDto rtDto = service.selectLogin(dto);
+		
+//		System.out.println(service.selectLogin(dto).getMemberPassword());
+		
+		
+		if(rtDto != null) {
+			
+			String loginId = dto.getMemberId();
+			String loginpwd = dto.getMemberPwd();
+			
+			
+			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE_XDM); // 60second * 30 = 30minute
+			httpSession.setAttribute("sessSeqXdm", rtDto.getMemberSeq());
+			httpSession.setAttribute("sessIdXdm", rtDto.getMemberId());
+			httpSession.setAttribute("sessNameXdm", rtDto.getMemberName());
+			
+			System.out.println("---------------------");
+			System.out.println("httpSession.getAttribute(\"sessNameXdm\"): " + httpSession.getAttribute("sessNameXdm"));
+			System.out.println("---------------------");
+			
+			if(loginId.equals(rtDto.getMemberId())) {
+				
+				if(loginpwd.equals(rtDto.getMemberPwd())) {
+					returnMap.put("rt","success");
+				} else {
+					returnMap.put("rt", "passfail");
+				}
+				
+			} else {
+				returnMap.put("rt", "idfail");
+			}
+		} else {
+			returnMap.put("rt", "notId");
+		}
+		return returnMap;
+	}
+
+	@RequestMapping(value = "/admindex")
+	public String admindex() {
+		
+		return "adm/infra/member/admindex";
+	}
+	
+	@RequestMapping(value = "/admlogin")
+	public String admlogin() {
+		
+		return "adm/infra/member/admlogin";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/signoutAdm")
+	public Map<String, Object> signoutAdm(MemberDto dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		httpSession.invalidate();
+		returnMap.put("rt", "success");
+		return returnMap;
+	}
 	
 }
