@@ -18,6 +18,6 @@ public class CompanyController {
 		
 		model.addAttribute("list", service.selectList(vo));
 		
-		return "/adm/infra/company/companyXdmList";
+		return "adm/infra/company/companyXdmList";
 	}
 }
