@@ -19,4 +19,6 @@ public interface ExitsDao {
 	public int delete(ExitsDto dto);
 	
 	public int uelete(ExitsDto dto);
+	
+	public List<ExitsDto> selectOrder(ExitsVo vo);
 }

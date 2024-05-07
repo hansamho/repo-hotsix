@@ -1,15 +1,22 @@
 package com.hotsix.infra.exits;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hotsix.common.constants.Constants;
 import com.hotsix.common.util.UtilDateTime;
 import com.hotsix.infra.member.MemberService;
 import com.hotsix.infra.member.MemberVo;
+import com.hotsix.infra.order.OrderDto;
+import com.hotsix.infra.order.OrderService;
+import com.hotsix.infra.placingorder.PlacingOrderDto;
 import com.hotsix.infra.product.ProductService;
 import com.hotsix.infra.product.ProductVo;
 
@@ -24,6 +31,9 @@ public class ExitsController {
 	
 	@Autowired
 	MemberService mservice;
+	
+	@Autowired
+	OrderService orderService;
 	
 	public void setSearch(ExitsVo vo) throws Exception {
 		/* 최초 화면 로딩시에 세팅은 문제가 없지만 */
@@ -65,13 +75,37 @@ public class ExitsController {
 	}
 	
 	@RequestMapping(value = "/exitsXdmAdd")
-	public String exitsXdmAdd(@ModelAttribute("vo") MemberVo mvo,ProductVo pvo,Model model) throws Exception {
+	public String exitsXdmAdd(@ModelAttribute("vo") MemberVo mvo,ProductVo pvo,ExitsVo vo,Model model) throws Exception {
 		
 		model.addAttribute("plist", pservice.productList(pvo));
 		
 		model.addAttribute("mlist", mservice.memberList(mvo));
 		
+		model.addAttribute("olist", service.selectOrder(vo));
+		
 		return "adm/infra/exits/exitsXdmAdd";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "orderSelect")
+	public Map<String, Object> orderSelect(OrderDto odto,PlacingOrderDto pdto,Model model) throws Exception {
+		
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+			System.out.println(odto.getOrderProductSeq());
+			System.out.println("------------------");
+			System.out.println("------------------");
+			System.out.println("------------------");
+			System.out.println("------------------");
+		if(odto.getOrderProductSeq() != null) {
+			
+	        // returnMap에도 성공 여부와 함께 데이터를 담아 전달
+	        returnMap.put("rt", "success");
+	        returnMap.put("itemOd", orderService.selectOne(odto));
+		} else {
+			System.out.println(odto.getOrderProductSeq());
+			returnMap.put("rt", "fail");
+		}
+		return returnMap;
 	}
 	
 	@RequestMapping(value = "/exitsInsert")

@@ -23,9 +23,16 @@ public class ExitsDto {
 	private String delivaryNameCd;
 	private String productSeqF;
 	private String orderSeqF;
+	private String orderProductSeq;
 	
 	
 	
+	public String getOrderProductSeq() {
+		return orderProductSeq;
+	}
+	public void setOrderProductSeq(String orderProductSeq) {
+		this.orderProductSeq = orderProductSeq;
+	}
 	public String getOrderSeqF() {
 		return orderSeqF;
 	}

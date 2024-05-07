@@ -43,4 +43,8 @@ public class ExitsService {
 	public int uelete(ExitsDto dto) {
 		return dao.uelete(dto);
 	}
+	
+	public List<ExitsDto> selectOrder(ExitsVo vo){
+		return dao.selectOrder(vo);
+	}
 }

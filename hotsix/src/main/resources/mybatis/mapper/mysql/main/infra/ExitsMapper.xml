@@ -85,21 +85,27 @@
         	AND a.exitsSeq = #{exitsSeq}
 	</select>
 	
+	<select id="selectOrder" resultMap="resultMapObj">
+		select
+			 a.orderSeq
+			, a.orderRegDate
+			, a.orderModDate
+			, b.orderProductSeq
+			, b.orderAccount
+			, c.productName
+			, c.productPrice
+			, c.productTypeCd
+			, d.memberTypeCd
+			, d.memberName
+			 from
+			orders a
+	    left join orderProduct b on b.productSeqF = a.orderSeq
+	    left join product c on c.productSeq = b.productSeqF
+	    left join member d on d.memberSeq = b.orderSeqF
+		Where 1=1 
+	</select>
 	
-<!-- 	<insert id="insert"> -->
-<!-- 		insert into exits( -->
-<!-- 			orderSeqF -->
-<!-- 			,exitAccount -->
-<!-- 			,delivaryNameCd -->
-<!-- 			,delivaryNumber -->
-<!-- 			,deliverName -->
-<!-- 			,statusCd -->
-<!-- 		)values( -->
-<!-- 			#{orderAccount} -->
-<!-- 			,#{productSeqF} -->
-<!-- 			,#{memberSeqF} -->
-<!-- 		) -->
-<!-- 	</insert> -->
+
 
 		<insert id="insert">
 			INSERT INTO exits(

@@ -72,20 +72,20 @@
 									<form method="post" action="arrivalInsert">
 										<div class="row">
 											<div class="col-lg-6 col-sm-4 col-12 gy-2">
-											  		<label class="form-label">상품 이름</label>
+											  		<label class="form-label">발주 seq</label>
 											  		<select id="poProductSeq" name="poProductSeq" class="form-select col-md-6" >
 											  			<option value="">발주seq을 선택하세요</option>
 														<option th:if="${#lists.isEmpty(poList)}" th:each="polist : ${polist}" th:text="${polist.poProductSeq}" th:value="${polist.poProductSeq}"></option>
 													</select>
 											 </div>
-<!-- 											<div class="col-lg-6 col-sm-4 col-12 gy-2"> -->
-<!-- 											  		<label class="form-label">상품 이름</label> -->
-<!-- 											  		<select id="productSeqF" name="productSeqF" class="form-select col-md-6" > -->
-<!-- 											  			<option value="">상품 이름을 선택하세요</option> -->
-<!-- 														<option th:if="${#lists.isEmpty(pList)}" th:each="plist : ${plist}" th:text="${plist.productName}" th:value="${plist.productSeq}"></option> -->
-<!-- 													</select> -->
-<!-- 											 </div> -->
-											 
+										</div>
+										<div class="row">
+											<div id="selectMember" class="col-lg-6 col-sm-4 col-12 gy-2">
+													
+											</div>
+											<div id="selectProduct" class="col-lg-6 col-sm-4 col-12 gy-2">
+													
+											</div>
 											 <div class="col-lg-6 col-sm-4 col-12 gy-2">
 											  		<label class="form-label">회사 이름</label>
 											  		<select id="companySeqF" name="companySeqF" class="form-select col-md-6" >
@@ -93,22 +93,12 @@
 														<option th:if="${#lists.isEmpty(List)}" th:each="list : ${list}" th:text="${list.companyName}" th:value="${list.arrivalSeq}"></option>
 													</select>
 											 </div>
-<!-- 											 <div class="col-lg-6 col-sm-4 col-12 gy-2"> -->
-<!-- 										  		<label class="form-label">멤버이름</label> -->
-<!-- 										  		<select id="memberSeqF" name="memberSeqF" class="form-select col-md-6" > -->
-<!-- 													<option value="">멤버 이름을 선택하세요</option> -->
-<!-- 													<option th:if="${#lists.isEmpty(mList)}" th:each="mlist : ${mlist}" th:text="${mlist.memberName}" th:value="${mlist.memberSeq}"></option> -->
-<!-- 												</select> -->
-<!-- 										  	</div> -->
 											 <div class="col-lg-6 col-sm-4 col-12 gy-2">
 										  		<label class="form-label">상품 수량</label>
 										  		<input type="text" name="arrivalAccount" id="arrivalAccount" class="form-control" required>
 										  		<div id="arrivalAccountFeedback" class="invalid-feedback"></div>
 										  	</div>
-										  	<div id="selectInfo" class="col-lg-6 col-sm-4 col-12 gy-2">
-													
-											</div>
-											
+										</div>
 										  	<div class="d-flex justify-content-between mt-4">
 											  	<div class="" align="left">
 											  		<button type="button" class="btn btn-primary"><a th:href="@{/arrivalXdmList}" >뒤로가기</a></button>
@@ -232,17 +222,15 @@
 				alert("1");
                 if(response.rt == "success") {
 						alert("2");						
-                    $("#selectInfo").html(
-                    		'<div class="col-lg-6 col-sm-4 col-12 gy-2">'
-							+'	<label class="form-label">발주자</label>' 
+                    $("#selectMember").html(
+                    		
+							'	<label class="form-label">발주자</label>' 
 	                        +    '	<input type="hidden" name="memberSeqF" id="memberSeqF" value="' + response.itemPo.memberSeqF + '"  class="form-control" />' 
 	                        +    '	<input type="text" name="memberName" value="' + response.itemPo.memberName + '"   class="form-control" />' 
-                            +'</div>' 
-                            +'<div class="col-lg-6 col-sm-4 col-12 gy-2">'
                             +'	<label class="form-label">상품이름</label>' 
 	                        +    '	<input type="hidden" name="productSeqF" id="productSeqF" value="' + response.itemPo.productSeqF + '"  class="form-control" />' 
 	                        +    '	<input type="text" name="productName" value="' + response.itemPo.productName + '"   class="form-control" />'
-                    		+'</div>'    
+                    		    
                     );
                 } else {
                     alert("주소가 일치하지 않습니다");

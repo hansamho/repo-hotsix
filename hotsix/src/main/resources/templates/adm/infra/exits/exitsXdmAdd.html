@@ -72,27 +72,24 @@
 									<form method="post" action="exitsInsert">
 										<div class="row">
 											<div class="col-lg-6 col-sm-4 col-12 gy-2">
-											  		<label class="form-label">상품 이름</label>
-											  		<select id="productSeqF" name="productSeqF" class="form-select col-md-6" >
-														  <option value="">상품을 선택하세요</option>
-														<option th:if="${#lists.isEmpty(pList)}" th:each="list : ${plist}" th:text="${list.productName}" th:value="${list.productSeq}"></option>
+											  		<label class="form-label">주문 seq</label>
+											  		<select id="orderProductSeq" name="orderProductSeq" class="form-select col-md-6" >
+											  			<option value="">주문seq을 선택하세요</option>
+														<option th:if="${#lists.isEmpty(oList)}" th:each="olist : ${olist}" th:text="${olist.orderProductSeq}" th:value="${olist.orderProductSeq}"></option>
 													</select>
 											 </div>
+										</div>
+										<div class="row">
+											<div id="selectOrder" class="col-lg-6 col-sm-4 col-12 gy-2">
+													
+											</div>
+
 											 <div class="col-lg-6 col-sm-4 col-12 gy-2">
 										  		<label class="form-label">상품 수량</label>
 										  		<input type="text" name="exitsAccount" id="exitsAccount" class="form-control">
 										  		<div id="exitsAccountFeedback" class="invalid-feedback"></div>
 										  	</div>
-										  	 <div class="col-lg-6 col-sm-4 col-12 gy-2">
-										  		<label class="form-label">멤버이름</label>
-										  		<select id="orderSeqF" name="orderSeqF" class="form-select col-md-6" >
-													<option value="">멤버 이름을 선택하세요</option>
-													<option th:if="${#lists.isEmpty(List)}" th:each="list : ${mlist}" th:text="${list.memberName}" th:value="${list.memberSeq}"></option>
-												</select>
-										  	</div>
-										  	<div class="">
-										  		
-										  	</div>
+										 
 										  	<div class="col-lg-6 col-sm-4 col-12 gy-2">
 										  		<label class="form-label">택배사</label>
 										  		<select id="delivaryNameCd" name="delivaryNameCd" class="form-select">
@@ -117,6 +114,9 @@
 														th:selected="${list.codeSeq} == ${item?.delivaryStatusCd}"></option>
 												</select>
 										  	</div>
+										
+										</div>
+											 
 										  	<div class="d-flex justify-content-between mt-4">
 											  	<div class="" align="left">
 											  		<button type="submit" class="btn btn-primary"><a th:href="@{/exitsXdmList}" th:text="뒤로가기"></a></button>
@@ -237,6 +237,50 @@
 			return true;
 		}
 	}
+	
+	// 셀렉문 데이터 뿌려주기 아작스
+    function selectTitle() {
+    
+        $.ajax({
+            async: true 
+            ,cache: false
+            ,type: "post"
+            /* ,dataType:"json" */
+            ,url: "/orderSelect"
+            /* ,data : $("#formLogin").serialize() */
+            ,data : {"orderProductSeq" : $("#orderProductSeq").val()}
+            // , "autoLogin" : $("#autoLogin").is(":checked")
+            
+            ,success: function(response) {
+				alert("1");
+                if(response.rt == "success") {
+						alert("2");						
+                    $("#selectOrder").html(
+                    		
+							'	<label class="form-label">주문자</label>' 
+	                        +    '	<input type="hidden" name="orderSeqF" id="orderSeqF" value="' + response.itemOd.orderSeqF + '"  class="form-control" />' 
+	                        +    '	<input type="text" name="memberName" value="' + response.itemOd.memberName + '"   class="form-control" />' 
+                            +'	<label class="form-label">상품이름</label>' 
+	                        +    '	<input type="hidden" name="productSeqF" id="productSeqF" value="' + response.itemOd.productSeqF + '"  class="form-control" />' 
+	                        +    '	<input type="text" name="productName" value="' + response.itemOd.productName + '"   class="form-control" />'
+                    		    
+                    );
+                } else {
+                    alert("주소가 일치하지 않습니다");
+                }
+            }
+            ,error : function(jqXHR, textStatus, errorThrown){
+                alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+            }
+        });
+    }        
+
+
+    document.getElementById("orderProductSeq").onchange = function () {
+        selectTitle();
+    }
+	
+	
 	
 	</script>
 	
