@@ -18,7 +18,7 @@ public class Constants {
 	
 	public static final int SESSION_MINUTE_XDM = 30;
 	
-	public static final String URL_LOGINFORM = "/member/loginForm";
+	public static final String URL_LOGINFORM = "/admlogin";
 	
 	public static final String DATETIME_FORMAT_BASIC = "yyyy-MM-dd HH:mm:ss";
 
