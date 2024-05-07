@@ -81,10 +81,10 @@
 										</div>
 										<div class="row">
 											<div id="selectMember" class="col-lg-6 col-sm-4 col-12 gy-2">
-													
+												
 											</div>
 											<div id="selectProduct" class="col-lg-6 col-sm-4 col-12 gy-2">
-													
+											
 											</div>
 											 <div class="col-lg-6 col-sm-4 col-12 gy-2">
 											  		<label class="form-label">회사 이름</label>
@@ -227,7 +227,14 @@
 							'	<label class="form-label">발주자</label>' 
 	                        +    '	<input type="hidden" name="memberSeqF" id="memberSeqF" value="' + response.itemPo.memberSeqF + '"  class="form-control" />' 
 	                        +    '	<input type="text" name="memberName" value="' + response.itemPo.memberName + '"   class="form-control" />' 
-                            +'	<label class="form-label">상품이름</label>' 
+//                             +'	<label class="form-label">상품이름</label>' 
+// 	                        +    '	<input type="hidden" name="productSeqF" id="productSeqF" value="' + response.itemPo.productSeqF + '"  class="form-control" />' 
+// 	                        +    '	<input type="text" name="productName" value="' + response.itemPo.productName + '"   class="form-control" />'
+                    		    
+                    );
+                    $("#selectProduct").html(
+                    		
+                            '	<label class="form-label">상품이름</label>' 
 	                        +    '	<input type="hidden" name="productSeqF" id="productSeqF" value="' + response.itemPo.productSeqF + '"  class="form-control" />' 
 	                        +    '	<input type="text" name="productName" value="' + response.itemPo.productName + '"   class="form-control" />'
                     		    
