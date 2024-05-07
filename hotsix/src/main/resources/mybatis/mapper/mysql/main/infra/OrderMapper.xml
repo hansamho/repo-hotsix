@@ -59,6 +59,8 @@
 		,c.productPrice
 		,c.productTypeCd
 		,b.orderAccount
+		,b.orderSeqF
+		,b.productSeqF
 	from
 		orderProduct b
 	left join product c
