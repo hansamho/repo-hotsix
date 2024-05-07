@@ -65,7 +65,7 @@ public class CodeController {
 	public String codeForm(CodeDto dto, Model model) throws Exception{
 		model.addAttribute("item", service.selectOne(dto));
 	
-		return "adm/infra/code/codeForm"; //
+		return "adm/infra/code/codeform"; //
 		
 	}
 	
