@@ -11,7 +11,7 @@ on: [workflow_dispatch]
 env:
   PROJECT_NAME: hotsix
   AWS_REGION: ap-northeast-2
-  S3_BUCKET: hs-cicd
+  S3_BUCKET: hsh-cicd
   CODE_DEPLOY_APPLICATION_NAME: hs-hotsix
   CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: hs-hotsix-prdt
 
